@@ -34,10 +34,10 @@ public class LevelBoss extends LevelParent {
 	/**
 	 * Initializes the friendly units in the level.
 	 */
-	@Override
-	protected void initializeFriendlyUnits() {
-		getRoot().getChildren().add(getUser());
-	}
+//	@Override
+//	protected void initializeFriendlyUnits() {
+//		getRoot().getChildren().add(getUser());
+//	}
 
 	/**
 	 * Checks if the game is over by evaluating the state of the user and the boss.
@@ -62,6 +62,9 @@ public class LevelBoss extends LevelParent {
 		}
 	}
 
+	/**
+	 * Adds the shield image to the root and sets its visibility to false.
+	 */
 	private void addShieldImage() {
 		shieldImage.setVisible(false);
 		getRoot().getChildren().add(shieldImage);
@@ -78,6 +81,9 @@ public class LevelBoss extends LevelParent {
 		return levelView;
 	}
 
+	/**
+	 * Updates the level view and shows or hides the shield image based on the boss's shield status.
+	 */
 	@Override
 	protected void updateLevelView() {
 		super.updateLevelView();
