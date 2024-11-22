@@ -2,6 +2,7 @@ package com.example.demo.levels;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.planes.EnemyPlaneTwo;
+import com.example.demo.factory.EnemyFactory;
 import com.example.demo.view.LevelView;
 
 /**
@@ -11,11 +12,13 @@ public class LevelTwo extends LevelParent {
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
     private static final String NEXT_LEVEL = "com.example.demo.levels.LevelBoss";
     private static final String NEXT_LEVEL_NAME = "Boss Level";
-    private static final int TOTAL_ENEMIES = 7;
-    private static final int KILLS_TO_ADVANCE = 10;
+    private static final int TOTAL_ENEMIES = 10;
+    private static final int KILLS_TO_ADVANCE = 1000;
     private static final double ENEMY_SPAWN_PROBABILITY = .20;
-    private static final int PLAYER_INITIAL_HEALTH = 5;
+    private static final int PLAYER_INITIAL_HEALTH = 10;
     private static final double ENEMY_Y_UPPER_BOUND = 100;
+    private final EnemyFactory enemyFactory;
+
 
     /**
      * Constructs a LevelTwo with the specified screen dimensions.
@@ -25,6 +28,7 @@ public class LevelTwo extends LevelParent {
      */
     public LevelTwo(double screenHeight, double screenWidth) {
         super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
+        this.enemyFactory = new EnemyFactory(EnemyFactory.EnemyType.ENEMYPLANETWO);
     }
 
     /**
@@ -39,13 +43,6 @@ public class LevelTwo extends LevelParent {
         }
     }
 
-    /**
-     * Initializes the friendly units in the level.
-     */
-//    @Override
-//    protected void initializeFriendlyUnits() {
-//        getRoot().getChildren().add(getUser());
-//    }
 
     /**
      * Spawns enemy units in the level based on the spawn probability.
@@ -55,8 +52,9 @@ public class LevelTwo extends LevelParent {
         int currentNumberOfEnemies = getCurrentNumberOfEnemies();
         for (int i = 0; i < TOTAL_ENEMIES - currentNumberOfEnemies; i++) {
             if (Math.random() < ENEMY_SPAWN_PROBABILITY) {
-                double newEnemyInitialYPosition = 30 + Math.random() * (getEnemyMaximumYPosition() - ENEMY_Y_UPPER_BOUND);
-                ActiveActorDestructible newEnemy = new EnemyPlaneTwo(getScreenWidth(), newEnemyInitialYPosition);
+
+                double newEnemyInitialYPosition = ENEMY_Y_UPPER_BOUND + Math.random() * (getEnemyMaximumYPosition() - ENEMY_Y_UPPER_BOUND);
+                ActiveActorDestructible newEnemy = enemyFactory.createActor(getScreenWidth(), newEnemyInitialYPosition);
                 addEnemyUnit(newEnemy);
             }
         }
