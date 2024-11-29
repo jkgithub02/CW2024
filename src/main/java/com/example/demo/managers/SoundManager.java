@@ -10,23 +10,38 @@ public class SoundManager {
     // Singleton instance
     private static SoundManager instance;
 
-    private Map<String, MediaPlayer> musicPlayers;
-    private Map<String, AudioClip> shootSounds;
+    private final Map<String, MediaPlayer> musicPlayers;
+    private final Map<String, AudioClip> shootSounds;
+    private final Map<String, AudioClip> damageSounds;
+
     private final static String LEVEL_BACKGROUND_MUSIC_FILE_PATH = "/music/fightmusic.mp3";
     private final static String MENU_BACKGROUND_MUSIC_FILE_PATH = "/music/backgroundmusic.mp3";
     private final static String USER_SHOOT_SOUND_FILE_PATH = "/music/userprojectile.wav";
     private final static String ENEMY_SHOOT_SOUND_FILE_PATH = "/music/enemyprojectile.wav";
+    private final static String USER_DAMAGED_SOUND_FILE_PATH = "/music/damaged.mp3";
+    private final static String ENEMY_DAMAGED_SOUND_FILE_PATH = "/music/enemydamaged.wav";
 
     // Make constructor private
     private SoundManager() {
         musicPlayers = new HashMap<>();
         shootSounds = new HashMap<>();
+        damageSounds = new HashMap<>();
 
-        // Initialize sounds
+        initializeSounds();
+    }
+
+    private void initializeSounds() {
+        // Initialize background music
         loadBackgroundMusic("menu", MENU_BACKGROUND_MUSIC_FILE_PATH);
         loadBackgroundMusic("level", LEVEL_BACKGROUND_MUSIC_FILE_PATH);
+
+        // Initialize shoot sounds
         loadShootSound("user", USER_SHOOT_SOUND_FILE_PATH);
         loadShootSound("enemy", ENEMY_SHOOT_SOUND_FILE_PATH);
+
+        // Initialize damage sounds
+        loadDamageSound("user", USER_DAMAGED_SOUND_FILE_PATH);
+        loadDamageSound("enemy", ENEMY_DAMAGED_SOUND_FILE_PATH);
     }
 
     // Singleton getter
@@ -47,6 +62,11 @@ public class SoundManager {
     private void loadShootSound(String key, String soundFilePath) {
         AudioClip audioClip = new AudioClip(getClass().getResource(soundFilePath).toString());
         shootSounds.put(key, audioClip);
+    }
+
+    private void loadDamageSound(String key, String soundFilePath) {
+        AudioClip audioClip = new AudioClip(getClass().getResource(soundFilePath).toString());
+        damageSounds.put(key, audioClip);
     }
 
     public void playBackgroundMusic(String key) {
@@ -73,8 +93,42 @@ public class SoundManager {
         }
     }
 
-    public void playDamagedSound() {
-        AudioClip clip = new AudioClip(getClass().getResource("/music/damaged.mp3").toString());
-        clip.play();
+    public void playDamagedSound(String key) {
+        AudioClip clip = damageSounds.get(key);
+        if (clip != null) {
+            clip.play();
+        }
     }
+
+//    // Resource cleanup methods
+//    private void disposeAudioClips(Map<String, AudioClip> clips) {
+//        if (clips != null) {
+//            for (AudioClip clip : clips.values()) {
+//                if (clip != null) {
+//                    clip.stop();
+//                }
+//            }
+//            clips.clear();
+//        }
+//    }
+//
+//    private void disposeMediaPlayers(Map<String, MediaPlayer> players) {
+//        if (players != null) {
+//            for (MediaPlayer player : players.values()) {
+//                if (player != null) {
+//                    player.stop();
+//                    player.dispose();
+//                }
+//            }
+//            players.clear();
+//        }
+//    }
+//
+//    public void dispose() {
+//        stopAllBackgroundMusic();
+//        disposeMediaPlayers(musicPlayers);
+//        disposeAudioClips(shootSounds);
+//        disposeAudioClips(damageSounds);
+//        instance = null;
+//    }
 }

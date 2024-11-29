@@ -2,6 +2,7 @@ package com.example.demo.actors.planes;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.factory.ProjectileFactory;
+import com.example.demo.managers.SoundManager;
 
 import java.util.*;
 
@@ -18,7 +19,7 @@ public class Boss extends FighterPlane {
 	private static final double BOSS_SHIELD_PROBABILITY = .002;
 	private static final int IMAGE_HEIGHT = 60;
 	private static final int VERTICAL_VELOCITY = 8;
-	private static final int HEALTH = 10; //change the health later
+	private static final int HEALTH = 50;
 	private static final int MOVE_FREQUENCY_PER_CYCLE = 5;
 	private static final int ZERO = 0;
 	private static final int MAX_FRAMES_WITH_SAME_MOVE = 10;
@@ -31,6 +32,7 @@ public class Boss extends FighterPlane {
 	private int indexOfCurrentMove;
 	private int framesWithShieldActivated;
 	private final ProjectileFactory projectileFactory;
+	private final SoundManager soundManager = SoundManager.getInstance();
 
 	/**
 	 * Constructs a Boss instance with predefined attributes.
@@ -89,6 +91,7 @@ public class Boss extends FighterPlane {
 	public void takeDamage() {
 		if (!isShielded) {
 			super.takeDamage();
+			soundManager.playDamagedSound("enemy");
 		}
 	}
 

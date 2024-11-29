@@ -8,6 +8,7 @@ import java.util.List;
 
 public class CollisionManager {
 
+    private final SoundManager soundManager = SoundManager.getInstance();
     public void handlePlaneCollisions(List<ActiveActorDestructible> friendlyUnits,
                                       List<ActiveActorDestructible> enemyUnits) {
         for (ActiveActorDestructible friendly : friendlyUnits) {
@@ -22,6 +23,7 @@ public class CollisionManager {
                     }
                     if (enemy instanceof FighterPlane && ((FighterPlane) enemy).getHealth() <= 0) {
                         enemy.destroy(DestructionType.COLLISION);
+                        soundManager.playDamagedSound("enemy");
                     }
                 }
             }
@@ -39,6 +41,7 @@ public class CollisionManager {
                     // If the enemy's health reaches 0, then destroy it
                     if (enemy instanceof FighterPlane && ((FighterPlane) enemy).getHealth() <= 0) {
                         enemy.destroy(DestructionType.PROJECTILE_KILL);
+                        soundManager.playDamagedSound("enemy");
                     }
                 }
             }

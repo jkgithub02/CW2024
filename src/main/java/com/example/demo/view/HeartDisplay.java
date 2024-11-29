@@ -62,7 +62,7 @@ public class HeartDisplay {
 	 */
 	public void removeHeart() {
 		if (!container.getChildren().isEmpty()) {
-			soundManager.playDamagedSound();
+			soundManager.playDamagedSound("user");
 			container.getChildren().remove(INDEX_OF_FIRST_ITEM);
 		}
 	}
