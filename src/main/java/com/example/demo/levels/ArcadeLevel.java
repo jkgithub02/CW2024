@@ -2,12 +2,13 @@ package com.example.demo.levels;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.factory.EnemyFactory;
+import com.example.demo.view.ArcadeLevelView;
 import com.example.demo.view.LevelView;
 import com.example.demo.config.GameConfig;
 import com.example.demo.managers.LeaderboardManager;
 
 public class ArcadeLevel extends LevelParent {
-    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background1.jpg";
+    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/backgroundarcade.jpg";
     private static final int INITIAL_ENEMIES = 5;
     private static final int MAXIMUM_ENEMIES = 8;
     private static final double INITIAL_SPAWN_RATE = 0.25;
@@ -56,7 +57,7 @@ public class ArcadeLevel extends LevelParent {
 
     @Override
     protected LevelView instantiateLevelView() {
-        return new LevelView(getRoot(), GameConfig.PLAYER_INITIAL_HEALTH, totalEnemies);
+        return new ArcadeLevelView(getRoot(), GameConfig.PLAYER_INITIAL_HEALTH);
     }
 
     private void saveScore(int score) {
