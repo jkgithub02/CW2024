@@ -19,7 +19,6 @@ public class LevelTwo extends LevelParent {
     private static final double ENEMY_Y_UPPER_BOUND = 100;
     private final EnemyFactory enemyFactory;
 
-
     /**
      * Constructs a LevelTwo with the specified screen dimensions.
      */
@@ -40,7 +39,6 @@ public class LevelTwo extends LevelParent {
         }
     }
 
-
     /**
      * Spawns enemy units in the level based on the spawn probability.
      */
@@ -49,7 +47,6 @@ public class LevelTwo extends LevelParent {
         int currentNumberOfEnemies = getCurrentNumberOfEnemies();
         for (int i = 0; i < TOTAL_ENEMIES - currentNumberOfEnemies; i++) {
             if (Math.random() < ENEMY_SPAWN_PROBABILITY) {
-
                 double newEnemyInitialYPosition = ENEMY_Y_UPPER_BOUND + Math.random() * (getEnemyMaximumYPosition() - ENEMY_Y_UPPER_BOUND);
                 ActiveActorDestructible newEnemy = enemyFactory.createActor(getScreenWidth(), newEnemyInitialYPosition);
                 addEnemyUnit(newEnemy);

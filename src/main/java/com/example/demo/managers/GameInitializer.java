@@ -24,7 +24,7 @@ public class GameInitializer {
      * @param root the root group of the scene.
      * @param scene the scene of the game.
      * @param background the background image view.
-//     * @param user the user's plane.
+     * @param user the user's plane.
      * @param levelView the view for the level.
      * @param pauseHandler the handler for pausing the game.
      */

@@ -6,15 +6,26 @@ import com.example.demo.actors.planes.FighterPlane;
 
 import java.util.List;
 
+/**
+ * Manages collision detection and handling between different game entities.
+ */
 public class CollisionManager {
 
     private final SoundManager soundManager = SoundManager.getInstance();
+
+    /**
+     * Handles collisions between friendly and enemy planes.
+     *
+     * @param friendlyUnits the list of friendly units.
+     * @param enemyUnits the list of enemy units.
+     */
     public void handlePlaneCollisions(List<ActiveActorDestructible> friendlyUnits,
                                       List<ActiveActorDestructible> enemyUnits) {
         for (ActiveActorDestructible friendly : friendlyUnits) {
             for (ActiveActorDestructible enemy : enemyUnits) {
                 if (friendly.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
                     friendly.takeDamage();
+                    soundManager.playDamagedSound("user");
                     enemy.takeDamage();
 
                     // Check if either plane should be destroyed
@@ -30,6 +41,12 @@ public class CollisionManager {
         }
     }
 
+    /**
+     * Handles collisions between user projectiles and enemy units.
+     *
+     * @param userProjectiles the list of user projectiles.
+     * @param enemyUnits the list of enemy units.
+     */
     public void handleUserProjectileCollisions(List<ActiveActorDestructible> userProjectiles,
                                                List<ActiveActorDestructible> enemyUnits) {
         for (ActiveActorDestructible enemy : enemyUnits) {
@@ -48,12 +65,19 @@ public class CollisionManager {
         }
     }
 
+    /**
+     * Handles collisions between enemy projectiles and friendly units.
+     *
+     * @param enemyProjectiles the list of enemy projectiles.
+     * @param friendlyUnits the list of friendly units.
+     */
     public void handleEnemyProjectileCollisions(List<ActiveActorDestructible> enemyProjectiles,
                                                 List<ActiveActorDestructible> friendlyUnits) {
         for (ActiveActorDestructible friendly : friendlyUnits) {
             for (ActiveActorDestructible projectile : enemyProjectiles) {
                 if (friendly.getBoundsInParent().intersects(projectile.getBoundsInParent())) {
                     friendly.takeDamage();
+                    soundManager.playDamagedSound("user");
                     projectile.destroy(DestructionType.COLLISION);
                 }
             }

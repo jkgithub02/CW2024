@@ -6,6 +6,10 @@ import javafx.scene.media.MediaPlayer;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Manages the sound effects and background music for the game.
+ * Implements the Singleton design pattern to ensure only one instance exists.
+ */
 public class SoundManager {
     // Singleton instance
     private static SoundManager instance;
@@ -30,6 +34,9 @@ public class SoundManager {
         initializeSounds();
     }
 
+    /**
+     * Initializes the sound effects and background music.
+     */
     private void initializeSounds() {
         // Initialize background music
         loadBackgroundMusic("menu", MENU_BACKGROUND_MUSIC_FILE_PATH);
@@ -44,7 +51,11 @@ public class SoundManager {
         loadDamageSound("enemy", ENEMY_DAMAGED_SOUND_FILE_PATH);
     }
 
-    // Singleton getter
+    /**
+     * Returns the singleton instance of the SoundManager.
+     *
+     * @return the singleton instance.
+     */
     public static SoundManager getInstance() {
         if (instance == null) {
             instance = new SoundManager();
@@ -52,6 +63,12 @@ public class SoundManager {
         return instance;
     }
 
+    /**
+     * Loads background music from the specified file path and associates it with the given key.
+     *
+     * @param key the key to associate with the background music.
+     * @param musicFilePath the file path of the background music.
+     */
     private void loadBackgroundMusic(String key, String musicFilePath) {
         Media music = new Media(getClass().getResource(musicFilePath).toString());
         MediaPlayer mediaPlayer = new MediaPlayer(music);
@@ -59,16 +76,33 @@ public class SoundManager {
         musicPlayers.put(key, mediaPlayer);
     }
 
+    /**
+     * Loads a shoot sound from the specified file path and associates it with the given key.
+     *
+     * @param key the key to associate with the shoot sound.
+     * @param soundFilePath the file path of the shoot sound.
+     */
     private void loadShootSound(String key, String soundFilePath) {
         AudioClip audioClip = new AudioClip(getClass().getResource(soundFilePath).toString());
         shootSounds.put(key, audioClip);
     }
 
+    /**
+     * Loads a damage sound from the specified file path and associates it with the given key.
+     *
+     * @param key the key to associate with the damage sound.
+     * @param soundFilePath the file path of the damage sound.
+     */
     private void loadDamageSound(String key, String soundFilePath) {
         AudioClip audioClip = new AudioClip(getClass().getResource(soundFilePath).toString());
         damageSounds.put(key, audioClip);
     }
 
+    /**
+     * Plays the background music associated with the given key.
+     *
+     * @param key the key of the background music to play.
+     */
     public void playBackgroundMusic(String key) {
         MediaPlayer player = musicPlayers.get(key);
         if (player != null) {
@@ -79,6 +113,9 @@ public class SoundManager {
         }
     }
 
+    /**
+     * Stops all background music.
+     */
     public void stopAllBackgroundMusic() {
         for (MediaPlayer player : musicPlayers.values()) {
             player.stop();
@@ -86,6 +123,11 @@ public class SoundManager {
         }
     }
 
+    /**
+     * Plays the shoot sound associated with the given key.
+     *
+     * @param key the key of the shoot sound to play.
+     */
     public void playShootSound(String key) {
         AudioClip clip = shootSounds.get(key);
         if (clip != null) {
@@ -93,42 +135,15 @@ public class SoundManager {
         }
     }
 
+    /**
+     * Plays the damage sound associated with the given key.
+     *
+     * @param key the key of the damage sound to play.
+     */
     public void playDamagedSound(String key) {
         AudioClip clip = damageSounds.get(key);
         if (clip != null) {
             clip.play();
         }
     }
-
-//    // Resource cleanup methods
-//    private void disposeAudioClips(Map<String, AudioClip> clips) {
-//        if (clips != null) {
-//            for (AudioClip clip : clips.values()) {
-//                if (clip != null) {
-//                    clip.stop();
-//                }
-//            }
-//            clips.clear();
-//        }
-//    }
-//
-//    private void disposeMediaPlayers(Map<String, MediaPlayer> players) {
-//        if (players != null) {
-//            for (MediaPlayer player : players.values()) {
-//                if (player != null) {
-//                    player.stop();
-//                    player.dispose();
-//                }
-//            }
-//            players.clear();
-//        }
-//    }
-//
-//    public void dispose() {
-//        stopAllBackgroundMusic();
-//        disposeMediaPlayers(musicPlayers);
-//        disposeAudioClips(shootSounds);
-//        disposeAudioClips(damageSounds);
-//        instance = null;
-//    }
 }

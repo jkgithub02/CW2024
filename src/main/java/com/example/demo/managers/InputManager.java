@@ -10,6 +10,9 @@ import javafx.scene.image.ImageView;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Manages user input and updates the state of the user plane and projectiles.
+ */
 public class InputManager {
     private final Set<KeyCode> pressedKeys;
     private final UserPlane user;
@@ -18,6 +21,15 @@ public class InputManager {
     private final List<ActiveActorDestructible> userProjectiles;
     private GameState gameState = GameState.ACTIVE;
 
+    /**
+     * Constructs an InputManager with the specified parameters.
+     *
+     * @param pressedKeys the set of currently pressed keys.
+     * @param user the user's plane.
+     * @param background the background image view.
+     * @param root the root group of the scene.
+     * @param userProjectiles the list of user projectiles.
+     */
     public InputManager(Set<KeyCode> pressedKeys, UserPlane user, ImageView background, Group root, List<ActiveActorDestructible> userProjectiles) {
         this.pressedKeys = pressedKeys;
         this.user = user;
@@ -26,6 +38,9 @@ public class InputManager {
         this.userProjectiles = userProjectiles;
     }
 
+    /**
+     * Initializes the handler for firing projectiles.
+     */
     public void initializeFireProjectileHandler() {
         background.setOnKeyPressed(e -> {
             if (gameState == GameState.ACTIVE) {
@@ -41,6 +56,9 @@ public class InputManager {
         });
     }
 
+    /**
+     * Fires a projectile from the user's plane.
+     */
     private void fireProjectile() {
         if (gameState == GameState.ACTIVE) {
             ActiveActorDestructible projectile = user.fireProjectile();
@@ -49,6 +67,9 @@ public class InputManager {
         }
     }
 
+    /**
+     * Updates the movement of the user's plane based on the pressed keys.
+     */
     public void updateUserPlaneMovement() {
         if (gameState == GameState.ACTIVE) {
             if (pressedKeys.contains(KeyCode.UP)) user.moveUp();
@@ -62,12 +83,20 @@ public class InputManager {
         }
     }
 
+    /**
+     * Stops all movement of the user's plane.
+     */
     private void stopAllMovement() {
         pressedKeys.clear();
         user.stopVertical();
         user.stopHorizontal();
     }
 
+    /**
+     * Sets the game state.
+     *
+     * @param state the new game state.
+     */
     public void setGameState(GameState state) {
         this.gameState = state;
         if (state != GameState.ACTIVE) {

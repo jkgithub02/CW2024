@@ -26,14 +26,12 @@ public class UserPlane extends FighterPlane {
 	private final ProjectileFactory projectileFactory;
 	private final SoundManager soundManager = SoundManager.getInstance();
 
-
 	/**
 	 * Constructs a UserPlane with the specified initial health.
 	 *
 	 * @param initialHealth the initial health of the user's plane.
 	 */
 	public UserPlane(int initialHealth) {
-
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);
 		this.projectileFactory = new ProjectileFactory(ProjectileFactory.ProjectileType.USER);
 		verticalVelocityMultiplier = 0;
@@ -114,28 +112,28 @@ public class UserPlane extends FighterPlane {
 	 * Moves the user's plane up by setting the vertical velocity multiplier to -1.
 	 */
 	public void moveUp() {
-		verticalVelocityMultiplier = -1;
+		verticalVelocityMultiplier = -2;
 	}
 
 	/**
 	 * Moves the user's plane down by setting the vertical velocity multiplier to 1.
 	 */
 	public void moveDown() {
-		verticalVelocityMultiplier = 1;
+		verticalVelocityMultiplier = 2;
 	}
 
 	/**
 	 * Moves the user's plane left by setting the horizontal velocity multiplier to -1.
 	 */
 	public void moveLeft() {
-		horizontalVelocityMultiplier = -1;
+		horizontalVelocityMultiplier = -2;
 	}
 
 	/**
 	 * Moves the user's plane right by setting the horizontal velocity multiplier to 1.
 	 */
 	public void moveRight() {
-		horizontalVelocityMultiplier = 1;
+		horizontalVelocityMultiplier = 2;
 	}
 
 	/**

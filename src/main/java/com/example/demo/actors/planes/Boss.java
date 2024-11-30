@@ -68,7 +68,6 @@ public class Boss extends FighterPlane {
 	public void updateActor() {
 		updatePosition();
 		updateShield();
-		System.out.println("Boss health: " + getHealth());
 	}
 
 	/**
@@ -191,13 +190,21 @@ public class Boss extends FighterPlane {
 		framesWithShieldActivated = 0;
 	}
 
-
+	/**
+	 * Checks if the boss is shielded.
+	 *
+	 * @return true if the boss is shielded, false otherwise.
+	 */
 	public boolean isShielded() {
 		return isShielded;
 	}
 
+	/**
+	 * Gets the health of the boss.
+	 *
+	 * @return the health of the boss.
+	 */
 	public int getHealth() {
 		return super.getHealth();
 	}
-
 }

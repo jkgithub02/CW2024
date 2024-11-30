@@ -5,11 +5,22 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+/**
+ * Represents the health bar for a boss character in the game.
+ * Displays the health as a progress bar with a text overlay showing the actual health numbers.
+ */
 public class BossHealthBar extends StackPane {
     private final ProgressBar healthBar;
     private final Text healthText;
     private final int maxHealth;
 
+    /**
+     * Constructs a BossHealthBar with the specified position and maximum health.
+     *
+     * @param x the x-coordinate of the health bar.
+     * @param y the y-coordinate of the health bar.
+     * @param maxHealth the maximum health of the boss.
+     */
     public BossHealthBar(double x, double y, int maxHealth) {
         this.maxHealth = maxHealth;
 
@@ -31,6 +42,11 @@ public class BossHealthBar extends StackPane {
         getChildren().addAll(healthBar, healthText);
     }
 
+    /**
+     * Updates the health bar and text to reflect the current health.
+     *
+     * @param currentHealth the current health of the boss.
+     */
     public void updateHealth(int currentHealth) {
         double healthPercentage = (double) currentHealth / maxHealth;
         healthBar.setProgress(healthPercentage);

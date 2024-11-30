@@ -23,7 +23,7 @@ public class LevelOne extends LevelParent {
 	 * Constructs a LevelOne with the specified screen dimensions.
 	 */
 	public LevelOne() {
-		super(BACKGROUND_IMAGE_NAME,  PLAYER_INITIAL_HEALTH);
+		super(BACKGROUND_IMAGE_NAME, PLAYER_INITIAL_HEALTH);
 		this.enemyFactory = new EnemyFactory(EnemyFactory.EnemyType.ENEMYPLANEONE);
 	}
 
@@ -38,16 +38,6 @@ public class LevelOne extends LevelParent {
 			goToNextLevel(NEXT_LEVEL, NEXT_LEVEL_NAME);
 		}
 	}
-
-	/**
-	 * Initializes the friendly units in the level.
-	 */
-//	@Override
-//	protected void initializeFriendlyUnits() {
-//		if (!getRoot().getChildren().contains(getUser())) {
-//			getRoot().getChildren().add(getUser());
-//		}
-//	}
 
 	/**
 	 * Spawns enemy units in the level based on the spawn probability.

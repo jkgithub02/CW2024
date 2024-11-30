@@ -21,7 +21,7 @@ public class LevelBoss extends LevelParent {
 	private static final int SHIELD_X_POSITION = 850; // X-coordinate position of the shield
 	private static final int SHIELD_Y_POSITION = 0; // Y-coordinate position of the shield
 	private static final int HEALTH_BAR_X_POSITION = SHIELD_X_POSITION + 100;
-	private static  final int HEALTH_BAR_Y_POSITION = 30;
+	private static final int HEALTH_BAR_Y_POSITION = 30;
 	private final EnemyFactory enemyFactory;
 	private BossHealthBar bossHealthBar;
 
@@ -29,13 +29,12 @@ public class LevelBoss extends LevelParent {
 	 * Constructs a LevelBoss with the specified screen dimensions.
 	 */
 	public LevelBoss() {
-		super(BACKGROUND_IMAGE_NAME,  PLAYER_INITIAL_HEALTH);
+		super(BACKGROUND_IMAGE_NAME, PLAYER_INITIAL_HEALTH);
 		this.enemyFactory = new EnemyFactory(EnemyFactory.EnemyType.BOSS);
-		this.boss = (Boss) enemyFactory.createActor(0,0);
+		this.boss = (Boss) enemyFactory.createActor(0, 0);
 		this.shieldImage = new ShieldImage(SHIELD_X_POSITION, SHIELD_Y_POSITION);
 		this.bossHealthBar = new BossHealthBar(HEALTH_BAR_X_POSITION, HEALTH_BAR_Y_POSITION, boss.getHealth());
 	}
-
 
 	/**
 	 * Checks if the game is over by evaluating the state of the user and the boss.
@@ -69,6 +68,9 @@ public class LevelBoss extends LevelParent {
 		getRoot().getChildren().add(shieldImage);
 	}
 
+	/**
+	 * Adds the boss health bar to the root.
+	 */
 	private void addHealthBar() {
 		getRoot().getChildren().add(bossHealthBar);
 	}

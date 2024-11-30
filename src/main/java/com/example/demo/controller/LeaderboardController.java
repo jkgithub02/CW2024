@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Controller class for managing the leaderboard screen.
+ */
 public class LeaderboardController {
     private Stage stage;
 
@@ -33,10 +36,18 @@ public class LeaderboardController {
     private VBox scoresList;
     private SoundManager soundManager;
 
+    /**
+     * Sets the stage for this controller.
+     *
+     * @param stage the primary stage of the application.
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     * Initializes the leaderboard screen by setting up the UI components and displaying the scores.
+     */
     @FXML
     private void initialize() {
         soundManager = SoundManager.getInstance();
@@ -68,6 +79,9 @@ public class LeaderboardController {
         displayScores();
     }
 
+    /**
+     * Displays the top scores on the leaderboard.
+     */
     private void displayScores() {
         List<Integer> scores = LeaderboardManager.getTopScores();
         scores.sort(Collections.reverseOrder());
@@ -90,6 +104,9 @@ public class LeaderboardController {
         }
     }
 
+    /**
+     * Handles the action of navigating back to the main menu.
+     */
     @FXML
     private void backToMenu() {
         try {
