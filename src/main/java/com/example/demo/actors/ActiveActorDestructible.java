@@ -50,11 +50,21 @@ public abstract class ActiveActorDestructible extends ActiveActor implements Des
 		setDestroyed(true);
 	}
 
+	/**
+	 * Destroys the actor with a specified destruction type.
+	 *
+	 * @param type the type of destruction.
+	 */
 	public void destroy(DestructionType type) {
 		this.destructionType = type;
 		this.isDestroyed = true;
 	}
 
+	/**
+	 * Gets the type of destruction.
+	 *
+	 * @return the destruction type.
+	 */
 	public DestructionType getDestructionType() {
 		return destructionType;
 	}
@@ -77,16 +87,16 @@ public abstract class ActiveActorDestructible extends ActiveActor implements Des
 		return isDestroyed;
 	}
 
-	/**
-	 * Returns the hitbox rectangle of the actor.
-	 *
-	 * @return the hitbox rectangle.
-	 */
-	public Rectangle getHitboxRectangle() {
-		Bounds bounds = this.getBoundsInParent();
-		Rectangle hitbox = new Rectangle(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight());
-		hitbox.setStroke(Color.RED);
-		hitbox.setFill(Color.TRANSPARENT);
-		return hitbox;
-	}
+//	/**
+//	 * Returns the hitbox rectangle of the actor.
+//	 *
+//	 * @return the hitbox rectangle.
+//	 */
+//	public Rectangle getHitboxRectangle() {
+//		Bounds bounds = this.getBoundsInParent();
+//		Rectangle hitbox = new Rectangle(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight());
+//		hitbox.setStroke(Color.RED);
+//		hitbox.setFill(Color.TRANSPARENT);
+//		return hitbox;
+//	}
 }

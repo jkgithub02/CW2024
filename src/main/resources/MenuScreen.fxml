@@ -5,6 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <Pane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.MainMenuController">
    <children>
@@ -15,15 +16,27 @@
       </ImageView>
       <VBox fx:id="buttonContainer" alignment="CENTER" spacing="10">
          <children>
-            <ImageView fitHeight="134.0" fitWidth="572.0">
+            <ImageView fitHeight="134.0" fitWidth="569.0">
                <image>
                   <Image url="@com/example/demo/images/logo.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#startGame" text="Story Mode" />
-            <Button mnemonicParsing="false" onAction="#startArcadeMode" text="Arcade Mode" />
-            <Button mnemonicParsing="false" onAction="#showLeaderboard" text="Leaderboard" />
-            <Button mnemonicParsing="false" onAction="#exitGame" text="Exit Game" />
+            <Button mnemonicParsing="false" onAction="#startGame" prefHeight="34.0" prefWidth="114.0" text="Story Mode" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#startArcadeMode" prefHeight="38.0" prefWidth="115.0" text="Arcade Mode" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#showLeaderboard" prefHeight="34.0" prefWidth="115.0" text="Leaderboard">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#exitGame" prefHeight="33.0" prefWidth="115.0" text="Exit Game">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font></Button>
          </children>
       </VBox>
    </children>

@@ -10,6 +10,9 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+/**
+ * Manages the entities in the game, including friendly units, enemy units, and projectiles.
+ */
 public class EntityManager {
     private final List<ActiveActorDestructible> friendlyUnits;
     private final List<ActiveActorDestructible> enemyUnits;
@@ -19,6 +22,11 @@ public class EntityManager {
     private final Group root;
     private final List<Consumer<ActiveActorDestructible>> enemyDestroyedListeners;
 
+    /**
+     * Constructs an EntityManager with the specified root group.
+     *
+     * @param root the root group for the game entities.
+     */
     public EntityManager(Group root) {
         this.root = root;
         this.friendlyUnits = new ArrayList<>();
@@ -29,19 +37,39 @@ public class EntityManager {
         this.enemyDestroyedListeners = new ArrayList<>();
     }
 
+    /**
+     * Adds a friendly unit to the game.
+     *
+     * @param unit the friendly unit to add.
+     */
     public void addFriendlyUnit(ActiveActorDestructible unit) {
         friendlyUnits.add(unit);
     }
 
+    /**
+     * Adds an enemy unit to the game.
+     *
+     * @param enemy the enemy unit to add.
+     */
     public void addEnemyUnit(ActiveActorDestructible enemy) {
         enemyUnits.add(enemy);
         root.getChildren().add(enemy);
     }
 
+    /**
+     * Adds a listener for when an enemy is destroyed.
+     *
+     * @param listener the listener to add.
+     */
     public void addEnemyDestroyedListener(Consumer<ActiveActorDestructible> listener) {
         enemyDestroyedListeners.add(listener);
     }
 
+    /**
+     * Adds an enemy projectile to the game.
+     *
+     * @param projectile the enemy projectile to add.
+     */
     public void addEnemyProjectile(ActiveActorDestructible projectile) {
         if (projectile != null) {
             enemyProjectiles.add(projectile);
@@ -49,6 +77,9 @@ public class EntityManager {
         }
     }
 
+    /**
+     * Updates the state of all actors in the game.
+     */
     public void updateActors() {
         updateActorList(friendlyUnits);
         updateActorList(enemyUnits);
@@ -56,23 +87,21 @@ public class EntityManager {
         updateActorList(enemyProjectiles);
     }
 
+    /**
+     * Updates the state of the actors in the specified list.
+     *
+     * @param actors the list of actors to update.
+     */
     private void updateActorList(List<ActiveActorDestructible> actors) {
         actors.forEach(actor -> {
             actor.updateActor();
-            updateHitbox(actor);
+//            updateHitbox(actor);
         });
     }
 
-    private void updateHitbox(ActiveActorDestructible actor) {
-        Rectangle oldHitbox = actorHitboxes.get(actor);
-        if (oldHitbox != null) {
-            root.getChildren().remove(oldHitbox);
-        }
-        Rectangle hitbox = actor.getHitboxRectangle();
-        actorHitboxes.put(actor, hitbox);
-        root.getChildren().add(hitbox);
-    }
-
+    /**
+     * Removes destroyed actors from the game.
+     */
     public void removeDestroyedActors() {
         removeDestroyedFromList(friendlyUnits);
         removeDestroyedFromList(enemyUnits);
@@ -80,6 +109,11 @@ public class EntityManager {
         removeDestroyedFromList(enemyProjectiles);
     }
 
+    /**
+     * Removes destroyed actors from the specified list.
+     *
+     * @param actors the list of actors to remove.
+     */
     private void removeDestroyedFromList(List<ActiveActorDestructible> actors) {
         List<ActiveActorDestructible> destroyedActors = actors.stream()
                 .filter(ActiveActorDestructible::isDestroyed)
@@ -100,26 +134,56 @@ public class EntityManager {
         actors.removeAll(destroyedActors);
     }
 
+    /**
+     * Notifies listeners that an enemy has been destroyed.
+     *
+     * @param enemy the destroyed enemy.
+     */
     private void notifyEnemyDestroyed(ActiveActorDestructible enemy) {
         enemyDestroyedListeners.forEach(listener -> listener.accept(enemy));
     }
 
+    /**
+     * Gets the list of friendly units.
+     *
+     * @return the list of friendly units.
+     */
     public List<ActiveActorDestructible> getFriendlyUnits() {
         return friendlyUnits;
     }
 
+    /**
+     * Gets the list of enemy units.
+     *
+     * @return the list of enemy units.
+     */
     public List<ActiveActorDestructible> getEnemyUnits() {
         return enemyUnits;
     }
 
+    /**
+     * Gets the list of user projectiles.
+     *
+     * @return the list of user projectiles.
+     */
     public List<ActiveActorDestructible> getUserProjectiles() {
         return userProjectiles;
     }
 
+    /**
+     * Gets the list of enemy projectiles.
+     *
+     * @return the list of enemy projectiles.
+     */
     public List<ActiveActorDestructible> getEnemyProjectiles() {
         return enemyProjectiles;
     }
 
+    /**
+     * Gets the current number of enemies.
+     *
+     * @return the current number of enemies.
+     */
     public int getCurrentNumberOfEnemies() {
         return enemyUnits.size();
     }

@@ -70,8 +70,8 @@ public class MainMenuController {
     private void startArcadeMode() {
         try {
             soundManager.stopAllBackgroundMusic();
-           ArcadeModeController arcadeModeController = new ArcadeModeController(stage);
-           arcadeModeController.launchArcadeMode();
+            ArcadeModeController arcadeModeController = new ArcadeModeController(stage);
+            arcadeModeController.launchArcadeMode();
         } catch (Exception e) {
             e.printStackTrace();
         }

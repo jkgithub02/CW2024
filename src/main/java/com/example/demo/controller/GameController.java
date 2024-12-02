@@ -58,7 +58,7 @@ public class GameController {
 	 * @throws IllegalArgumentException if the method is invoked with incorrect arguments.
 	 * @throws InvocationTargetException if the underlying constructor throws an exception.
 	 */
-    public void goToLevel(String className, String levelname) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
+	public void goToLevel(String className, String levelname) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
 			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		LevelTransitionScreen transitionScreen = new LevelTransitionScreen(stage, levelname, () -> {
 			try {

@@ -16,15 +16,28 @@ import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.net.URL;
 
+/**
+ * Manages navigation between different screens and levels in the game.
+ */
 public class NavigationManager {
     private final Scene currentScene;
     private final double screenWidth = GameConfig.SCREEN_WIDTH;
     private final double screenHeight = GameConfig.SCREEN_HEIGHT;
 
-    public NavigationManager(Scene currentScene, double screenWidth, double screenHeight) {
+    /**
+     * Constructs a NavigationManager with the specified current scene.
+     *
+     * @param currentScene the current scene of the game.
+     */
+    public NavigationManager(Scene currentScene) {
         this.currentScene = currentScene;
     }
 
+    /**
+     * Restarts the specified level.
+     *
+     * @param currentLevelClass the class of the current level to restart.
+     */
     public void restartLevel(Class<?> currentLevelClass) {
         try {
             Constructor<?> constructor = currentLevelClass.getConstructor();
@@ -51,14 +64,25 @@ public class NavigationManager {
         }
     }
 
+    /**
+     * Navigates to the main menu screen.
+     */
     public void goToMainMenu() {
         loadScreen("MenuScreen.fxml", MainMenuController.class);
     }
 
+    /**
+     * Displays the win screen.
+     */
     public void showWinScreen() {
         loadScreen("WinScreen.fxml", WinScreenController.class);
     }
 
+    /**
+     * Displays the game over screen and sets the current level class.
+     *
+     * @param levelClass the class of the current level.
+     */
     public void showGameOverScreen(Class<?> levelClass) {
         GameOverController controller = loadScreen("GameOver.fxml", GameOverController.class);
         if (controller != null) {
@@ -66,6 +90,14 @@ public class NavigationManager {
         }
     }
 
+    /**
+     * Loads the specified FXML screen and sets the controller.
+     *
+     * @param fxmlName the name of the FXML file to load.
+     * @param controllerType the class of the controller.
+     * @param <T> the type of the controller.
+     * @return the controller of the loaded screen.
+     */
     private <T> T loadScreen(String fxmlName, Class<T> controllerType) {
         try {
             URL fxmlLocation = getClass().getClassLoader().getResource(fxmlName);
@@ -94,6 +126,11 @@ public class NavigationManager {
         }
     }
 
+    /**
+     * Displays an error alert with the specified exception message.
+     *
+     * @param e the exception to display.
+     */
     private void showErrorAlert(Exception e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setContentText(e.getMessage());
