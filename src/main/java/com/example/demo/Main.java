@@ -34,7 +34,7 @@ public class Main extends Application {
 			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		try {
 			URL fxmlLocation = getClass().getClassLoader().getResource("MenuScreen.fxml");
-			System.out.println("FXML Location: " + fxmlLocation);
+//			System.out.println("FXML Location: " + fxmlLocation);
 			FXMLLoader loader = new FXMLLoader(fxmlLocation);
 			Parent root = loader.load();
 			MainMenuController controller = loader.getController();
