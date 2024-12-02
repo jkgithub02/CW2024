@@ -364,4 +364,5 @@ public abstract class LevelParent {
         inputManager.setGameState(GameState.LOSE);
         navigationManager.showGameOverScreen(this.getClass());
     }
+
 }
