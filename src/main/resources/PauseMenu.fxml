@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="pauseRoot" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.demo.controller.PauseMenuController">
+<StackPane fx:id="pauseRoot" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.demo.controller.PauseMenuController" stylesheets="@styles/styles.css">
 
     <Rectangle fx:id="overlay" fill="#000000" height="${controller.screenHeight}" opacity="0.9" width="${controller.screenWidth}" />
 
@@ -17,25 +17,28 @@
             <Insets bottom="20" left="40" right="40" top="20" />
         </padding>
 
-        <Text fx:id="pauseTitle" style="-fx-fill: white; -fx-font-size: 30; -fx-font-family: 'Arial'" text="PAUSED" textAlignment="CENTER">
-         <font>
-            <Font name="Arial" size="25.0" />
-         </font></Text>
+        <Text fx:id="pauseTitle"
+              styleClass="pause-title"
+              text="PAUSED"
+              textAlignment="CENTER" />
 
-        <Button fx:id="resumeButton" onAction="#handleResume" style="-fx-pref-width: 200; -fx-pref-height: 40" text="Resume" textAlignment="CENTER">
-         <font>
-            <Font name="Arial Black" size="12.0" />
-         </font></Button>
+        <Button fx:id="resumeButton"
+                onAction="#handleResume"
+                styleClass="menu-button"
+                text="Resume"
+                textAlignment="CENTER" />
 
-        <Button fx:id="restartButton" onAction="#handleRestart" style="-fx-pref-width: 200; -fx-pref-height: 40" text="Restart" textAlignment="CENTER">
-         <font>
-            <Font name="Arial Black" size="12.0" />
-         </font></Button>
+        <Button fx:id="restartButton"
+                onAction="#handleRestart"
+                styleClass="menu-button"
+                text="Restart"
+                textAlignment="CENTER" />
 
-        <Button fx:id="mainMenuButton" onAction="#handleMainMenu" style="-fx-pref-width: 200; -fx-pref-height: 40" text="Main Menu" textAlignment="CENTER">
-         <font>
-            <Font name="Arial Black" size="12.0" />
-         </font></Button>
+        <Button fx:id="mainMenuButton"
+                onAction="#handleMainMenu"
+                styleClass="menu-button, back-button"
+                text="Main Menu"
+                textAlignment="CENTER" />
     </VBox>
 
 </StackPane>

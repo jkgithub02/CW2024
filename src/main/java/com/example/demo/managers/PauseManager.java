@@ -51,7 +51,6 @@ public class PauseManager {
     private void initializePauseMenu(Runnable resumeAction, Runnable restartAction, Runnable mainMenuAction) {
         try {
             URL resource = PauseManager.class.getResource("/PauseMenu.fxml");
-            System.out.println("Resource: " + resource);
             FXMLLoader loader = new FXMLLoader(resource);
             loader.load();
             pauseMenuController = loader.getController();

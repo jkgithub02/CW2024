@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.LeaderboardController">
+<Pane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.LeaderboardController" stylesheets="@styles/styles.css">
     <children>
         <ImageView fx:id="backgroundImage" pickOnBounds="true" preserveRatio="false">
             <image>
@@ -16,20 +16,19 @@
             </image>
         </ImageView>
 
-        <!-- Add a semi-transparent white background pane -->
-        <Pane fx:id="scoreBackground" style="-fx-background-color: rgba(255, 255, 255, 0.7); -fx-background-radius: 10;">
+        <!-- Semi-transparent white background pane -->
+        <Pane fx:id="scoreBackground" styleClass="score-background">
             <VBox fx:id="scoresContainer" alignment="CENTER" spacing="10">
                 <children>
-                    <Label text="High Scores" textFill="BLACK">
-                        <font>
-                            <Font name="System Bold" size="30.0" />
-                        </font>
-                    </Label>
-                    <VBox fx:id="scoresList" alignment="CENTER" spacing="5" />
-                    <Button mnemonicParsing="false" onAction="#backToMenu" text="Back to Menu">
-                  <font>
-                     <Font name="Arial Black" size="12.0" />
-                  </font></Button>
+                    <Label text="High Scores"
+                           styleClass="score-title" />
+                    <VBox fx:id="scoresList"
+                          alignment="CENTER"
+                          spacing="5" />
+                    <Button mnemonicParsing="false"
+                            onAction="#backToMenu"
+                            styleClass="menu-button, back-button"
+                            text="Back to Menu" />
                 </children>
             </VBox>
         </Pane>

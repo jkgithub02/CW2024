@@ -1,0 +1,127 @@
+.button {
+    -fx-background-color: #2c3e50;
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-font-family: "Arial Black";
+    -fx-font-size: 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 2);
+    -fx-transition: all 0.3s;
+}
+
+.button:hover {
+    -fx-background-color: #34495e;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.button:pressed {
+    -fx-background-color: #2980b9;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* Special styles for different button types */
+.menu-button {
+    -fx-pref-width: 200px;
+}
+
+.game-button {
+    -fx-background-color: #e74c3c;
+}
+
+.game-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+.back-button {
+    -fx-background-color: #7f8c8d;
+}
+
+.back-button:hover {
+    -fx-background-color: #95a5a6;
+}
+/*pausemenu*/
+.pause-title {
+    -fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, #ffffff 0%, #cccccc 50%);
+    -fx-font-size: 45;
+    -fx-font-family: 'Arial Black';
+    -fx-stroke: #2c3e50;
+    -fx-stroke-width: 3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 15, 0, 0, 5),
+    innershadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0, 0, 0);
+    -fx-text-alignment: center;
+}
+
+/*settings*/
+.label {
+    -fx-font-family: "Arial";
+    -fx-font-size: 20px;
+    -fx-text-fill: BLACK;
+}
+
+.slider {
+    -fx-max-width: 200px;
+}
+
+.slider .track {
+    -fx-background-color: #dcdde1;
+}
+
+.slider .thumb {
+    -fx-background-color: #2c3e50;
+}
+
+/*leaderbaord*/
+.score-background {
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+    -fx-background-radius: 10;
+}
+
+.score-title {
+    -fx-font-family: "Arial";
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: BLACK;
+}
+
+/*gameover*/
+.game-over-container {
+    -fx-background-color: rgba(0, 0, 0, 0.8);
+    -fx-padding: 20;
+    -fx-background-radius: 10;
+}
+
+.game-over-text {
+    -fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, #ff3333 0%, #cc0000 50%);
+    -fx-font-size: 50;
+    -fx-font-family: 'Arial Black';
+    -fx-stroke: #800000;
+    -fx-stroke-width: 3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 15, 0, 0, 5),
+    innershadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0, 0, 0),
+    glow(rgba(255, 0, 0, 0.3));
+    -fx-text-alignment: center;
+}
+
+/*win*/
+.win-container {
+    -fx-background-color: rgba(0, 0, 0, 0.8);
+    -fx-padding: 20;
+    -fx-background-radius: 10;
+}
+
+.win-text {
+    -fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, #ffd700 0%, #ffb700 50%);
+    -fx-font-size: 50;
+    -fx-font-family: 'Arial Black';
+    -fx-stroke: #b8860b;
+    -fx-stroke-width: 3;
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 215, 0, 0.8), 15, 0, 0, 5),
+    innershadow(three-pass-box, rgba(184, 134, 11, 0.4), 5, 0, 0, 0),
+    glow(rgba(255, 223, 0, 0.5));
+    -fx-text-alignment: center;
+}
+
