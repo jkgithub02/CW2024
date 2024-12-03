@@ -112,28 +112,28 @@ public class UserPlane extends FighterPlane {
 	 * Moves the user's plane up by setting the vertical velocity multiplier to -1.
 	 */
 	public void moveUp() {
-		verticalVelocityMultiplier = -1;
+		setVerticalVelocityMultiplier(-2);
 	}
 
 	/**
 	 * Moves the user's plane down by setting the vertical velocity multiplier to 1.
 	 */
 	public void moveDown() {
-		verticalVelocityMultiplier = 1;
+		setVerticalVelocityMultiplier(2);
 	}
 
 	/**
 	 * Moves the user's plane left by setting the horizontal velocity multiplier to -1.
 	 */
 	public void moveLeft() {
-		horizontalVelocityMultiplier = -1;
+		setHorizontalVelocityMultiplier(-2);
 	}
 
 	/**
 	 * Moves the user's plane right by setting the horizontal velocity multiplier to 1.
 	 */
 	public void moveRight() {
-		horizontalVelocityMultiplier = 1;
+		setHorizontalVelocityMultiplier(2);
 	}
 
 	/**
@@ -164,5 +164,21 @@ public class UserPlane extends FighterPlane {
 	 */
 	public void incrementKillCount() {
 		numberOfKills++;
+	}
+
+    public int getVerticalVelocityMultiplier() {
+		return verticalVelocityMultiplier;
+    }
+
+	public int getHorizontalVelocityMultiplier() {
+		return horizontalVelocityMultiplier;
+	}
+
+	public void setVerticalVelocityMultiplier(int verticalVelocityMultiplier) {
+		this.verticalVelocityMultiplier = verticalVelocityMultiplier;
+	}
+
+	public void setHorizontalVelocityMultiplier(int horizontalVelocityMultiplier) {
+		this.horizontalVelocityMultiplier = horizontalVelocityMultiplier;
 	}
 }

@@ -4,6 +4,9 @@ module com.example.demo {
     requires javafx.media;
 
     opens com.example.demo to javafx.fxml, org.junit.jupiter.api;
+    opens com.example.demo.actors to javafx.fxml, org.junit.jupiter.api;
+    opens com.example.demo.actors.planes to javafx.fxml, org.junit.jupiter.api;
+    opens com.example.demo.actors.projectiles to javafx.fxml, org.junit.jupiter.api;
     opens com.example.demo.controller to javafx.fxml, org.junit.jupiter.api;
     opens com.example.demo.managers to org.junit.jupiter.api;
     opens com.example.demo.view to org.junit.jupiter.api;
