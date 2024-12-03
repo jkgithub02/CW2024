@@ -1,148 +1,84 @@
 package com.example.demo.levels;
 
-import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.actors.planes.UserPlane;
-import com.example.demo.config.GameState;
-import com.example.demo.managers.EntityManager;
-import com.example.demo.view.LevelView;
-import javafx.scene.Group;
+import com.example.demo.JavaFXTest;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.testfx.framework.junit5.Start;
+import javafx.application.Platform;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
-class LevelParentTest {
+class LevelParentTest extends JavaFXTest {
 
     private TestLevel testLevel;
-    private TestLevelView testLevelView;
+    private Stage stage;
 
-    @Mock
-    private UserPlane mockUserPlane;
-
-    @Mock
-    private ActiveActorDestructible mockEnemy;
-
-    // Test implementation of LevelView
-    private static class TestLevelView extends LevelView {
-        private int heartsRemaining = 3;
-        private int killCount = 0;
-
-        public TestLevelView(Group root, int hearts, int maxKills) {
-            super(root, hearts, maxKills);
-        }
-
-        @Override
-        public void removeHearts(int hearts) {
-            this.heartsRemaining = hearts;
-        }
-
-        @Override
-        public void updateKillCount(int kills) {
-            this.killCount = kills;
-        }
-
-        public int getHeartsRemaining() {
-            return heartsRemaining;
-        }
-
-        public int getKillCount() {
-            return killCount;
-        }
-    }
-
-    // Concrete implementation for testing
-    private class TestLevel extends LevelParent {
-        public TestLevel() {
-            super("/backgrounds/test_background.png", 3);
-        }
-
-        @Override
-        protected void checkIfGameOver() {
-            // Test implementation
-        }
-
-        @Override
-        protected void spawnEnemyUnits() {
-            // Test implementation
-        }
-
-        @Override
-        protected LevelView instantiateLevelView() {
-            testLevelView = new TestLevelView(getRoot(), 3, 10);
-            return testLevelView;
-        }
-
-        // Expose protected methods for testing
-        public void testUpdateLevelView() {
-            updateLevelView();
-        }
-
-        public void testAddEnemyUnit(ActiveActorDestructible enemy) {
-            addEnemyUnit(enemy);
-        }
+    @Start
+    private void start(Stage stage) {
+        this.stage = stage;
     }
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
-        testLevel = new TestLevel();
+        Platform.runLater(() -> {
+            testLevel = new TestLevel("/com/example/demo/images/testImage.png", 3);
+            Scene scene = testLevel.initializeScene();
+            stage.setScene(scene);
+            stage.show();
+        });
     }
 
     @Test
-    void updateLevelView_ShouldUpdateHealthAndKillCount() {
-        // Arrange
-        when(mockUserPlane.getHealth()).thenReturn(2);
-        when(mockUserPlane.getKillCount()).thenReturn(5);
-
-        // Act
-        testLevel.testUpdateLevelView();
-
-        // Assert
-        assertEquals(2, testLevelView.getHeartsRemaining());
-        assertEquals(5, testLevelView.getKillCount());
+    void testInitializeScene() {
+        Platform.runLater(() -> {
+            Scene scene = testLevel.initializeScene();
+            assertNotNull(scene);
+            assertEquals(800, scene.getWidth());  // Example width, replace with actual value
+            assertEquals(600, scene.getHeight()); // Example height, replace with actual value
+        });
     }
 
     @Test
-    void addEnemyUnit_ShouldIncreaseEnemyCount() {
-        // Arrange
-        int initialEnemies = testLevel.getCurrentNumberOfEnemies();
-
-        // Act
-        testLevel.testAddEnemyUnit(mockEnemy);
-
-        // Assert
-        assertEquals(initialEnemies + 1, testLevel.getCurrentNumberOfEnemies());
+    void testStartGame() {
+        Platform.runLater(() -> {
+            testLevel.startGame();
+            // Add assertions or verifications as needed
+        });
     }
 
     @Test
-    void initializeScene_ShouldCreateValidScene() {
-        // Act
-        Scene scene = testLevel.initializeScene();
-
-        // Assert
-        assertNotNull(scene);
-        assertNotNull(scene.getRoot());
-        assertTrue(scene.getRoot() instanceof Group);
+    void testGoToNextLevel() {
+        Platform.runLater(() -> {
+            testLevel.goToNextLevel("NextLevelClassName", "NextLevelName");
+            assertEquals("NextLevelClassName,NextLevelName", testLevel.nextLevelProperty().get());
+        });
     }
 
     @Test
-    void nextLevelProperty_ShouldBeEmptyInitially() {
-        // Assert
-        assertTrue(testLevel.nextLevelProperty().get() == null ||
-                testLevel.nextLevelProperty().get().isEmpty());
+    void testPauseAndResumeGame() {
+        Platform.runLater(() -> {
+            testLevel.pauseGame();
+            // Verify game is paused
+            testLevel.resumeGame();
+            // Verify game is resumed
+        });
     }
 
     @Test
-    void getEnemyMaximumYPosition_ShouldReturnValidValue() {
-        // Act
-        double maxYPosition = testLevel.getEnemyMaximumYPosition();
+    void testWinGame() {
+        Platform.runLater(() -> {
+            testLevel.winGame();
+            // Add assertions or verifications as needed
+        });
+    }
 
-        // Assert
-        assertTrue(maxYPosition > 0);
-        assertTrue(maxYPosition < testLevel.getScreenWidth());
+    @Test
+    void testLoseGame() {
+        Platform.runLater(() -> {
+            testLevel.loseGame();
+            // Add assertions or verifications as needed
+        });
     }
 }

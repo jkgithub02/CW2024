@@ -1,11 +1,11 @@
 package com.example.demo.managers;
 
+import com.example.demo.JavaFXTest;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,23 +14,13 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PauseManagerTest {
+class PauseManagerTest extends JavaFXTest {
 
     private PauseManager pauseManager;
     private boolean pauseActionCalled;
     private boolean resumeActionCalled;
     private Group root;
     private Scene scene;
-
-    @BeforeAll
-    static void initJFX() {
-        System.setProperty("java.awt.headless", "true");
-        System.setProperty("testfx.robot", "glass");
-        System.setProperty("testfx.headless", "true");
-        System.setProperty("prism.order", "sw");
-        System.setProperty("prism.text", "t2k");
-        Platform.startup(() -> {});
-    }
 
     @BeforeEach
     void setUp() throws Exception {

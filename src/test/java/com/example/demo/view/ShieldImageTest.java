@@ -1,20 +1,24 @@
 package com.example.demo.view;
 
+import com.example.demo.JavaFXTest;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(ApplicationExtension.class)
-class ShieldImageTest {
+class ShieldImageTest extends JavaFXTest {
 
     private ShieldImage shieldImage;
     private Stage stage;
+
+    @BeforeEach
+    void setUp() {
+        shieldImage = new ShieldImage(0,0);
+    }
 
     @Start
     private void start(Stage stage) {

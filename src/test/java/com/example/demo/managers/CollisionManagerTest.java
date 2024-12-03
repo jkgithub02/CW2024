@@ -2,8 +2,7 @@ package com.example.demo.managers;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.planes.FighterPlane;
-import javafx.application.Platform;
-import org.junit.jupiter.api.BeforeAll;
+import com.example.demo.JavaFXTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -15,7 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-class CollisionManagerTest {
+class CollisionManagerTest extends JavaFXTest {
 
     @Mock
     private SoundManager mockSoundManager;
@@ -85,11 +84,6 @@ class CollisionManagerTest {
         public void takeDamage() {
             health--;
         }
-    }
-
-    @BeforeAll
-    static void initJFX() {
-        Platform.startup(() -> {});
     }
 
     @BeforeEach
