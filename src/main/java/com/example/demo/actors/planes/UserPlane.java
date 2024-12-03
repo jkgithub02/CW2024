@@ -112,28 +112,28 @@ public class UserPlane extends FighterPlane {
 	 * Moves the user's plane up by setting the vertical velocity multiplier to -1.
 	 */
 	public void moveUp() {
-		verticalVelocityMultiplier = -2;
+		verticalVelocityMultiplier = -1;
 	}
 
 	/**
 	 * Moves the user's plane down by setting the vertical velocity multiplier to 1.
 	 */
 	public void moveDown() {
-		verticalVelocityMultiplier = 2;
+		verticalVelocityMultiplier = 1;
 	}
 
 	/**
 	 * Moves the user's plane left by setting the horizontal velocity multiplier to -1.
 	 */
 	public void moveLeft() {
-		horizontalVelocityMultiplier = -2;
+		horizontalVelocityMultiplier = -1;
 	}
 
 	/**
 	 * Moves the user's plane right by setting the horizontal velocity multiplier to 1.
 	 */
 	public void moveRight() {
-		horizontalVelocityMultiplier = 2;
+		horizontalVelocityMultiplier = 1;
 	}
 
 	/**
