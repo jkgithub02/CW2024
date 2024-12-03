@@ -1,6 +1,7 @@
 package com.example.demo.levels;
 
 import com.example.demo.actors.planes.Boss;
+import com.example.demo.config.GameConfig;
 import com.example.demo.factory.EnemyFactory;
 import com.example.demo.view.BossHealthBar;
 import com.example.demo.view.LevelBossView;
@@ -13,7 +14,6 @@ import com.example.demo.view.ShieldImage;
 public class LevelBoss extends LevelParent {
 
 	private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background3.jpg";
-	private static final int PLAYER_INITIAL_HEALTH = 5;
 	private static final int KILLS_TO_ADVANCE = 1;
 	private final Boss boss;
 	private LevelBossView levelView;
@@ -29,7 +29,7 @@ public class LevelBoss extends LevelParent {
 	 * Constructs a LevelBoss with the specified screen dimensions.
 	 */
 	public LevelBoss() {
-		super(BACKGROUND_IMAGE_NAME, PLAYER_INITIAL_HEALTH);
+		super(BACKGROUND_IMAGE_NAME, GameConfig.PLAYER_INITIAL_HEALTH);
 		this.enemyFactory = new EnemyFactory(EnemyFactory.EnemyType.BOSS);
 		this.boss = (Boss) enemyFactory.createActor(0, 0);
 		this.shieldImage = new ShieldImage(SHIELD_X_POSITION, SHIELD_Y_POSITION);
@@ -82,7 +82,7 @@ public class LevelBoss extends LevelParent {
 	 */
 	@Override
 	protected LevelView instantiateLevelView() {
-		levelView = new LevelBossView(getRoot(), PLAYER_INITIAL_HEALTH, KILLS_TO_ADVANCE);
+		levelView = new LevelBossView(getRoot(), GameConfig.PLAYER_INITIAL_HEALTH, KILLS_TO_ADVANCE, GameConfig.PLAYER_MAX_BULLETS);
 		return levelView;
 	}
 

@@ -13,12 +13,13 @@ class LevelBossViewTest extends JavaFXTest {
     private Group root;
     private static final int HEARTS_TO_DISPLAY = 3;
     private static final int MAX_KILLS = 10;
+    private static final int MAX_BULLETS = 10;
 
     @BeforeEach
     void setUp() {
         Platform.runLater(() -> {
             root = new Group();
-            bossLevelView = new LevelBossView(root, HEARTS_TO_DISPLAY, MAX_KILLS);
+            bossLevelView = new LevelBossView(root, HEARTS_TO_DISPLAY, MAX_KILLS, MAX_BULLETS);
         });
         waitForFxEvents();
     }

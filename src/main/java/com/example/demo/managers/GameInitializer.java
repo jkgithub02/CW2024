@@ -45,6 +45,7 @@ public class GameInitializer {
         pauseHandler.initializePauseHandler();
         levelView.showHeartDisplay();
         levelView.showKillCountDisplay();
+        levelView.showBulletDisplay();
     }
 
     /**

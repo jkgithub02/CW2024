@@ -36,7 +36,7 @@ class GameInitializerTest extends JavaFXTest {
             scene = new Scene(root, 800, 600);
             background = new ImageView();
             user = new UserPlane(1);
-            levelView = new LevelView(root, 3, 5);
+            levelView = new LevelView(root, 3, 5, 10);
 
             // Create appropriate Runnable actions for PauseManager
             Runnable pauseAction = () -> {};

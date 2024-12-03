@@ -16,4 +16,5 @@ public final class GameConfig {
 
     // Player health
     public static final int PLAYER_INITIAL_HEALTH = 5;
+    public static final int PLAYER_MAX_BULLETS = 10;
 }

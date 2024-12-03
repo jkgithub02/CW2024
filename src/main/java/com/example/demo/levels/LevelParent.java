@@ -117,6 +117,7 @@ public abstract class LevelParent {
     protected abstract LevelView instantiateLevelView();
 
     /**
+    /**
      * Initializes the scene for the level.
      *
      * @return the initialized scene.
@@ -238,6 +239,11 @@ public abstract class LevelParent {
     protected void updateLevelView() {
         levelView.removeHearts(user.getHealth());
         levelView.updateKillCount(user.getKillCount());
+        levelView.updateBulletStatus(
+                user.getCurrentBullets(),
+                user.isReloading(),
+                user.getReloadProgress()
+        );
     }
 
     /**
@@ -336,6 +342,7 @@ public abstract class LevelParent {
     public void pauseGame() {
         if (!pauseHandler.isPaused()) {
             timeline.pause();
+            user.pauseReload();
             inputManager.setGameState(GameState.PAUSED);
         }
     }
@@ -346,6 +353,7 @@ public abstract class LevelParent {
     public void resumeGame() {
         if (pauseHandler.isPaused()) {
             timeline.play();
+            user.resumeReload();
             inputManager.setGameState(GameState.ACTIVE);
         }
     }

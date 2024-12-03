@@ -19,7 +19,7 @@ class LevelViewTest extends JavaFXTest {
     @Start
     private void start(Stage stage) {
         root = new Group();
-        levelView = new LevelView(root, 3, 5);
+        levelView = new LevelView(root, 3, 5, 10);
         Scene scene = new Scene(root, 800, 600);
         stage.setScene(scene);
         stage.show();
@@ -29,7 +29,7 @@ class LevelViewTest extends JavaFXTest {
     void setUp() {
         Platform.runLater(() -> {
             root = new Group();
-            levelView = new LevelView(root, 3, 5);
+            levelView = new LevelView(root, 3, 5, 10);
         });
     }
 
