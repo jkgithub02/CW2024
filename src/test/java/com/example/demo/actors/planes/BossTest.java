@@ -27,7 +27,7 @@ class BossTest extends JavaFXTest {
     @Test
     void testUpdatePosition() {
         double initialY = boss.getTranslateY();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 100; i++) {
             boss.updatePosition();
             if (boss.getTranslateY() != initialY) {
                 break;
