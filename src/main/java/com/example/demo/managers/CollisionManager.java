@@ -11,7 +11,15 @@ import java.util.List;
  */
 public class CollisionManager {
 
-    private final SoundManager soundManager = SoundManager.getInstance();
+    private final SoundManager soundManager;
+
+    public CollisionManager(SoundManager soundManager) {
+        this.soundManager = soundManager;
+    }
+
+    public CollisionManager() {
+        this(SoundManager.getInstance());
+    }
 
     /**
      * Handles collisions between friendly and enemy planes.

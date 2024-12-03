@@ -94,6 +94,22 @@ public class MainMenuController {
     }
 
     /**
+     * Shows the settings screen.
+     */
+    @FXML
+    private void showSettings() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Settings.fxml"));
+            Scene settingsScene = new Scene(loader.load());
+            SettingsController controller = loader.getController();
+            controller.setStage(stage);
+            stage.setScene(settingsScene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Exits the game by closing the stage.
      */
     @FXML

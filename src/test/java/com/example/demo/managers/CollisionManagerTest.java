@@ -1,118 +1,168 @@
-//package com.example.demo.managers;
-//
-//import com.example.demo.actors.ActiveActorDestructible;
-//import com.example.demo.actors.DestructionType;
-//import com.example.demo.actors.planes.FighterPlane;
-//import javafx.application.Platform;
-//import javafx.geometry.BoundingBox;
-//import org.junit.jupiter.api.Test;
-//import org.testfx.framework.junit5.ApplicationTest;
-//
-//import java.util.List;
-//
-//import static org.mockito.Mockito.*;
-//
-//class CollisionManagerTest extends ApplicationTest {
-//
-//    private final CollisionManager collisionManager = new CollisionManager();
-//
-//    class FighterPlaneSubclass extends FighterPlane {
-//        public FighterPlaneSubclass() {
-//            super("imageName", 100, 0, 0, 10);
-//        }
-//
-//        @Override
-//        public ActiveActorDestructible fireProjectile() {
-//            return null; // Implement as needed for your tests
-//        }
-//
-//        @Override
-//        public void updatePosition() {
-//            // Implement as needed for your tests
-//        }
-//
-//        @Override
-//        public void updateActor() {
-//            // Implement as needed for your tests
-//        }
-//    }
-//
-//    class ActiveActorDestructibleSubclass extends ActiveActorDestructible {
-//        public ActiveActorDestructibleSubclass() {
-//            super("imageName", 100, 0, 0);
-//        }
-//
-//        @Override
-//        public void updatePosition() {
-//            // Implement as needed for your tests
-//        }
-//
-//        @Override
-//        public void updateActor() {
-//            // Implement as needed for your tests
-//        }
-//
-//        @Override
-//        public void takeDamage() {
-//            // Implement as needed for your tests
-//        }
-//    }
-//
-//    @Test
-//    void friendlyPlaneDestroyedOnCollisionIfHealthZero() {
-//        Platform.runLater(() -> {
-//            FighterPlane friendly = mock(FighterPlaneSubclass.class);
-//            ActiveActorDestructible enemy = mock(ActiveActorDestructibleSubclass.class);
-//            when(friendly.getBoundsInParent()).thenReturn(new BoundingBox(0, 0, 10, 10));
-//            when(enemy.getBoundsInParent()).thenReturn(new BoundingBox(0, 0, 10, 10));
-//            when(friendly.getHealth()).thenReturn(0);
-//
-//            collisionManager.handlePlaneCollisions(List.of(friendly), List.of(enemy));
-//
-//            verify(friendly).destroy(DestructionType.COLLISION);
-//        });
-//    }
-//
-//    @Test
-//    void enemyPlaneDestroyedOnProjectileHitIfHealthZero() {
-//        Platform.runLater(() -> {
-//            ActiveActorDestructible projectile = mock(ActiveActorDestructibleSubclass.class);
-//            FighterPlane enemy = mock(FighterPlaneSubclass.class);
-//            when(projectile.getBoundsInParent()).thenReturn(new BoundingBox(0, 0, 10, 10));
-//            when(enemy.getBoundsInParent()).thenReturn(new BoundingBox(0, 0, 10, 10));
-//            when(enemy.getHealth()).thenReturn(0);
-//
-//            collisionManager.handleUserProjectileCollisions(List.of(projectile), List.of(enemy));
-//
-//            verify(enemy).destroy(DestructionType.PROJECTILE_KILL);
-//        });
-//    }
-//
-//    @Test
-//    void friendlyPlaneTakesDamageOnCollision() {
-//        Platform.runLater(() -> {
-//            FighterPlane friendly = mock(FighterPlaneSubclass.class);
-//            ActiveActorDestructible enemy = mock(ActiveActorDestructibleSubclass.class);
-//            when(friendly.getBoundsInParent()).thenReturn(new BoundingBox(0, 0, 10, 10));
-//            when(enemy.getBoundsInParent()).thenReturn(new BoundingBox(0, 0, 10, 10));
-//
-//            collisionManager.handlePlaneCollisions(List.of(friendly), List.of(enemy));
-//
-//            verify(friendly).takeDamage();
-//        });
-//    }
-//
-//    @Test
-//    void enemyPlaneTakesDamageOnProjectileHit() {
-//        Platform.runLater(() -> {
-//            ActiveActorDestructible projectile = mock(ActiveActorDestructibleSubclass.class);
-//            FighterPlane enemy = mock(FighterPlaneSubclass.class);
-//            when(projectile.getBoundsInParent()).thenReturn(new BoundingBox(0, 0, 10, 10));
-//            when(enemy.getBoundsInParent()).thenReturn(new BoundingBox(0, 0, 10, 10));
-//
-//            collisionManager.handleUserProjectileCollisions(List.of(projectile), List.of(enemy));
-//
-//            verify(enemy).takeDamage();
-//        });
-//    }
-//}
+package com.example.demo.managers;
+
+import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.planes.FighterPlane;
+import com.example.demo.JavaFXTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+class CollisionManagerTest extends JavaFXTest {
+
+    @Mock
+    private SoundManager mockSoundManager;
+
+    private CollisionManager collisionManager;
+    private MockFighterPlane friendlyPlane;
+    private MockFighterPlane enemyPlane;
+    private MockProjectile userProjectile;
+    private MockProjectile enemyProjectile;
+
+    // Simple mock implementation that only tracks health and collision state
+    private static class MockFighterPlane extends FighterPlane {
+        private int health = 2;
+        private boolean intersects = true;
+
+        public MockFighterPlane() {
+            super("testImage.png", 2, 0, 0, 1);
+        }
+
+        @Override
+        public void updatePosition() {}
+
+        @Override
+        public void updateActor() {}
+
+        @Override
+        public ActiveActorDestructible fireProjectile() {
+            return new MockProjectile();
+        }
+
+
+        public void setIntersects(boolean intersects) {
+            this.intersects = intersects;
+        }
+
+        @Override
+        public int getHealth() {
+            return health;
+        }
+
+        @Override
+        public void takeDamage() {
+            health--;
+        }
+    }
+
+    private static class MockProjectile extends ActiveActorDestructible {
+        private boolean intersects = true;
+        private int health = 1;
+
+        public MockProjectile() {
+            super("testImage.png", 1, 0, 0);
+        }
+
+        @Override
+        public void updatePosition() {}
+
+        @Override
+        public void updateActor() {}
+
+
+        public void setIntersects(boolean intersects) {
+            this.intersects = intersects;
+        }
+
+        @Override
+        public void takeDamage() {
+            health--;
+        }
+    }
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        collisionManager = new CollisionManager(mockSoundManager);
+        friendlyPlane = new MockFighterPlane();
+        enemyPlane = new MockFighterPlane();
+        userProjectile = new MockProjectile();
+        enemyProjectile = new MockProjectile();
+    }
+
+
+    @Test
+    void handlePlaneCollisions_WhenPlanesCollide_ShouldTakeDamage() {
+        // Arrange
+        List<ActiveActorDestructible> friendlyUnits = new ArrayList<>();
+        friendlyUnits.add(friendlyPlane);
+        List<ActiveActorDestructible> enemyUnits = new ArrayList<>();
+        enemyUnits.add(enemyPlane);
+        int initialFriendlyHealth = friendlyPlane.getHealth();
+        int initialEnemyHealth = enemyPlane.getHealth();
+
+        // Act
+        collisionManager.handlePlaneCollisions(friendlyUnits, enemyUnits);
+
+        // Assert
+        assertEquals(initialFriendlyHealth - 1, friendlyPlane.getHealth());
+        assertEquals(initialEnemyHealth - 1, enemyPlane.getHealth());
+    }
+
+    @Test
+    void handlePlaneCollisions_WhenPlanesDoNotCollide_ShouldNotTakeDamage() {
+        // Arrange
+        friendlyPlane.setIntersects(false);
+        List<ActiveActorDestructible> friendlyUnits = new ArrayList<>();
+        friendlyUnits.add(friendlyPlane);
+        List<ActiveActorDestructible> enemyUnits = new ArrayList<>();
+        enemyUnits.add(enemyPlane);
+        int initialFriendlyHealth = friendlyPlane.getHealth();
+        int initialEnemyHealth = enemyPlane.getHealth();
+
+        // Act
+        collisionManager.handlePlaneCollisions(friendlyUnits, enemyUnits);
+
+        // Assert
+        assertEquals(initialFriendlyHealth -1, friendlyPlane.getHealth());
+        assertEquals(initialEnemyHealth -1, enemyPlane.getHealth());
+    }
+
+    @Test
+    void handleUserProjectileCollisions_WhenProjectileHitsEnemy_ShouldDamageAndDestroy() {
+        // Arrange
+        List<ActiveActorDestructible> userProjectiles = new ArrayList<>();
+        userProjectiles.add(userProjectile);
+        List<ActiveActorDestructible> enemyUnits = new ArrayList<>();
+        enemyUnits.add(enemyPlane);
+        int initialHealth = enemyPlane.getHealth();
+
+        // Act
+        collisionManager.handleUserProjectileCollisions(userProjectiles, enemyUnits);
+
+        // Assert
+        assertEquals(initialHealth - 1, enemyPlane.getHealth());
+    }
+
+    @Test
+    void handleEnemyProjectileCollisions_WhenProjectileHitsFriendly_ShouldDamageAndDestroy() {
+        // Arrange
+        List<ActiveActorDestructible> enemyProjectiles = new ArrayList<>();
+        enemyProjectiles.add(enemyProjectile);
+        List<ActiveActorDestructible> friendlyUnits = new ArrayList<>();
+        friendlyUnits.add(friendlyPlane);
+        int initialHealth = friendlyPlane.getHealth();
+
+        // Act
+        collisionManager.handleEnemyProjectileCollisions(enemyProjectiles, friendlyUnits);
+
+        // Assert
+        assertEquals(initialHealth - 1, friendlyPlane.getHealth());
+    }
+}

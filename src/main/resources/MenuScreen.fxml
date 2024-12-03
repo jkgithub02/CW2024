@@ -33,6 +33,10 @@
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font></Button>
+            <Button mnemonicParsing="false" onAction="#showSettings" prefHeight="38.0" prefWidth="115.0" text="Settings" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font></Button>
             <Button mnemonicParsing="false" onAction="#exitGame" prefHeight="33.0" prefWidth="115.0" text="Exit Game">
                <font>
                   <Font name="Arial Black" size="12.0" />

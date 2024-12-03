@@ -25,6 +25,9 @@ public class SoundManager {
     private final static String USER_DAMAGED_SOUND_FILE_PATH = "/music/damaged.mp3";
     private final static String ENEMY_DAMAGED_SOUND_FILE_PATH = "/music/enemydamaged.wav";
 
+    private double backgroundVolume = 1.0;
+    private double effectsVolume = 1.0;
+
     // Make constructor private
     private SoundManager() {
         musicPlayers = new HashMap<>();
@@ -42,6 +45,8 @@ public class SoundManager {
         loadBackgroundMusic("menu", MENU_BACKGROUND_MUSIC_FILE_PATH);
         loadBackgroundMusic("level", LEVEL_BACKGROUND_MUSIC_FILE_PATH);
 
+        setBackgroundVolume(0.5); // Set default background volume
+
         // Initialize shoot sounds
         loadShootSound("user", USER_SHOOT_SOUND_FILE_PATH);
         loadShootSound("enemy", ENEMY_SHOOT_SOUND_FILE_PATH);
@@ -49,6 +54,8 @@ public class SoundManager {
         // Initialize damage sounds
         loadDamageSound("user", USER_DAMAGED_SOUND_FILE_PATH);
         loadDamageSound("enemy", ENEMY_DAMAGED_SOUND_FILE_PATH);
+
+        setEffectsVolume(0.5); // Set default effects volume
     }
 
     /**
@@ -145,5 +152,44 @@ public class SoundManager {
         if (clip != null) {
             clip.play();
         }
+    }
+
+    /**
+     * Gets the current background volume.
+     *
+     * @return the current background volume (0.0 to 1.0)
+     */
+    public double getBackgroundVolume() {
+        return backgroundVolume;
+    }
+
+    /**
+     * Gets the current effects volume.
+     *
+     * @return the current effects volume (0.0 to 1.0)
+     */
+    public double getEffectsVolume() {
+        return effectsVolume;
+    }
+
+    /**
+     * Sets the volume for all background music.
+     *
+     * @param volume the volume to set (0.0 to 1.0)
+     */
+    public void setBackgroundVolume(double volume) {
+        this.backgroundVolume = volume;
+        musicPlayers.values().forEach(player -> player.setVolume(volume));
+    }
+
+    /**
+     * Sets the volume for all sound effects.
+     *
+     * @param volume the volume to set (0.0 to 1.0)
+     */
+    public void setEffectsVolume(double volume) {
+        this.effectsVolume = volume;
+        shootSounds.values().forEach(clip -> clip.setVolume(volume));
+        damageSounds.values().forEach(clip -> clip.setVolume(volume));
     }
 }

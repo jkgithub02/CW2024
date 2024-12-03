@@ -1,22 +1,15 @@
 package com.example.demo.view;
 
-import javafx.application.Platform;
+import com.example.demo.JavaFXTest;
 import javafx.scene.layout.HBox;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class KillCountDisplayTest {
+class KillCountDisplayTest extends JavaFXTest {
 
     private KillCountDisplay killCountDisplay;
-
-    @BeforeAll
-    static void initToolkit() {
-        // Initialize JavaFX toolkit
-        Platform.startup(() -> {});
-    }
 
     @BeforeEach
     void setUp() {

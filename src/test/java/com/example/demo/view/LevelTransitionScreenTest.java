@@ -1,20 +1,18 @@
 package com.example.demo.view;
 
+import com.example.demo.JavaFXTest;
 import com.example.demo.config.GameConfig;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@ExtendWith(ApplicationExtension.class)
-class LevelTransitionScreenTest {
+class LevelTransitionScreenTest extends JavaFXTest {
 
     private Stage stage;
     private LevelTransitionScreen levelTransitionScreen;
@@ -27,7 +25,12 @@ class LevelTransitionScreenTest {
 
     @BeforeEach
     void setUp() {
-        levelTransitionScreen = new LevelTransitionScreen(stage, "Test Level", () -> {});
+        Platform.runLater(() -> {
+            if (stage == null) {
+                stage = new Stage();
+            }
+            levelTransitionScreen = new LevelTransitionScreen(stage, "Test Level", () -> {});
+        });
     }
 
     @Test
