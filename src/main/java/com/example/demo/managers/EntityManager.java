@@ -12,22 +12,26 @@ import java.util.stream.Collectors;
 
 /**
  * Manages the entities in the game, including friendly units, enemy units, and projectiles.
+ * Implements the Singleton pattern to ensure only one instance exists.
  */
 public class EntityManager {
+    private static EntityManager instance;
+    private static Group currentRoot;
+
     private final List<ActiveActorDestructible> friendlyUnits;
     private final List<ActiveActorDestructible> enemyUnits;
     private final List<ActiveActorDestructible> userProjectiles;
     private final List<ActiveActorDestructible> enemyProjectiles;
     private final Map<ActiveActorDestructible, Rectangle> actorHitboxes;
-    private final Group root;
+    private Group root;
     private final List<Consumer<ActiveActorDestructible>> enemyDestroyedListeners;
 
     /**
-     * Constructs an EntityManager with the specified root group.
+     * Private constructor for Singleton pattern
      *
      * @param root the root group for the game entities.
      */
-    public EntityManager(Group root) {
+    private EntityManager(Group root) {
         this.root = root;
         this.friendlyUnits = new ArrayList<>();
         this.enemyUnits = new ArrayList<>();
@@ -35,6 +39,44 @@ public class EntityManager {
         this.enemyProjectiles = new ArrayList<>();
         this.actorHitboxes = new HashMap<>();
         this.enemyDestroyedListeners = new ArrayList<>();
+    }
+
+    /**
+     * Gets the singleton instance of EntityManager.
+     * Creates a new instance if none exists or if the root group has changed.
+     *
+     * @param root the root group for the game entities
+     * @return the EntityManager instance
+     */
+    public static synchronized EntityManager getInstance(Group root) {
+        if (instance == null || currentRoot != root) {
+            instance = new EntityManager(root);
+            currentRoot = root;
+        }
+        return instance;
+    }
+
+    /**
+     * Resets the entity manager state for a new level or game.
+     */
+    public void reset() {
+        friendlyUnits.clear();
+        enemyUnits.clear();
+        userProjectiles.clear();
+        enemyProjectiles.clear();
+        actorHitboxes.clear();
+        enemyDestroyedListeners.clear();
+    }
+
+
+    /**
+     * Updates the root group if needed (for example, when switching levels)
+     *
+     * @param newRoot the new root group
+     */
+    public void updateRoot(Group newRoot) {
+        this.root = newRoot;
+        currentRoot = newRoot;
     }
 
     /**

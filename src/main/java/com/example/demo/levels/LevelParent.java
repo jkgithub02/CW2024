@@ -65,7 +65,8 @@ public abstract class LevelParent {
         this.scene = new Scene(root, this.screenWidth, this.screenHeight);
         this.timeline = new Timeline();
         this.user = new UserPlane(playerInitialHealth);
-        this.entityManager = new EntityManager(root);
+        this.entityManager = EntityManager.getInstance(root);
+        this.entityManager.reset();
 
         this.background = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(backgroundImageName)).toExternalForm()));
         this.enemyMaximumYPosition = screenHeight - SCREEN_HEIGHT_ADJUSTMENT;
@@ -142,6 +143,7 @@ public abstract class LevelParent {
      */
     protected void goToNextLevel(String nextLevelClassName, String nextLevelName) {
         stopTimelineAndMusic();
+        entityManager.reset();
         nextLevelProperty.set(nextLevelClassName + "," + nextLevelName);
     }
 
@@ -324,6 +326,7 @@ public abstract class LevelParent {
      */
     protected void restartLevel() {
         stopTimelineAndMusic();
+        entityManager.reset();
         navigationManager.restartLevel(this.getClass());
     }
 
