@@ -17,7 +17,7 @@ public class UserPlane extends FighterPlane {
 	private static final String IMAGE_NAME = "userplane.png";
 	private static final double Y_UPPER_BOUND = 75;
 	private static final double Y_LOWER_BOUND = 700;
-	private static final double INITIAL_X_POSITION = 5.0;
+	private static final double INITIAL_X_POSITION = 50.0;
 	private static final double INITIAL_Y_POSITION = 300.0;
 	private static final int IMAGE_HEIGHT = 45;
 	private static final int VERTICAL_VELOCITY = 2;
@@ -206,10 +206,6 @@ public class UserPlane extends FighterPlane {
 
 	public double getReloadProgress() {
 		return bulletManager.getReloadProgress();
-	}
-
-	public int getMaxBullets() {
-		return bulletManager.getMaxBullets();
 	}
 
 	public void pauseReload() {

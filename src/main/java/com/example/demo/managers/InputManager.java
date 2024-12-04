@@ -62,8 +62,10 @@ public class InputManager {
     private void fireProjectile() {
         if (gameState == GameState.ACTIVE) {
             ActiveActorDestructible projectile = user.fireProjectile();
-            root.getChildren().add(projectile);
-            userProjectiles.add(projectile);
+            if (projectile != null) {  // Add this null check
+                root.getChildren().add(projectile);
+                userProjectiles.add(projectile);
+            }
         }
     }
 

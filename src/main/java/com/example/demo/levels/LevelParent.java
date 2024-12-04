@@ -51,6 +51,7 @@ public abstract class LevelParent {
     private final GameInitializer gameInitializer;
     private final NavigationManager navigationManager;
     private final SoundManager soundManager;
+    private static Group globalRoot;
 
     /**
      * Constructs a LevelParent with the specified background image and initial player health.
@@ -62,6 +63,7 @@ public abstract class LevelParent {
         this.screenHeight = GameConfig.SCREEN_HEIGHT;
         this.screenWidth = GameConfig.SCREEN_WIDTH;
         this.root = new Group();
+        setGlobalRoot(this.root);
         this.scene = new Scene(root, this.screenWidth, this.screenHeight);
         this.timeline = new Timeline();
         this.user = new UserPlane(playerInitialHealth);
@@ -374,6 +376,14 @@ public abstract class LevelParent {
         stopTimelineAndMusic();
         inputManager.setGameState(GameState.LOSE);
         navigationManager.showGameOverScreen(this.getClass());
+    }
+
+    public static void setGlobalRoot(Group root) {
+        globalRoot = root;
+    }
+
+    public static Group getGlobalRoot() {
+        return globalRoot;
     }
 
 }

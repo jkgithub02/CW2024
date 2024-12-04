@@ -63,7 +63,7 @@ public class BulletDisplay {
             this.reloadProgress.setVisible(true);
             this.reloadProgress.setProgress(reloadProgress);
         } else {
-            bulletText.setText("Bullets: " + currentBullets + "/" + maxBullets);
+            bulletText.setText("Bullets: " + currentBullets);
             this.reloadProgress.setVisible(false);
         }
     }
