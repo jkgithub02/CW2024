@@ -2,8 +2,12 @@ package com.example.demo.actors.planes;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.factory.ProjectileFactory;
+import com.example.demo.managers.BulletManager;
 import com.example.demo.managers.SoundManager;
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 
 /**
  * Represents the user's plane in the game, which is a type of FighterPlane.
@@ -25,6 +29,10 @@ public class UserPlane extends FighterPlane {
 	private int numberOfKills;
 	private final ProjectileFactory projectileFactory;
 	private final SoundManager soundManager = SoundManager.getInstance();
+	private static final int MAX_BULLETS = 10;
+	private static final double RELOAD_TIME = 1.0;
+	private final BulletManager bulletManager;
+
 
 	/**
 	 * Constructs a UserPlane with the specified initial health.
@@ -34,10 +42,12 @@ public class UserPlane extends FighterPlane {
 	public UserPlane(int initialHealth) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);
 		this.projectileFactory = new ProjectileFactory(ProjectileFactory.ProjectileType.USER);
+		this.bulletManager = new BulletManager(MAX_BULLETS, RELOAD_TIME);
 		verticalVelocityMultiplier = 0;
 		horizontalVelocityMultiplier = 0;
 		startAnimation();
 	}
+
 
 	/**
 	 * Starts the animation timer to update the position of the user's plane.
@@ -93,10 +103,14 @@ public class UserPlane extends FighterPlane {
 	 */
 	@Override
 	public ActiveActorDestructible fireProjectile() {
-		double projectileX = getLayoutX() + getTranslateX() + PROJECTILE_X_POSITION;
-		double projectileY = getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET);
-		soundManager.playShootSound("user");
-		return projectileFactory.createActor(projectileX, projectileY);
+		if (bulletManager.canShoot()) {
+			bulletManager.shoot();
+			double projectileX = getLayoutX() + getTranslateX() + PROJECTILE_X_POSITION;
+			double projectileY = getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET);
+			soundManager.playShootSound("user");
+			return projectileFactory.createActor(projectileX, projectileY);
+		}
+		return null;
 	}
 
 	/**
@@ -112,28 +126,28 @@ public class UserPlane extends FighterPlane {
 	 * Moves the user's plane up by setting the vertical velocity multiplier to -1.
 	 */
 	public void moveUp() {
-		verticalVelocityMultiplier = -1;
+		setVerticalVelocityMultiplier(-1);
 	}
 
 	/**
 	 * Moves the user's plane down by setting the vertical velocity multiplier to 1.
 	 */
 	public void moveDown() {
-		verticalVelocityMultiplier = 1;
+		setVerticalVelocityMultiplier(1);
 	}
 
 	/**
 	 * Moves the user's plane left by setting the horizontal velocity multiplier to -1.
 	 */
 	public void moveLeft() {
-		horizontalVelocityMultiplier = -1;
+		setHorizontalVelocityMultiplier(-1);
 	}
 
 	/**
 	 * Moves the user's plane right by setting the horizontal velocity multiplier to 1.
 	 */
 	public void moveRight() {
-		horizontalVelocityMultiplier = 1;
+		setHorizontalVelocityMultiplier(1);
 	}
 
 	/**
@@ -165,4 +179,45 @@ public class UserPlane extends FighterPlane {
 	public void incrementKillCount() {
 		numberOfKills++;
 	}
+
+    public int getVerticalVelocityMultiplier() {
+		return verticalVelocityMultiplier;
+    }
+
+	public int getHorizontalVelocityMultiplier() {
+		return horizontalVelocityMultiplier;
+	}
+
+	public void setVerticalVelocityMultiplier(int verticalVelocityMultiplier) {
+		this.verticalVelocityMultiplier = verticalVelocityMultiplier;
+	}
+
+	public void setHorizontalVelocityMultiplier(int horizontalVelocityMultiplier) {
+		this.horizontalVelocityMultiplier = horizontalVelocityMultiplier;
+	}
+
+	public int getCurrentBullets() {
+		return bulletManager.getCurrentBullets();
+	}
+
+	public boolean isReloading() {
+		return bulletManager.isReloading();
+	}
+
+	public double getReloadProgress() {
+		return bulletManager.getReloadProgress();
+	}
+
+	public int getMaxBullets() {
+		return bulletManager.getMaxBullets();
+	}
+
+	public void pauseReload() {
+		bulletManager.pause();
+	}
+
+	public void resumeReload() {
+		bulletManager.resume();
+	}
+
 }

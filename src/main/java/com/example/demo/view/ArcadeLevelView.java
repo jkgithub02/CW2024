@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.config.GameConfig;
 import javafx.scene.Group;
 
 /**
@@ -18,7 +19,7 @@ public class ArcadeLevelView extends LevelView {
      * @param heartsToDisplay the number of hearts to display.
      */
     public ArcadeLevelView(Group root, int heartsToDisplay) {
-        super(root, heartsToDisplay, 0);
+        super(root, heartsToDisplay, 0, GameConfig.PLAYER_MAX_BULLETS);
         this.root = root;
         this.killCountDisplay = new ArcadeKillCountDisplay(KILL_COUNT_X_POSITION, KILL_COUNT_Y_POSITION);
     }

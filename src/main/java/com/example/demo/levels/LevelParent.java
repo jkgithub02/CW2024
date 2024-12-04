@@ -65,7 +65,8 @@ public abstract class LevelParent {
         this.scene = new Scene(root, this.screenWidth, this.screenHeight);
         this.timeline = new Timeline();
         this.user = new UserPlane(playerInitialHealth);
-        this.entityManager = new EntityManager(root);
+        this.entityManager = EntityManager.getInstance(root);
+        this.entityManager.reset();
 
         this.background = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(backgroundImageName)).toExternalForm()));
         this.enemyMaximumYPosition = screenHeight - SCREEN_HEIGHT_ADJUSTMENT;
@@ -116,6 +117,7 @@ public abstract class LevelParent {
     protected abstract LevelView instantiateLevelView();
 
     /**
+    /**
      * Initializes the scene for the level.
      *
      * @return the initialized scene.
@@ -142,6 +144,7 @@ public abstract class LevelParent {
      */
     protected void goToNextLevel(String nextLevelClassName, String nextLevelName) {
         stopTimelineAndMusic();
+        entityManager.reset();
         nextLevelProperty.set(nextLevelClassName + "," + nextLevelName);
     }
 
@@ -236,6 +239,11 @@ public abstract class LevelParent {
     protected void updateLevelView() {
         levelView.removeHearts(user.getHealth());
         levelView.updateKillCount(user.getKillCount());
+        levelView.updateBulletStatus(
+                user.getCurrentBullets(),
+                user.isReloading(),
+                user.getReloadProgress()
+        );
     }
 
     /**
@@ -324,6 +332,7 @@ public abstract class LevelParent {
      */
     protected void restartLevel() {
         stopTimelineAndMusic();
+        entityManager.reset();
         navigationManager.restartLevel(this.getClass());
     }
 
@@ -333,6 +342,7 @@ public abstract class LevelParent {
     public void pauseGame() {
         if (!pauseHandler.isPaused()) {
             timeline.pause();
+            user.pauseReload();
             inputManager.setGameState(GameState.PAUSED);
         }
     }
@@ -343,6 +353,7 @@ public abstract class LevelParent {
     public void resumeGame() {
         if (pauseHandler.isPaused()) {
             timeline.play();
+            user.resumeReload();
             inputManager.setGameState(GameState.ACTIVE);
         }
     }

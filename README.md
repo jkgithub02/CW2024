@@ -1,7 +1,11 @@
 # COMP2042 Developing Maintainable Software
 
+---
+
 ## <ins>1.0 My Github</ins>
-## https://github.com/jkgithub02/CW2024
+https://github.com/jkgithub02/CW2024
+
+---
 
 ## <ins>2.0 Compilation Instructions</ins>
 1. Ensure you have Java installed (version X.X required).
@@ -18,6 +22,8 @@
     java -cp bin MainClass
     ```
 
+---
+
 ## <ins>3.0 Features</ins>
 ### <ins>3.1 Implemented and Working Properly</ins>
 #### 1. Added left-right movement for the user plane.
@@ -32,14 +38,17 @@
 #### 10. Added a leaderboard that sorts and shows the highest scores.
 #### 11. Added sound effects for taking damage and firing projectiles.
 #### 12. Added a health bar for the boss plane.
+#### 13. Added a settings page to adjust music and sound effects volume.
 
 ### <ins>3.2 Implemented but Not Working Properly</ins>
 #### 1. TODO
 
 ### <ins>3.3 Not Implemented</ins>
 #### 1. Mini health bar for enemies.
-#### 2. Settings page to adjust music volume.
-#### 3. Display user final score in gameover screen during the arcade level.
+#### 2. In Game Power-ups.
+#### 2. Display user final score in gameover screen during the arcade level.
+
+---
 
 ## <ins>4.0 Refactoring Process</ins>
 ### <ins>4.1 New Java Classes</ins>
@@ -65,6 +74,8 @@
 #### 10. Extracted game configurations.
 #### 11. Fixed plane drifting issue after timeline stops.
 #### 12. Applied singleton design pattern to `soundmanager`.
+
+---
 
 ## <ins>5.0 Commit History</ins>
 For a detailed commit history, please refer to the [commit log](https://github.com/jkgithub02/CW2024/commits).

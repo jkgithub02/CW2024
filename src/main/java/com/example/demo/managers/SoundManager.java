@@ -24,6 +24,7 @@ public class SoundManager {
     private final static String ENEMY_SHOOT_SOUND_FILE_PATH = "/music/enemyprojectile.wav";
     private final static String USER_DAMAGED_SOUND_FILE_PATH = "/music/damaged.mp3";
     private final static String ENEMY_DAMAGED_SOUND_FILE_PATH = "/music/enemydamaged.wav";
+    private final static String RELOAD_SOUND_FILE_PATH = "/music/userreload.mp3";
 
     private double backgroundVolume = 1.0;
     private double effectsVolume = 1.0;
@@ -50,6 +51,7 @@ public class SoundManager {
         // Initialize shoot sounds
         loadShootSound("user", USER_SHOOT_SOUND_FILE_PATH);
         loadShootSound("enemy", ENEMY_SHOOT_SOUND_FILE_PATH);
+        loadShootSound("reload", RELOAD_SOUND_FILE_PATH);
 
         // Initialize damage sounds
         loadDamageSound("user", USER_DAMAGED_SOUND_FILE_PATH);

@@ -21,6 +21,6 @@ public class TestLevel extends LevelParent {
 
     @Override
     protected LevelView instantiateLevelView() {
-        return new LevelView(new Group(), 3, 5);
+        return new LevelView(new Group(), 3, 5, 10);
     }
 }

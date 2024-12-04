@@ -9,8 +9,8 @@ import javafx.scene.text.FontWeight;
  * Displays the kill count in the game.
  */
 public class KillCountDisplay {
-    protected static final int LABEL_FONT_SIZE = 24;
-    protected static final String LABEL_FONT_FAMILY = "Arcade";
+    protected static final int LABEL_FONT_SIZE = 25;
+    protected static final String LABEL_FONT_FAMILY = "Arial Black";
     protected static final String LABEL_TEXT_COLOR = "-fx-text-fill: black;";
     private HBox container;
     private final double containerXPosition;

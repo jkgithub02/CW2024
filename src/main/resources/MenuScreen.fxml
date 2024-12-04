@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.MainMenuController">
+<Pane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.MainMenuController" stylesheets="@styles/styles.css">
    <children>
       <ImageView fx:id="backgroundImage" pickOnBounds="true" preserveRatio="false">
          <image>
@@ -21,26 +21,35 @@
                   <Image url="@com/example/demo/images/logo.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#startGame" prefHeight="34.0" prefWidth="114.0" text="Story Mode" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial Black" size="12.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" onAction="#startArcadeMode" prefHeight="38.0" prefWidth="115.0" text="Arcade Mode" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial Black" size="12.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" onAction="#showLeaderboard" prefHeight="34.0" prefWidth="115.0" text="Leaderboard">
-               <font>
-                  <Font name="Arial Black" size="12.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" onAction="#showSettings" prefHeight="38.0" prefWidth="115.0" text="Settings" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial Black" size="12.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" onAction="#exitGame" prefHeight="33.0" prefWidth="115.0" text="Exit Game">
-               <font>
-                  <Font name="Arial Black" size="12.0" />
-               </font></Button>
+            <Button mnemonicParsing="false"
+                    onAction="#startGame"
+                    styleClass="menu-button"
+                    text="Story Mode"
+                    textAlignment="CENTER" />
+
+            <Button mnemonicParsing="false"
+                    onAction="#startArcadeMode"
+                    styleClass="menu-button"
+                    text="Arcade Mode"
+                    textAlignment="CENTER" />
+
+            <Button mnemonicParsing="false"
+                    onAction="#showLeaderboard"
+                    styleClass="menu-button"
+                    text="Leaderboard"
+                    textAlignment="CENTER" />
+
+            <Button mnemonicParsing="false"
+                    onAction="#showSettings"
+                    styleClass="menu-button"
+                    text="Settings"
+                    textAlignment="CENTER" />
+
+            <Button mnemonicParsing="false"
+                    onAction="#exitGame"
+                    styleClass="menu-button, game-button"
+                    text="Exit Game"
+                    textAlignment="CENTER" />
          </children>
       </VBox>
    </children>

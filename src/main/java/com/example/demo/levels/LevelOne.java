@@ -1,6 +1,7 @@
 package com.example.demo.levels;
 
 import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.config.GameConfig;
 import com.example.demo.factory.EnemyFactory;
 import com.example.demo.view.LevelView;
 
@@ -13,9 +14,8 @@ public class LevelOne extends LevelParent {
 	private static final String NEXT_LEVEL = "com.example.demo.levels.LevelTwo";
 	private static final String NEXT_LEVEL_NAME = "Level Two";
 	private static final int TOTAL_ENEMIES = 5;
-	private static final int KILLS_TO_ADVANCE = 5;
+	private static final int KILLS_TO_ADVANCE = 10;
 	private static final double ENEMY_SPAWN_PROBABILITY = .20;
-	private static final int PLAYER_INITIAL_HEALTH = 5;
 	private static final double ENEMY_Y_UPPER_BOUND = 30;
 	private final EnemyFactory enemyFactory;
 
@@ -23,7 +23,7 @@ public class LevelOne extends LevelParent {
 	 * Constructs a LevelOne with the specified screen dimensions.
 	 */
 	public LevelOne() {
-		super(BACKGROUND_IMAGE_NAME, PLAYER_INITIAL_HEALTH);
+		super(BACKGROUND_IMAGE_NAME, GameConfig.PLAYER_INITIAL_HEALTH);
 		this.enemyFactory = new EnemyFactory(EnemyFactory.EnemyType.ENEMYPLANEONE);
 	}
 
@@ -61,7 +61,7 @@ public class LevelOne extends LevelParent {
 	 */
 	@Override
 	protected LevelView instantiateLevelView() {
-		return new LevelView(getRoot(), PLAYER_INITIAL_HEALTH, KILLS_TO_ADVANCE);
+		return new LevelView(getRoot(), GameConfig.PLAYER_INITIAL_HEALTH, KILLS_TO_ADVANCE, GameConfig.PLAYER_MAX_BULLETS);
 	}
 
 	/**

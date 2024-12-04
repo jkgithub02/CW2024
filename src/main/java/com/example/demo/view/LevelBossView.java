@@ -20,8 +20,8 @@ public class LevelBossView extends LevelView {
 	 * @param heartsToDisplay the number of hearts to display.
 	 * @param maxKills the maximum number of kills.
 	 */
-	public LevelBossView(Group root, int heartsToDisplay, int maxKills) {
-		super(root, heartsToDisplay, maxKills);
+	public LevelBossView(Group root, int heartsToDisplay, int maxKills, int maxBullets) {
+		super(root, heartsToDisplay, maxKills, maxBullets);
 		this.root = root;
 		this.bossHealthBar = new BossHealthBar(HEALTH_BAR_X, HEALTH_BAR_Y, BOSS_MAX_HEALTH);
 		addBossHealthBar();
