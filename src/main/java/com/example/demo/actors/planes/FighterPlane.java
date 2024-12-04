@@ -51,4 +51,12 @@ public abstract class FighterPlane extends ActiveActorDestructible {
 	public int getHealth() {
 		return health;
 	}
+
+	public void moveVertically(double amount) {
+		setTranslateY(getTranslateY() + amount);
+	}
+
+	public void moveHorizontally(double amount) {
+		setTranslateX(getTranslateX() + amount);
+	}
 }

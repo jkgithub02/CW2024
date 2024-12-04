@@ -15,13 +15,15 @@ import javafx.util.Duration;
 public class UserPlane extends FighterPlane {
 
 	private static final String IMAGE_NAME = "userplane.png";
+	private static final int X_LOWER_BOUND =0;
+	private static final int X_UPPER_BOUND = 950;
 	private static final double Y_UPPER_BOUND = 75;
 	private static final double Y_LOWER_BOUND = 700;
 	private static final double INITIAL_X_POSITION = 50.0;
 	private static final double INITIAL_Y_POSITION = 300.0;
 	private static final int IMAGE_HEIGHT = 45;
-	private static final int VERTICAL_VELOCITY = 2;
-	private static final int HORIZONTAL_VELOCITY = 2;
+	private static final int VERTICAL_VELOCITY = 4;
+	private static final int HORIZONTAL_VELOCITY = 4;
 	private static final int PROJECTILE_X_POSITION = 110;
 	private static final int PROJECTILE_Y_POSITION_OFFSET = 20;
 	private int verticalVelocityMultiplier; // Separate multiplier for vertical movement
@@ -32,6 +34,7 @@ public class UserPlane extends FighterPlane {
 	private static final int MAX_BULLETS = 10;
 	private static final double RELOAD_TIME = 1.0;
 	private final BulletManager bulletManager;
+
 
 
 	/**
@@ -82,7 +85,7 @@ public class UserPlane extends FighterPlane {
 			}
 
 			// Add bounds for X movement (replace with your actual bounds)
-			if (newPositionX < 0 || newPositionX > 950) {
+			if (newPositionX < X_LOWER_BOUND || newPositionX > X_UPPER_BOUND) {
 				this.setTranslateX(initialTranslateX);
 			}
 		}
