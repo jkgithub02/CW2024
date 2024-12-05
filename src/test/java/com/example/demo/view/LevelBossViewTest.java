@@ -67,11 +67,4 @@ class LevelBossViewTest extends JavaFXTest {
         waitForFxEvents();
     }
 
-    private void waitForFxEvents() {
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }

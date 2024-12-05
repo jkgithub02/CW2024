@@ -150,19 +150,4 @@ class BulletManagerTest extends JavaFXTest {
         assertTrue(reloadLatch.await((long) (RELOAD_TIME * 2), TimeUnit.SECONDS),
                 "Reload should complete within time");
     }
-
-    /**
-     * Helper method to wait for JavaFX events to complete
-     */
-    private void waitForFxEvents() {
-        CountDownLatch latch = new CountDownLatch(1);
-        Platform.runLater(latch::countDown);
-        try {
-            latch.await();
-            // Add a small delay to ensure UI updates are complete
-            Thread.sleep(50);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }
