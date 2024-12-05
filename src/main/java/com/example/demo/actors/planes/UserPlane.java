@@ -1,13 +1,10 @@
 package com.example.demo.actors.planes;
 
 import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.factory.ProjectileFactory;
+import com.example.demo.actors.factory.ProjectileFactory;
 import com.example.demo.managers.BulletManager;
 import com.example.demo.managers.SoundManager;
 import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
 
 /**
  * Represents the user's plane in the game, which is a type of FighterPlane.

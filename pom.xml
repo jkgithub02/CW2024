@@ -123,9 +123,9 @@
                         --add-opens com.example.demo/com.example.demo.actors=ALL-UNNAMED
                         --add-opens com.example.demo/com.example.demo.actors.planes=ALL-UNNAMED
                         --add-opens com.example.demo/com.example.demo.actors.projectiles=ALL-UNNAMED
+                        --add-opens com.example.demo/com.example.demo.actors.factory=ALL-UNNAMED
                         --add-opens com.example.demo/com.example.demo.config=ALL-UNNAMED
                         --add-opens com.example.demo/com.example.demo.controller=ALL-UNNAMED
-                        --add-opens com.example.demo/com.example.demo.factory=ALL-UNNAMED
                         --add-opens com.example.demo/com.example.demo.levels=ALL-UNNAMED
                         --add-opens com.example.demo/com.example.demo.managers=ALL-UNNAMED
                         --add-opens com.example.demo/com.example.demo.view=ALL-UNNAMED

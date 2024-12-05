@@ -1,7 +1,7 @@
 package com.example.demo.levels;
 
 import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.factory.EnemyFactory;
+import com.example.demo.actors.factory.EnemyFactory;
 import com.example.demo.view.ArcadeLevelView;
 import com.example.demo.view.LevelView;
 import com.example.demo.config.GameConfig;

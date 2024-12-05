@@ -1,4 +1,4 @@
-package com.example.demo.factory;
+package com.example.demo.actors.factory;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.planes.EnemyPlane;
