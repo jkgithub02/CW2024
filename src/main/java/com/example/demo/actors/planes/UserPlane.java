@@ -22,8 +22,8 @@ public class UserPlane extends FighterPlane {
 	private static final double INITIAL_X_POSITION = 50.0;
 	private static final double INITIAL_Y_POSITION = 300.0;
 	private static final int IMAGE_HEIGHT = 45;
-	private static final int VERTICAL_VELOCITY = 4;
-	private static final int HORIZONTAL_VELOCITY = 4;
+	private static final double VERTICAL_VELOCITY = 1.5;
+	private static final double HORIZONTAL_VELOCITY = 1.5;
 	private static final int PROJECTILE_X_POSITION = 110;
 	private static final int PROJECTILE_Y_POSITION_OFFSET = 20;
 	private int verticalVelocityMultiplier; // Separate multiplier for vertical movement
@@ -129,28 +129,28 @@ public class UserPlane extends FighterPlane {
 	 * Moves the user's plane up by setting the vertical velocity multiplier to -1.
 	 */
 	public void moveUp() {
-		setVerticalVelocityMultiplier(-1);
+		setVerticalVelocityMultiplier(-2);
 	}
 
 	/**
 	 * Moves the user's plane down by setting the vertical velocity multiplier to 1.
 	 */
 	public void moveDown() {
-		setVerticalVelocityMultiplier(1);
+		setVerticalVelocityMultiplier(2);
 	}
 
 	/**
 	 * Moves the user's plane left by setting the horizontal velocity multiplier to -1.
 	 */
 	public void moveLeft() {
-		setHorizontalVelocityMultiplier(-1);
+		setHorizontalVelocityMultiplier(-2);
 	}
 
 	/**
 	 * Moves the user's plane right by setting the horizontal velocity multiplier to 1.
 	 */
 	public void moveRight() {
-		setHorizontalVelocityMultiplier(1);
+		setHorizontalVelocityMultiplier(2);
 	}
 
 	/**

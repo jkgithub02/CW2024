@@ -11,7 +11,7 @@ import com.example.demo.managers.LeaderboardManager;
  * Class representing the arcade level in the game.
  */
 public class ArcadeLevel extends LevelParent {
-    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/backgroundarcade.jpg";
+    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/backgroundarcade2.jpg";
     private static final int INITIAL_ENEMIES = 5;
     private static final int MAXIMUM_ENEMIES = 8;
     private static final double INITIAL_SPAWN_RATE = 0.25;
