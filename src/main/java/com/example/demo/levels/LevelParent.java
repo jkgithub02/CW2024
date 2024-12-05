@@ -385,5 +385,4 @@ public abstract class LevelParent {
     public static Group getGlobalRoot() {
         return globalRoot;
     }
-
 }

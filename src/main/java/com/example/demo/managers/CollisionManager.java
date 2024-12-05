@@ -33,7 +33,6 @@ public class CollisionManager {
             for (ActiveActorDestructible enemy : enemyUnits) {
                 if (friendly.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
                     friendly.takeDamage();
-                    soundManager.playDamagedSound("user");
                     enemy.takeDamage();
 
                     // Check if either plane should be destroyed
@@ -85,7 +84,6 @@ public class CollisionManager {
             for (ActiveActorDestructible projectile : enemyProjectiles) {
                 if (friendly.getBoundsInParent().intersects(projectile.getBoundsInParent())) {
                     friendly.takeDamage();
-                    soundManager.playDamagedSound("user");
                     projectile.destroy(DestructionType.COLLISION);
                 }
             }

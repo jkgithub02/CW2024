@@ -88,6 +88,12 @@ public class UserPlane extends FighterPlane {
 		}
 	}
 
+	@Override
+	public void takeDamage() {
+		super.takeDamage();
+		soundManager.playDamagedSound("user");
+	}
+
 	/**
 	 * Updates the state of the user's plane, including its position.
 	 */
@@ -215,5 +221,6 @@ public class UserPlane extends FighterPlane {
 	public void resumeReload() {
 		bulletManager.resume();
 	}
+
 
 }
