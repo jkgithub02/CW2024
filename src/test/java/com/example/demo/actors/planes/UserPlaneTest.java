@@ -38,13 +38,13 @@ class UserPlaneTest extends JavaFXTest {
     @Test
     void testMovement() {
         userPlane.moveUp();
-        assertEquals(-1, userPlane.getVerticalVelocityMultiplier());
+        assertEquals(-2, userPlane.getVerticalVelocityMultiplier());
         userPlane.moveDown();
-        assertEquals(1, userPlane.getVerticalVelocityMultiplier());
+        assertEquals(2, userPlane.getVerticalVelocityMultiplier());
         userPlane.moveLeft();
-        assertEquals(-1, userPlane.getHorizontalVelocityMultiplier());
+        assertEquals(-2, userPlane.getHorizontalVelocityMultiplier());
         userPlane.moveRight();
-        assertEquals(1, userPlane.getHorizontalVelocityMultiplier());
+        assertEquals(2, userPlane.getHorizontalVelocityMultiplier());
         userPlane.stopHorizontal();
         assertEquals(0, userPlane.getHorizontalVelocityMultiplier());
         userPlane.stopVertical();

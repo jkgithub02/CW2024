@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="pauseRoot" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.demo.controller.PauseMenuController" stylesheets="@styles/styles.css">
+<StackPane fx:id="pauseRoot" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21.0.2" fx:controller="com.example.demo.controller.PauseMenuController" stylesheets="@styles/styles.css">
 
     <Rectangle fx:id="overlay" fill="#000000" height="${controller.screenHeight}" opacity="0.9" width="${controller.screenWidth}" />
 

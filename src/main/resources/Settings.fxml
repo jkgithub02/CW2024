@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<Pane xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.demo.controller.SettingsController" stylesheets="@styles/styles.css">
     <children>
         <ImageView fx:id="backgroundImage" pickOnBounds="true" preserveRatio="false">

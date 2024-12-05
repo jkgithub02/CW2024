@@ -53,7 +53,7 @@ class BulletDisplayTest extends JavaFXTest {
             // Test initial visibility and values
             assertFalse(progressBar.isVisible(),
                     "Progress bar should be initially hidden");
-            assertEquals(String.format("Bullets: %d/%d", MAX_BULLETS, MAX_BULLETS),
+            assertEquals(String.format("Bullets: %d", MAX_BULLETS),
                     bulletText.getText(), "Initial bullet text should show max bullets");
         });
         waitForFxEvents();
@@ -68,8 +68,8 @@ class BulletDisplayTest extends JavaFXTest {
             Text bulletText = (Text) bulletDisplay.getContainer().getChildren().get(0);
             ProgressBar progressBar = (ProgressBar) bulletDisplay.getContainer().getChildren().get(1);
 
-            assertEquals(String.format("Bullets: %d/%d", currentBullets, MAX_BULLETS),
-                    bulletText.getText(), "Bullet text should show current/max bullets");
+            assertEquals(String.format("Bullets: %d", currentBullets),
+                    bulletText.getText(), "Bullet text should show current bullets");
             assertFalse(progressBar.isVisible(),
                     "Progress bar should be hidden when not reloading");
         });
@@ -117,20 +117,5 @@ class BulletDisplayTest extends JavaFXTest {
                     "Text should have size 25");
         });
         waitForFxEvents();
-    }
-
-    /**
-     * Helper method to wait for JavaFX events to complete
-     */
-    private void waitForFxEvents() {
-        CountDownLatch latch = new CountDownLatch(1);
-        Platform.runLater(latch::countDown);
-        try {
-            latch.await();
-            // Add a small delay to ensure UI updates are complete
-            Thread.sleep(50);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

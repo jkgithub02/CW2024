@@ -1,7 +1,8 @@
-package com.example.demo.factory;
+package com.example.demo.actors.factory;
 
 import com.example.demo.JavaFXTest;
 import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.actors.factory.EnemyFactory;
 import com.example.demo.actors.planes.Boss;
 import org.junit.jupiter.api.Test;
 

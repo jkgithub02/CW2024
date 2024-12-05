@@ -28,16 +28,6 @@ class EntityManagerTest extends JavaFXTest {
         waitForFxEvents();
     }
 
-    private void waitForFxEvents() {
-        CountDownLatch latch = new CountDownLatch(1);
-        Platform.runLater(latch::countDown);
-        try {
-            latch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Test
     void testProjectileManagement() {
         Platform.runLater(() -> {

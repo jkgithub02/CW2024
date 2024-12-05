@@ -2,7 +2,7 @@ package com.example.demo.levels;
 
 import com.example.demo.actors.planes.Boss;
 import com.example.demo.config.GameConfig;
-import com.example.demo.factory.EnemyFactory;
+import com.example.demo.actors.factory.EnemyFactory;
 import com.example.demo.view.BossHealthBar;
 import com.example.demo.view.LevelBossView;
 import com.example.demo.view.LevelView;

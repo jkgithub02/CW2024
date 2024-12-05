@@ -1,13 +1,10 @@
 package com.example.demo.actors.planes;
 
 import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.factory.ProjectileFactory;
+import com.example.demo.actors.factory.ProjectileFactory;
 import com.example.demo.managers.BulletManager;
 import com.example.demo.managers.SoundManager;
 import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
 
 /**
  * Represents the user's plane in the game, which is a type of FighterPlane.
@@ -15,13 +12,15 @@ import javafx.util.Duration;
 public class UserPlane extends FighterPlane {
 
 	private static final String IMAGE_NAME = "userplane.png";
+	private static final int X_LOWER_BOUND =0;
+	private static final int X_UPPER_BOUND = 950;
 	private static final double Y_UPPER_BOUND = 75;
 	private static final double Y_LOWER_BOUND = 700;
-	private static final double INITIAL_X_POSITION = 5.0;
+	private static final double INITIAL_X_POSITION = 50.0;
 	private static final double INITIAL_Y_POSITION = 300.0;
 	private static final int IMAGE_HEIGHT = 45;
-	private static final int VERTICAL_VELOCITY = 2;
-	private static final int HORIZONTAL_VELOCITY = 2;
+	private static final double VERTICAL_VELOCITY = 1.5;
+	private static final double HORIZONTAL_VELOCITY = 1.5;
 	private static final int PROJECTILE_X_POSITION = 110;
 	private static final int PROJECTILE_Y_POSITION_OFFSET = 20;
 	private int verticalVelocityMultiplier; // Separate multiplier for vertical movement
@@ -32,6 +31,7 @@ public class UserPlane extends FighterPlane {
 	private static final int MAX_BULLETS = 10;
 	private static final double RELOAD_TIME = 1.0;
 	private final BulletManager bulletManager;
+
 
 
 	/**
@@ -82,7 +82,7 @@ public class UserPlane extends FighterPlane {
 			}
 
 			// Add bounds for X movement (replace with your actual bounds)
-			if (newPositionX < 0 || newPositionX > 950) {
+			if (newPositionX < X_LOWER_BOUND || newPositionX > X_UPPER_BOUND) {
 				this.setTranslateX(initialTranslateX);
 			}
 		}
@@ -126,28 +126,28 @@ public class UserPlane extends FighterPlane {
 	 * Moves the user's plane up by setting the vertical velocity multiplier to -1.
 	 */
 	public void moveUp() {
-		setVerticalVelocityMultiplier(-1);
+		setVerticalVelocityMultiplier(-2);
 	}
 
 	/**
 	 * Moves the user's plane down by setting the vertical velocity multiplier to 1.
 	 */
 	public void moveDown() {
-		setVerticalVelocityMultiplier(1);
+		setVerticalVelocityMultiplier(2);
 	}
 
 	/**
 	 * Moves the user's plane left by setting the horizontal velocity multiplier to -1.
 	 */
 	public void moveLeft() {
-		setHorizontalVelocityMultiplier(-1);
+		setHorizontalVelocityMultiplier(-2);
 	}
 
 	/**
 	 * Moves the user's plane right by setting the horizontal velocity multiplier to 1.
 	 */
 	public void moveRight() {
-		setHorizontalVelocityMultiplier(1);
+		setHorizontalVelocityMultiplier(2);
 	}
 
 	/**
@@ -206,10 +206,6 @@ public class UserPlane extends FighterPlane {
 
 	public double getReloadProgress() {
 		return bulletManager.getReloadProgress();
-	}
-
-	public int getMaxBullets() {
-		return bulletManager.getMaxBullets();
 	}
 
 	public void pauseReload() {

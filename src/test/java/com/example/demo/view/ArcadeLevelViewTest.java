@@ -3,6 +3,8 @@ package com.example.demo.view;
 import com.example.demo.JavaFXTest;
 import javafx.application.Platform;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -39,19 +41,16 @@ class ArcadeLevelViewTest extends JavaFXTest {
             arcadeLevelView.showKillCountDisplay();
             arcadeLevelView.updateKillCount(5);
 
-            // Find the kill count display in the root's children
-            boolean hasKillCountDisplay = root.getChildren().stream()
-                    .anyMatch(node -> node.toString().contains("Score: 5"));
-            assertTrue(hasKillCountDisplay, "Kill count should be updated to 5");
+            Label killCountLabel = (Label) root.getChildren().stream()
+                    .filter(node -> node instanceof HBox)
+                    .flatMap(node -> ((HBox) node).getChildren().stream())
+                    .filter(node -> node instanceof Label)
+                    .findFirst()
+                    .orElse(null);
+
+            assertNotNull(killCountLabel, "Kill count label should exist");
+            assertEquals("Score: 5", killCountLabel.getText(), "Kill count should show correct score");
         });
         waitForFxEvents();
-    }
-
-    private void waitForFxEvents() {
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }
