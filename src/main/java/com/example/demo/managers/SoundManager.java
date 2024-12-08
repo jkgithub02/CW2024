@@ -17,6 +17,7 @@ public class SoundManager {
     private final Map<String, MediaPlayer> musicPlayers;
     private final Map<String, AudioClip> shootSounds;
     private final Map<String, AudioClip> damageSounds;
+    private final Map<String, AudioClip> eventSounds;
 
     private final static String LEVEL_BACKGROUND_MUSIC_FILE_PATH = "/music/fightmusic.mp3";
     private final static String MENU_BACKGROUND_MUSIC_FILE_PATH = "/music/backgroundmusic.mp3";
@@ -25,15 +26,17 @@ public class SoundManager {
     private final static String USER_DAMAGED_SOUND_FILE_PATH = "/music/damaged.mp3";
     private final static String ENEMY_DAMAGED_SOUND_FILE_PATH = "/music/enemydamaged.wav";
     private final static String RELOAD_SOUND_FILE_PATH = "/music/userreload.mp3";
+    private final static String GAME_OVER_SOUND_FILE_PATH = "/music/gameover.mp3";
+    private final static String VICTORY_SOUND_FILE_PATH = "/music/victory.mp3";
 
     private double backgroundVolume = 1.0;
     private double effectsVolume = 1.0;
 
-    // Make constructor private
     private SoundManager() {
         musicPlayers = new HashMap<>();
         shootSounds = new HashMap<>();
         damageSounds = new HashMap<>();
+        eventSounds = new HashMap<>();
 
         initializeSounds();
     }
@@ -56,6 +59,10 @@ public class SoundManager {
         // Initialize damage sounds
         loadDamageSound("user", USER_DAMAGED_SOUND_FILE_PATH);
         loadDamageSound("enemy", ENEMY_DAMAGED_SOUND_FILE_PATH);
+
+        // Initialize event sounds
+        loadEventSound("gameover", GAME_OVER_SOUND_FILE_PATH);
+        loadEventSound("victory", VICTORY_SOUND_FILE_PATH);
 
         setEffectsVolume(0.5); // Set default effects volume
     }
@@ -107,6 +114,11 @@ public class SoundManager {
         damageSounds.put(key, audioClip);
     }
 
+    private void loadEventSound(String key, String soundFilePath) {
+        AudioClip audioClip = new AudioClip(getClass().getResource(soundFilePath).toString());
+        eventSounds.put(key, audioClip);
+    }
+
     /**
      * Plays the background music associated with the given key.
      *
@@ -156,6 +168,13 @@ public class SoundManager {
         }
     }
 
+    public void playEventSound(String key) {
+        AudioClip clip = eventSounds.get(key);
+        if (clip != null) {
+            clip.play();
+        }
+    }
+
     /**
      * Gets the current background volume.
      *
@@ -193,5 +212,6 @@ public class SoundManager {
         this.effectsVolume = volume;
         shootSounds.values().forEach(clip -> clip.setVolume(volume));
         damageSounds.values().forEach(clip -> clip.setVolume(volume));
+        eventSounds.values().forEach(clip -> clip.setVolume(volume));  // Add this line
     }
 }

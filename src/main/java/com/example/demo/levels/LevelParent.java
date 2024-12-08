@@ -367,6 +367,7 @@ public abstract class LevelParent {
         stopTimelineAndMusic();
         inputManager.setGameState(GameState.WIN);
         navigationManager.showWinScreen();
+        soundManager.playEventSound("victory");
     }
 
     /**
@@ -376,6 +377,7 @@ public abstract class LevelParent {
         stopTimelineAndMusic();
         inputManager.setGameState(GameState.LOSE);
         navigationManager.showGameOverScreen(this.getClass());
+        soundManager.playEventSound("gameover");
     }
 
     public static void setGlobalRoot(Group root) {

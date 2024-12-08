@@ -61,8 +61,18 @@ https://github.com/jkgithub02/CW2024
     - pausemanager
     - soundmanager
 
-### <ins>4.2 Modified Java Classes</ins>
-#### 1. Fixed NullPointerException from wrong shieldImage name.
+## <ins>4.2 Modified Java Classes</ins>
+### <ins>4.2.1 Minor Changes</ins>
+1. `Boss.java`
+   - Changed projectile offset
+   - Changed Y lower and upper bounds to prevent off-screen movement
+   - Added getter methods for health and shield status
+
+2. `FighterPlane.java`
+   - Added destruction effects in method `playDestructionEffect()`
+   - Modified `destroy()` method to play destruction effects
+
+### 1. Fixed NullPointerException from wrong shieldImage name.
 #### 2. Adjusted projectile firing offset.
 #### 3. Replaced observer and observable implementations with listeners.
 #### 4. Readjusted and cropped image sizes to fix large hitbox issues.
