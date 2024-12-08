@@ -7,21 +7,112 @@ https://github.com/jkgithub02/CW2024
 
 ---
 
-## <ins>2.0 Compilation Instructions</ins>
-1. Ensure you have Java installed (version X.X required).
-2. Install any necessary dependencies:
-   - Dependency 1
-   - Dependency 2
-3. Open the terminal and navigate to the project directory.
-4. Compile the project with:
-    ```sh
-    javac -d bin src/**/*.java
-    ```
-5. Run the project with:
-    ```sh
-    java -cp bin MainClass
-    ```
+## <ins>2.0 Setup and Compilation Instructions</ins>
 
+### <ins>2.1 Prerequisites
+
+- Java Development Kit (JDK) 21 or later
+- Apache Maven 3.9.0 or later
+- JavaFX SDK 21 or later
+- Git (for cloning the repository)
+
+#### <ins>Recommended IDEs
+- IntelliJ IDEA 2023.3+
+- - IntelliJ IDEA Community Edition 2023.3+
+- Eclipse 2023-12+
+- VS Code with Java Extension Pack
+
+#### <ins>Environment Setup
+
+1. **Install Java Development Kit (JDK)**
+    - Download and install JDK 21 from [Oracle](https://www.oracle.com/java/technologies/downloads/) or use OpenJDK
+    - Set JAVA_HOME environment variable or add to system PATH:
+      ```bash
+      # Windows
+      [Environment]::SetEnvironmentVariable("JAVA_HOME", "C:\Program Files\Java\jdk-21", "Machine")
+      [Environment]::SetEnvironmentVariable("Path", $env:Path + ";%JAVA_HOME%\bin", "Machine")
+
+      # Unix/MacOS
+      echo 'export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home' >> ~/.bash_profile
+      echo 'export PATH=$JAVA_HOME/bin:$PATH' >> ~/.bash_profile
+      source ~/.bash_profile
+      ```
+    - Verify Java installation:
+      ```bash
+      # Verify Java version after installation
+      java --version
+      # Should show Java 21 or higher
+      ```
+
+2. **Install Apache Maven**
+    - Download from [Maven Official Site](https://maven.apache.org/download.cgi)
+    - Add Maven to your PATH
+    - Verify installation:
+      ```bash
+      mvn --version
+      ```
+
+### <ins>2.2 Project Setup
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/jkgithub02/CW2024.git
+   cd CW2024
+
+2. **IDE Setup**
+   - Eclipse 
+     - Import as Maven project 
+     - Right-click project → Properties → Java Build Path 
+     - Add JavaFX libraries if needed
+   - IntelliJ IDEA /
+     - Import as Maven project 
+     - Ensure Project SDK is set to JDK 21
+     - Refresh Maven project to load dependencies
+     - Wait for Maven Sync
+   - VS Code
+     - Install Java Extension Pack
+     - Install JavaFX Extension
+     - Open project folder
+     - Run using Maven commands or create launch configuration
+
+3. **Compile and Run**
+    - Compile using Maven:
+      ```bash
+      mvn clean compile
+      ```
+    - Run the application:
+      ```bash
+      mvn javafx:run
+      ```
+    - Package the application:
+      ```bash
+      mvn package
+      ```
+    - Run the packaged JAR file:
+      ```bash
+      java -jar target/CW2024-1.0-SNAPSHOT.jar
+      ```
+
+    ### <ins>2.3 Common Build Commands</ins>
+    ```bash
+    # Clean build files
+    mvn clean
+
+    # Compile project
+    mvn compile
+
+    # Run tests
+    mvn test
+
+    # Package application
+    mvn package
+
+    # Install to local repository
+    mvn install
+
+    # Run application
+    mvn javafx:run
+    ```
 ---
 
 ## <ins>3.0 Features</ins>
@@ -248,7 +339,7 @@ https://github.com/jkgithub02/CW2024
    - Followed the architecture and practice of Model View Controller (MVC) pattern
 
 ## <ins>4.3 Summary and Additional notes of Refactoring Process</ins>
-### 1. Fixed NullPointerException from wrong shieldImage name.
+#### 1. Fixed NullPointerException from wrong shieldImage name.
 #### 2. Adjusted projectile firing offset.
 #### 3. Replaced observer and observable implementations with listeners.
 #### 4. Readjusted and cropped image sizes to fix large hitbox issues.
