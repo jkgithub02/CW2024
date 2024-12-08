@@ -1,6 +1,7 @@
 package com.example.demo.view;
 
 import com.example.demo.JavaFXTest;
+import com.example.demo.LevelTransitionScreen;
 import com.example.demo.config.GameConfig;
 import javafx.application.Platform;
 import javafx.scene.Scene;

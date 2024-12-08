@@ -1,6 +1,6 @@
 package com.example.demo.actors.factory;
 
-import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.ActiveActorDestructible;
 
 /**
  * Interface for creating actors.

@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.BossHealthBar;
 import com.example.demo.JavaFXTest;
 import javafx.application.Platform;
 import javafx.scene.control.ProgressBar;

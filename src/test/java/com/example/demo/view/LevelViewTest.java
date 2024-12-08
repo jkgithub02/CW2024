@@ -1,6 +1,7 @@
 package com.example.demo.view;
 
 import com.example.demo.JavaFXTest;
+import com.example.demo.LevelView;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;

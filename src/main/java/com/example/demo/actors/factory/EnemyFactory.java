@@ -1,9 +1,9 @@
 package com.example.demo.actors.factory;
 
-import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.actors.planes.EnemyPlane;
-import com.example.demo.actors.planes.EnemyPlaneTwo;
-import com.example.demo.actors.planes.Boss;
+import com.example.demo.ActiveActorDestructible;
+import com.example.demo.EnemyPlane;
+import com.example.demo.EnemyPlaneTwo;
+import com.example.demo.Boss;
 
 /**
  * Factory class for creating different types of enemy actors.

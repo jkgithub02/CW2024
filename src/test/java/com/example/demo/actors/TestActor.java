@@ -1,5 +1,7 @@
 package com.example.demo.actors;
 
+import com.example.demo.ActiveActorDestructible;
+
 public class TestActor extends ActiveActorDestructible {
 
     public TestActor(String imageName, int imageHeight, double initialXPos, double initialYPos) {

@@ -1,5 +1,6 @@
 package com.example.demo.levels;
 
+import com.example.demo.ArcadeLevel;
 import com.example.demo.JavaFXTest;
 import org.junit.jupiter.api.Test;
 

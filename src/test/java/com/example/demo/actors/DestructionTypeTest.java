@@ -1,5 +1,6 @@
 package com.example.demo.actors;
 
+import com.example.demo.DestructionType;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

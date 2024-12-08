@@ -1,9 +1,9 @@
 package com.example.demo.actors.factory;
 
-import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.actors.projectiles.BossProjectile;
-import com.example.demo.actors.projectiles.UserProjectile;
-import com.example.demo.actors.projectiles.EnemyProjectile;
+import com.example.demo.ActiveActorDestructible;
+import com.example.demo.BossProjectile;
+import com.example.demo.UserProjectile;
+import com.example.demo.EnemyProjectile;
 
 /**
  * Factory class for creating different types of projectiles.

@@ -1,5 +1,6 @@
 package com.example.demo.actors;
 
+import com.example.demo.ActiveActor;
 import com.example.demo.ImageTestConfig;
 import com.example.demo.JavaFXTest;
 import org.junit.jupiter.api.BeforeEach;

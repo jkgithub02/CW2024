@@ -1,8 +1,9 @@
 package com.example.demo.actors.planes;
 
+import com.example.demo.FighterPlane;
 import com.example.demo.ImageTestConfig;
 import com.example.demo.JavaFXTest;
-import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.ActiveActorDestructible;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

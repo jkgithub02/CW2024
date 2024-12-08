@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.HeartDisplay;
 import com.example.demo.JavaFXTest;
 import javafx.scene.layout.HBox;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.config.GameConfig;
-import com.example.demo.levels.LevelOne;
+import com.example.demo.LevelOne;
 import com.example.demo.managers.NavigationManager;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;

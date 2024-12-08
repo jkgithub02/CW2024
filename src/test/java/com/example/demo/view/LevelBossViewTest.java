@@ -1,6 +1,8 @@
 package com.example.demo.view;
 
+import com.example.demo.BossHealthBar;
 import com.example.demo.JavaFXTest;
+import com.example.demo.LevelBossView;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import org.junit.jupiter.api.BeforeEach;

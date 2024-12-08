@@ -1,6 +1,7 @@
 package com.example.demo.view;
 
 import com.example.demo.JavaFXTest;
+import com.example.demo.KillCountDisplay;
 import javafx.scene.layout.HBox;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

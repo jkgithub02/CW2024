@@ -1,6 +1,7 @@
 package com.example.demo.view;
 
 import com.example.demo.JavaFXTest;
+import com.example.demo.ShieldImage;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;

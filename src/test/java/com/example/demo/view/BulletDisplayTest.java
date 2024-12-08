@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.BulletDisplay;
 import com.example.demo.JavaFXTest;
 import javafx.application.Platform;
 import javafx.scene.Group;
@@ -7,8 +8,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.text.Text;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.concurrent.CountDownLatch;
 
 import static org.junit.jupiter.api.Assertions.*;
 

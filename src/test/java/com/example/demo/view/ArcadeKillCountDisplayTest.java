@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.ArcadeKillCountDisplay;
 import com.example.demo.JavaFXTest;
 import javafx.application.Platform;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,8 +1,8 @@
 package com.example.demo.managers;
 
 import com.example.demo.JavaFXTest;
-import com.example.demo.actors.planes.UserPlane;
-import com.example.demo.view.LevelView;
+import com.example.demo.UserPlane;
+import com.example.demo.LevelView;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;

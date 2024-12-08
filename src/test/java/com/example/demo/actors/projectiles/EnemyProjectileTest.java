@@ -1,5 +1,6 @@
 package com.example.demo.actors.projectiles;
 
+import com.example.demo.EnemyProjectile;
 import com.example.demo.JavaFXTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

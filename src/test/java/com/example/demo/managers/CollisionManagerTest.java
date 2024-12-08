@@ -1,7 +1,7 @@
 package com.example.demo.managers;
 
-import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.actors.planes.FighterPlane;
+import com.example.demo.ActiveActorDestructible;
+import com.example.demo.FighterPlane;
 import com.example.demo.JavaFXTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

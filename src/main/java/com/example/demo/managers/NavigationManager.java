@@ -5,7 +5,7 @@ import com.example.demo.controller.GameController;
 import com.example.demo.controller.GameOverController;
 import com.example.demo.controller.MainMenuController;
 import com.example.demo.controller.WinScreenController;
-import com.example.demo.levels.LevelParent;
+import com.example.demo.LevelParent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

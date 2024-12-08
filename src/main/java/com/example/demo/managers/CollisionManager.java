@@ -1,8 +1,8 @@
 package com.example.demo.managers;
 
-import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.actors.DestructionType;
-import com.example.demo.actors.planes.FighterPlane;
+import com.example.demo.ActiveActorDestructible;
+import com.example.demo.DestructionType;
+import com.example.demo.FighterPlane;
 
 import java.util.List;
 

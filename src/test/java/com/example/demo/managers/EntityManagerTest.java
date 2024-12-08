@@ -2,15 +2,13 @@ package com.example.demo.managers;
 
 import com.example.demo.ImageTestConfig;
 import com.example.demo.JavaFXTest;
-import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.ActiveActorDestructible;
 import com.example.demo.actors.TestActor;
 import com.example.demo.actors.projectiles.TestProjectile;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.concurrent.CountDownLatch;
 
 import static org.junit.jupiter.api.Assertions.*;
 

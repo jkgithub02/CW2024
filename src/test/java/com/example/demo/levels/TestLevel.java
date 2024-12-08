@@ -1,6 +1,7 @@
 package com.example.demo.levels;
 
-import com.example.demo.view.LevelView;
+import com.example.demo.LevelParent;
+import com.example.demo.LevelView;
 import javafx.scene.Group;
 
 public class TestLevel extends LevelParent {

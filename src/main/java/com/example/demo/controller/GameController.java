@@ -3,12 +3,12 @@ package com.example.demo.controller;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-import com.example.demo.view.LevelTransitionScreen;
+import com.example.demo.LevelTransitionScreen;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import com.example.demo.levels.LevelParent;
+import com.example.demo.LevelParent;
 
 /**
  * Controller class responsible for managing the game flow and transitions between levels.

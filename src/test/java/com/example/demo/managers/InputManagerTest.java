@@ -1,8 +1,8 @@
 package com.example.demo.managers;
 
 import com.example.demo.JavaFXTest;
-import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.actors.planes.UserPlane;
+import com.example.demo.ActiveActorDestructible;
+import com.example.demo.UserPlane;
 import com.example.demo.config.GameState;
 import javafx.application.Platform;
 import javafx.scene.Group;
