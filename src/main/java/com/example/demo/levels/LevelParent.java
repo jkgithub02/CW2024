@@ -27,7 +27,7 @@ import java.util.*;
  */
 public abstract class LevelParent {
 
-    private static final double SCREEN_HEIGHT_ADJUSTMENT = 150;
+    private static final double SCREEN_HEIGHT_ADJUSTMENT = 500;
     private static final int MILLISECOND_DELAY = 50;
     private final double screenHeight;
     private final double screenWidth;
