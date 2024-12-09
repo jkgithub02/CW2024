@@ -27,6 +27,7 @@
                         </font>
                     </Label>
 
+                    <!-- Volume Controls -->
                     <VBox alignment="CENTER" spacing="10">
                         <Label text="Background Music" styleClass="settings-label" />
                         <Slider fx:id="backgroundVolumeSlider"
@@ -43,6 +44,39 @@
                                 min="0"
                                 max="100"
                                 value="50" />
+                    </VBox>
+
+                    <!-- Key Bindings -->
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label text="Controls" styleClass="settings-label">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Label>
+
+                        <Button fx:id="upKeyButton"
+                                styleClass="key-binding-button"
+                                onAction="#handleUpKeyBinding"
+                                text="UP: Not Set" />
+
+                        <Button fx:id="downKeyButton"
+                                styleClass="key-binding-button"
+                                onAction="#handleDownKeyBinding"
+                                text="DOWN: Not Set" />
+
+                        <Button fx:id="leftKeyButton"
+                                styleClass="key-binding-button"
+                                onAction="#handleLeftKeyBinding"
+                                text="LEFT: Not Set" />
+
+                        <Button fx:id="rightKeyButton"
+                                styleClass="key-binding-button"
+                                onAction="#handleRightKeyBinding"
+                                text="RIGHT: Not Set" />
+
+                        <Button text="Reset Controls"
+                                styleClass="menu-button"
+                                onAction="#handleResetBindings" />
                     </VBox>
 
                     <Button mnemonicParsing="false"

@@ -43,6 +43,8 @@ public class Main extends Application {
 			Scene scene = new Scene(root, GameConfig.SCREEN_WIDTH, GameConfig.SCREEN_HEIGHT);
 			stage.setTitle(GameConfig.TITLE);
 			stage.setScene(scene);
+			stage.setWidth(GameConfig.SCREEN_WIDTH);
+			stage.setHeight(GameConfig.SCREEN_HEIGHT);
 			stage.setResizable(false);
 			stage.show();
 		} catch (Exception e) {

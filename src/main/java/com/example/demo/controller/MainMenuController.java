@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.config.GameConfig;
 import com.example.demo.managers.SoundManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -30,6 +32,11 @@ public class MainMenuController {
      */
     public void setStage(Stage stage) {
         this.stage = stage;
+        double stageWidth = stage.getWidth();
+        double stageHeight = stage.getHeight();
+        stage.setWidth(stageWidth);
+        stage.setHeight(stageHeight);
+        stage.setResizable(false);
     }
 
     /**
@@ -100,10 +107,17 @@ public class MainMenuController {
     private void showSettings() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Settings.fxml"));
-            Scene settingsScene = new Scene(loader.load());
+            Parent root = loader.load();
+            double currentStageWidth = stage.getWidth();
+            double currentStageHeight = stage.getHeight();
+            Scene settingsScene = new Scene(root, GameConfig.SCREEN_WIDTH, GameConfig.SCREEN_HEIGHT);
+            stage.setScene(settingsScene);
+            stage.setWidth(currentStageWidth);
+            stage.setHeight(currentStageHeight);
+            stage.setResizable(false);
             SettingsController controller = loader.getController();
             controller.setStage(stage);
-            stage.setScene(settingsScene);
+            stage.centerOnScreen();
         } catch (Exception e) {
             e.printStackTrace();
         }
