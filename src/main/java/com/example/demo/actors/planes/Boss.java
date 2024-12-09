@@ -24,7 +24,7 @@ public class Boss extends FighterPlane {
 	private static final int ZERO = 0;
 	private static final int MAX_FRAMES_WITH_SAME_MOVE = 10;
 	private static final int Y_POSITION_UPPER_BOUND = 75;
-	private static final int Y_POSITION_LOWER_BOUND = 670;
+	private static final int Y_POSITION_LOWER_BOUND = 630;
 	private static final int MAX_FRAMES_WITH_SHIELD = 500;
 	private final List<Integer> movePattern;
 	private boolean isShielded;
@@ -88,7 +88,9 @@ public class Boss extends FighterPlane {
 	 */
 	@Override
 	public void takeDamage() {
-		if (!isShielded) {
+		if (isShielded) {
+			soundManager.playDamagedSound("shield");  // Play shield block sound
+		} else {
 			super.takeDamage();
 			soundManager.playDamagedSound("enemy");
 		}

@@ -366,6 +366,7 @@ public abstract class LevelParent {
     protected void winGame() {
         stopTimelineAndMusic();
         inputManager.setGameState(GameState.WIN);
+        soundManager.playVictorySound();
         navigationManager.showWinScreen();
     }
 
@@ -375,6 +376,7 @@ public abstract class LevelParent {
     protected void loseGame() {
         stopTimelineAndMusic();
         inputManager.setGameState(GameState.LOSE);
+        soundManager.playGameOverSound();
         navigationManager.showGameOverScreen(this.getClass());
     }
 
