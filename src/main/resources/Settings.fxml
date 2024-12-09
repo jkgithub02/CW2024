@@ -74,6 +74,11 @@
                                 onAction="#handleRightKeyBinding"
                                 text="RIGHT: Not Set" />
 
+                        <Button fx:id="fireKeyButton"
+                                styleClass="key-binding-button"
+                                onAction="#handleFireKeyBinding"
+                                text="FIRE: Not Set" />
+
                         <Button text="Reset Controls"
                                 styleClass="menu-button"
                                 onAction="#handleResetBindings" />

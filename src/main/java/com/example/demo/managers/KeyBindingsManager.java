@@ -39,7 +39,11 @@ public class KeyBindingsManager {
         if (!keyBindings.containsKey("RIGHT")) {
             setBinding("RIGHT", KeyCode.valueOf(preferences.get("RIGHT", KeyCode.RIGHT.name())));
         }
+        if (!keyBindings.containsKey("FIRE")) {
+            setBinding("FIRE", KeyCode.valueOf(preferences.get("FIRE", KeyCode.SPACE.name())));
+        }
     }
+
 
     public KeyCode getBinding(String action) {
         KeyCode keyCode = keyBindings.get(action);
@@ -50,12 +54,12 @@ public class KeyBindingsManager {
                 case "DOWN": return KeyCode.DOWN;
                 case "LEFT": return KeyCode.LEFT;
                 case "RIGHT": return KeyCode.RIGHT;
+                case "FIRE": return KeyCode.SPACE;
                 default: return null;
             }
         }
         return keyCode;
     }
-
     public boolean setBinding(String action, KeyCode keyCode) {
         // Don't allow null or ESCAPE key bindings
         if (keyCode == null || keyCode == KeyCode.ESCAPE) {
@@ -88,6 +92,7 @@ public class KeyBindingsManager {
         setBinding("DOWN", KeyCode.DOWN);
         setBinding("LEFT", KeyCode.LEFT);
         setBinding("RIGHT", KeyCode.RIGHT);
+        setBinding("FIRE", KeyCode.SPACE);
     }
 
     public boolean isKeyBound(KeyCode keyCode) {

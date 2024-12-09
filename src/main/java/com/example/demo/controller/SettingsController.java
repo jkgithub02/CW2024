@@ -45,6 +45,8 @@ public class SettingsController {
     private Button leftKeyButton;
     @FXML
     private Button rightKeyButton;
+    @FXML
+    private Button fireKeyButton;
 
     public SettingsController() {
         this.keyBindingsManager = KeyBindingsManager.getInstance();
@@ -99,6 +101,7 @@ public class SettingsController {
         updateKeyBindingButton(downKeyButton, "DOWN");
         updateKeyBindingButton(leftKeyButton, "LEFT");
         updateKeyBindingButton(rightKeyButton, "RIGHT");
+        updateKeyBindingButton(fireKeyButton, "FIRE");
     }
 
     private void updateKeyBindingButton(Button button, String action) {
@@ -126,6 +129,11 @@ public class SettingsController {
     @FXML
     private void handleRightKeyBinding() {
         startBinding(rightKeyButton, "RIGHT");
+    }
+
+    @FXML
+    private void handleFireKeyBinding() {  // Add this method
+        startBinding(fireKeyButton, "FIRE");
     }
 
     private void startBinding(Button button, String action) {
@@ -172,6 +180,7 @@ public class SettingsController {
         updateKeyBindingButton(downKeyButton, "DOWN");
         updateKeyBindingButton(leftKeyButton, "LEFT");
         updateKeyBindingButton(rightKeyButton, "RIGHT");
+        updateKeyBindingButton(fireKeyButton, "FIRE");
     }
 
     @FXML

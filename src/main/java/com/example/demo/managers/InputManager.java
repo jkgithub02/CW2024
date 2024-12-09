@@ -50,7 +50,8 @@ public class InputManager {
         background.setOnKeyPressed(e -> {
             if (gameState == GameState.ACTIVE) {
                 pressedKeys.add(e.getCode());
-                if (e.getCode() == KeyCode.SPACE) fireProjectile();
+                KeyCode fireKey = keyBindingsManager.getBinding("FIRE");
+                if (e.getCode() == fireKey) fireProjectile();
             }
         });
         background.setOnKeyReleased(e -> {
