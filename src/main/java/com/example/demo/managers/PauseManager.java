@@ -13,11 +13,34 @@ import java.net.URL;
  * Manages the pause functionality of the game, including displaying the pause menu and handling pause/resume actions.
  */
 public class PauseManager {
+    /**
+     * The scene of the game.
+     */
     private final Scene scene;
+
+    /**
+     * Indicates if the game is currently paused.
+     */
     private boolean isPaused = false;
+
+    /**
+     * The action to perform when the game is paused.
+     */
     private final Runnable pauseAction;
+
+    /**
+     * The action to perform when the game is resumed.
+     */
     private final Runnable resumeAction;
+
+    /**
+     * The root group of the scene.
+     */
     private final Group root;
+
+    /**
+     * The pause menu controller.
+     */
     private PauseMenuController pauseMenuController;
 
     /**

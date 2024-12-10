@@ -12,11 +12,25 @@ import com.example.demo.levels.LevelParent;
 
 /**
  * Controller class responsible for managing the game flow and transitions between levels.
+ *
+ * @see com.example.demo.view.LevelTransitionScreen
+ * @see com.example.demo.levels.LevelParent
  */
 public class GameController {
 
+	/**
+	 * The fully qualified name of the starting level class.
+	 */
 	private static final String START_LEVEL_CLASS_NAME = "com.example.demo.levels.LevelOne";
+
+	/**
+	 * The display name of the starting level.
+	 */
 	private static final String START_LEVEL_DISPLAY_NAME = "Level 1";
+
+	/**
+	 * The primary stage for this application.
+	 */
 	private final Stage stage;
 
 	/**
@@ -38,6 +52,7 @@ public class GameController {
 	 * @throws IllegalAccessException if the underlying constructor is inaccessible.
 	 * @throws IllegalArgumentException if the method is invoked with incorrect arguments.
 	 * @throws InvocationTargetException if the underlying constructor throws an exception.
+	 * @see #goToLevel(String, String)
 	 */
 	public void launchGame() throws ClassNotFoundException, NoSuchMethodException, SecurityException,
 			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
@@ -57,6 +72,7 @@ public class GameController {
 	 * @throws IllegalAccessException if the underlying constructor is inaccessible.
 	 * @throws IllegalArgumentException if the method is invoked with incorrect arguments.
 	 * @throws InvocationTargetException if the underlying constructor throws an exception.
+	 * @see #startLevel(String)
 	 */
 	public void goToLevel(String className, String levelname) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
 			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
@@ -82,6 +98,7 @@ public class GameController {
 	 * @throws IllegalAccessException if the underlying constructor is inaccessible.
 	 * @throws IllegalArgumentException if the method is invoked with incorrect arguments.
 	 * @throws InvocationTargetException if the underlying constructor throws an exception.
+	 * @see #goToLevel(String, String)
 	 */
 	private void startLevel(String className) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
 			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {

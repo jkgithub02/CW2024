@@ -8,11 +8,26 @@ import javafx.stage.Stage;
 
 /**
  * Controller class for handling the game over screen.
+ *
+ * @see com.example.demo.managers.NavigationManager
+ * @see com.example.demo.config.GameConfig
  */
 public class GameOverController {
+
+    /**
+     * The root pane of the game over screen.
+     */
     @FXML
     private StackPane gameOverRoot;
+
+    /**
+     * The primary stage of the application.
+     */
     private Stage stage;
+
+    /**
+     * The class of the current level.
+     */
     private Class<?> currentLevelClass;
 
     /**
@@ -66,9 +81,7 @@ public class GameOverController {
      */
     @FXML
     private void handleRestart() {
-        NavigationManager navigationManager = new NavigationManager(
-                gameOverRoot.getScene()
-        );
+        NavigationManager navigationManager = new NavigationManager(gameOverRoot.getScene());
         navigationManager.restartLevel(currentLevelClass);
     }
 
@@ -77,9 +90,7 @@ public class GameOverController {
      */
     @FXML
     private void handleMainMenu() {
-        NavigationManager navigationManager = new NavigationManager(
-                gameOverRoot.getScene()
-        );
+        NavigationManager navigationManager = new NavigationManager(gameOverRoot.getScene());
         navigationManager.goToMainMenu();
     }
 }

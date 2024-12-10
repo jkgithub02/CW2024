@@ -7,16 +7,54 @@ import javafx.scene.text.FontWeight;
 
 /**
  * Displays the kill count in the game.
+ *
+ * @see javafx.scene.control.Label
+ * @see javafx.scene.layout.HBox
  */
 public class KillCountDisplay {
+    /**
+     * The font size of the label.
+     */
     protected static final int LABEL_FONT_SIZE = 25;
+
+    /**
+     * The font family of the label.
+     */
     protected static final String LABEL_FONT_FAMILY = "Arial Black";
+
+    /**
+     * The text color of the label.
+     */
     protected static final String LABEL_TEXT_COLOR = "-fx-text-fill: black;";
+
+    /**
+     * The container for the kill count display.
+     */
     private HBox container;
+
+    /**
+     * The x-coordinate position of the container.
+     */
     private final double containerXPosition;
+
+    /**
+     * The y-coordinate position of the container.
+     */
     private final double containerYPosition;
+
+    /**
+     * The current number of kills.
+     */
     protected int currentKills;
+
+    /**
+     * The maximum number of kills to display.
+     */
     protected final int maxKills;
+
+    /**
+     * The label for displaying the kill count.
+     */
     protected Label killCountLabel;
 
     /**

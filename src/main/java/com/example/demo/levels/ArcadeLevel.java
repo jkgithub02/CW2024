@@ -9,18 +9,67 @@ import com.example.demo.managers.LeaderboardManager;
 
 /**
  * Class representing the arcade level in the game.
+ *
+ * @see com.example.demo.actors.ActiveActorDestructible
+ * @see com.example.demo.actors.factory.EnemyFactory
+ * @see com.example.demo.view.ArcadeLevelView
+ * @see com.example.demo.managers.LeaderboardManager
  */
 public class ArcadeLevel extends LevelParent {
+
+    /**
+     * The background image name for the arcade level.
+     */
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/backgroundarcade2.jpg";
+
+    /**
+     * The initial number of enemies.
+     */
     private static final int INITIAL_ENEMIES = 5;
+
+    /**
+     * The maximum number of enemies.
+     */
     private static final int MAXIMUM_ENEMIES = 8;
+
+    /**
+     * The initial spawn rate of enemies.
+     */
     private static final double INITIAL_SPAWN_RATE = 0.25;
+
+    /**
+     * The upper bound for the enemy Y position.
+     */
     private static final double ENEMY_Y_UPPER_BOUND = 30;
+
+    /**
+     * The increment value for the spawn rate.
+     */
     private static final double spawnRateIncrement = 0.05;
+
+    /**
+     * The maximum cap for the spawn rate.
+     */
     private static final double spawnRateCap = 0.75;
+
+    /**
+     * The total number of enemies.
+     */
     private int totalEnemies;
+
+    /**
+     * The current spawn rate of enemies.
+     */
     private double spawnRate;
+
+    /**
+     * The current wave of enemies.
+     */
     private int currentWave;
+
+    /**
+     * The factory to create enemy units.
+     */
     private final EnemyFactory enemyFactory;
 
     /**

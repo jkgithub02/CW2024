@@ -7,16 +7,36 @@ import javafx.scene.shape.Rectangle;
 
 /**
  * Controller class for managing the pause menu in the game.
+ *
+ * @see com.example.demo.config.GameConfig
  */
 public class PauseMenuController {
+
+    /**
+     * The root pane of the pause menu.
+     */
     @FXML
     private StackPane pauseRoot;
 
+    /**
+     * The overlay rectangle in the pause menu.
+     */
     @FXML
     private Rectangle overlay;
 
+    /**
+     * The action to perform when the resume button is clicked.
+     */
     private Runnable resumeAction;
+
+    /**
+     * The action to perform when the restart button is clicked.
+     */
     private Runnable restartAction;
+
+    /**
+     * The action to perform when the main menu button is clicked.
+     */
     private Runnable mainMenuAction;
 
     /**
@@ -79,7 +99,6 @@ public class PauseMenuController {
             restartAction.run();
         }
     }
-
 
     /**
      * Handles the main menu action by running the main menu action.

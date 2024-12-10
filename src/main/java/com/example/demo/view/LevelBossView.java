@@ -4,13 +4,34 @@ import javafx.scene.Group;
 
 /**
  * Represents the view for a level with a boss in the game.
+ *
+ * @see javafx.scene.Group
+ * @see com.example.demo.view.BossHealthBar
  */
 public class LevelBossView extends LevelView {
-	private static final double HEALTH_BAR_X = 550; // Adjust position as needed
-	private static final double HEALTH_BAR_Y = 50;  // Adjust position as needed
-	private static final int BOSS_MAX_HEALTH = 100; // Set this to match your boss's max health
+	/**
+	 * The x-coordinate position for the boss health bar.
+	 */
+	private static final double HEALTH_BAR_X = 550;
 
+	/**
+	 * The y-coordinate position for the boss health bar.
+	 */
+	private static final double HEALTH_BAR_Y = 50;
+
+	/**
+	 * The maximum health of the boss.
+	 */
+	private static final int BOSS_MAX_HEALTH = 100;
+
+	/**
+	 * The root group of the scene.
+	 */
 	private final Group root;
+
+	/**
+	 * The health bar for the boss.
+	 */
 	private final BossHealthBar bossHealthBar;
 
 	/**
@@ -19,6 +40,7 @@ public class LevelBossView extends LevelView {
 	 * @param root the root group of the scene.
 	 * @param heartsToDisplay the number of hearts to display.
 	 * @param maxKills the maximum number of kills.
+	 * @param maxBullets the maximum number of bullets.
 	 */
 	public LevelBossView(Group root, int heartsToDisplay, int maxKills, int maxBullets) {
 		super(root, heartsToDisplay, maxKills, maxBullets);

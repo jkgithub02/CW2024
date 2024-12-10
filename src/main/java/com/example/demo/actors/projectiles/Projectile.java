@@ -4,6 +4,8 @@ import com.example.demo.actors.ActiveActorDestructible;
 
 /**
  * Represents a projectile in the game, which is a type of ActiveActorDestructible.
+ *
+ * @see ActiveActorDestructible
  */
 public abstract class Projectile extends ActiveActorDestructible {
 

@@ -12,11 +12,25 @@ import javafx.util.Duration;
 
 /**
  * Represents the screen displayed during level transitions.
+ *
+ * @see javafx.animation.FadeTransition
+ * @see javafx.scene.text.Text
  */
 public class LevelTransitionScreen {
 
+    /**
+     * The stage on which the transition screen is displayed.
+     */
     private final Stage stage;
+
+    /**
+     * The name of the level to display.
+     */
     private final String levelName;
+
+    /**
+     * The handler to run when the transition is complete.
+     */
     private final Runnable onTransitionComplete;
 
     /**

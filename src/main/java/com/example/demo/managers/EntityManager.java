@@ -15,19 +15,53 @@ import java.util.stream.Collectors;
  * Implements the Singleton pattern to ensure only one instance exists.
  */
 public class EntityManager {
+    /**
+     * The singleton instance of the EntityManager.
+     */
     private static EntityManager instance;
+
+    /**
+     * The current root group for the game entities.
+     */
     private static Group currentRoot;
 
+    /**
+     * The list of friendly units in the game.
+     */
     private final List<ActiveActorDestructible> friendlyUnits;
+
+    /**
+     * The list of enemy units in the game.
+     */
     private final List<ActiveActorDestructible> enemyUnits;
+
+    /**
+     * The list of user projectiles in the game.
+     */
     private final List<ActiveActorDestructible> userProjectiles;
+
+    /**
+     * The list of enemy projectiles in the game.
+     */
     private final List<ActiveActorDestructible> enemyProjectiles;
+
+    /**
+     * The map of actor hitboxes.
+     */
     private final Map<ActiveActorDestructible, Rectangle> actorHitboxes;
+
+    /**
+     * The root group for the game entities.
+     */
     private Group root;
+
+    /**
+     * The list of listeners for when an enemy is destroyed.
+     */
     private final List<Consumer<ActiveActorDestructible>> enemyDestroyedListeners;
 
     /**
-     * Private constructor for Singleton pattern
+     * Private constructor for Singleton pattern.
      *
      * @param root the root group for the game entities.
      */
@@ -45,8 +79,8 @@ public class EntityManager {
      * Gets the singleton instance of EntityManager.
      * Creates a new instance if none exists or if the root group has changed.
      *
-     * @param root the root group for the game entities
-     * @return the EntityManager instance
+     * @param root the root group for the game entities.
+     * @return the EntityManager instance.
      */
     public static synchronized EntityManager getInstance(Group root) {
         if (instance == null || currentRoot != root) {
@@ -68,11 +102,10 @@ public class EntityManager {
         enemyDestroyedListeners.clear();
     }
 
-
     /**
-     * Updates the root group if needed (for example, when switching levels)
+     * Updates the root group if needed (for example, when switching levels).
      *
-     * @param newRoot the new root group
+     * @param newRoot the new root group.
      */
     public void updateRoot(Group newRoot) {
         this.root = newRoot;
@@ -137,7 +170,6 @@ public class EntityManager {
     private void updateActorList(List<ActiveActorDestructible> actors) {
         actors.forEach(actor -> {
             actor.updateActor();
-//            updateHitbox(actor);
         });
     }
 

@@ -25,6 +25,7 @@
 #### <ins>Environment Setup
 1. **Install Java Development Kit (JDK)**
     - Download and install JDK 21 from [Oracle](https://www.oracle.com/java/technologies/downloads/) or use OpenJDK
+    - Follow this tutorial link: https://www.makeuseof.com/java-home-variable-windows-11/
     - Set JAVA_HOME environment variable or add to system PATH:
       ```bash
       # Windows
@@ -156,6 +157,7 @@
 #### 13. Added a settings page to adjust music and sound effects volume.
 #### 14. Added destruction effects for the user plane and enemy planes.
 #### 15. Added a bullet display to show the user's remaining bullets and reload system.
+#### 16. Styled fxml files with CSS.
 
 
 ### <ins>3.2 Implemented but Not Working Properly</ins>
@@ -389,6 +391,17 @@
 #### 3. Replaced observer and observable implementations with listeners.
 #### 4. Readjusted and cropped image sizes to fix irregular hit-box issues.
 #### 5. Organized files into relevant packages.
+C:.
+├───actors
+│   ├───factory
+│   ├───planes
+│   └───projectiles
+├───config
+├───controller
+├───levels
+├───managers
+└───view
+
 #### 6. Deleted redundant code.
 #### 7. Fixed shield not showing issue in the boss level.
 #### 8. Fixed kill count issue with collisions and penetrations.

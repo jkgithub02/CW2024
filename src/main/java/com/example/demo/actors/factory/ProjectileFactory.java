@@ -6,16 +6,24 @@ import com.example.demo.actors.projectiles.UserProjectile;
 import com.example.demo.actors.projectiles.EnemyProjectile;
 
 /**
- * Factory class for creating different types of projectiles.
+ * Factory class for creating different types of projectiles in the game.
+ * Implements the Factory pattern to encapsulate projectile creation logic.
+ * 
+ * @see AbstractActorFactory
+ * @see ActiveActorDestructible
  */
 public class ProjectileFactory extends AbstractActorFactory {
     /**
      * Enum representing the types of projectiles that can be created.
+     * Each type corresponds to a specific projectile class implementation.
      */
     public enum ProjectileType {
-        USER,   // UserProjectile
-        ENEMY,  // EnemyProjectile
-        BOSS    // BossProjectile
+        /** Player-fired projectiles */
+        USER,   
+        /** Enemy-fired projectiles */
+        ENEMY,  
+        /** Boss-fired projectiles */
+        BOSS    
     }
 
     private final ProjectileType type;
@@ -23,23 +31,23 @@ public class ProjectileFactory extends AbstractActorFactory {
     /**
      * Constructs a ProjectileFactory with the specified projectile type.
      *
-     * @param type the type of projectile to create.
+     * @param type the type of projectile to create
      */
     public ProjectileFactory(ProjectileType type) {
         super(switch (type) {
             case USER -> 10;   // UserProjectile.IMAGE_HEIGHT
             case ENEMY -> 50;  // EnemyProjectile.IMAGE_HEIGHT
             case BOSS -> 75;   // BossProjectile.IMAGE_HEIGHT
-        }); // Different heights for user/enemy projectiles
+        });
         this.type = type;
     }
 
     /**
-     * Creates a projectile actor at the specified coordinates.
+     * Creates a new projectile actor at the specified coordinates.
      *
-     * @param x the x-coordinate of the actor.
-     * @param y the y-coordinate of the actor.
-     * @return the created projectile actor.
+     * @param x the x-coordinate of the actor
+     * @param y the y-coordinate of the actor
+     * @return a new projectile instance of the configured type
      */
     @Override
     public ActiveActorDestructible createActor(double x, double y) {

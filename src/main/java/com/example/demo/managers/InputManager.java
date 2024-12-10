@@ -12,16 +12,58 @@ import java.util.Set;
 
 /**
  * Manages user input and updates the state of the user plane and projectiles.
+ *
+ * @see com.example.demo.actors.ActiveActorDestructible
+ * @see com.example.demo.actors.planes.UserPlane
+ * @see com.example.demo.config.GameState
+ * @see javafx.scene.Group
+ * @see javafx.scene.input.KeyCode
+ * @see javafx.scene.image.ImageView
  */
 public class InputManager {
+    /**
+     * The set of currently pressed keys.
+     */
     private final Set<KeyCode> pressedKeys;
+
+    /**
+     * The user's plane.
+     */
     private final UserPlane user;
+
+    /**
+     * The background image view.
+     */
     private final ImageView background;
+
+    /**
+     * The root group of the scene.
+     */
     private final Group root;
+
+    /**
+     * The list of user projectiles.
+     */
     private final List<ActiveActorDestructible> userProjectiles;
+
+    /**
+     * The current game state.
+     */
     private GameState gameState = GameState.ACTIVE;
+
+    /**
+     * The key bindings manager.
+     */
     private final KeyBindingsManager keyBindingsManager;
+
+    /**
+     * Indicates if the plane is moving vertically.
+     */
     private boolean isMovingVertically = false;
+
+    /**
+     * Indicates if the plane is moving horizontally.
+     */
     private boolean isMovingHorizontally = false;
 
 
@@ -68,7 +110,7 @@ public class InputManager {
     private void fireProjectile() {
         if (gameState == GameState.ACTIVE) {
             ActiveActorDestructible projectile = user.fireProjectile();
-            if (projectile != null) {  // Add this null check
+            if (projectile != null) {
                 root.getChildren().add(projectile);
                 userProjectiles.add(projectile);
             }
@@ -78,7 +120,6 @@ public class InputManager {
     /**
      * Updates the movement of the user's plane based on the pressed keys.
      */
-
     public void updateUserPlaneMovement() {
         if (gameState == GameState.ACTIVE) {
             KeyCode upKey = keyBindingsManager.getBinding("UP");
@@ -128,6 +169,7 @@ public class InputManager {
         isMovingVertically = false;
         isMovingHorizontally = false;
     }
+
     /**
      * Sets the game state.
      *

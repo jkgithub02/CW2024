@@ -11,12 +11,29 @@ import java.util.Map;
  * Implements the Singleton design pattern to ensure only one instance exists.
  */
 public class SoundManager {
-    // Singleton instance
+    /**
+     * Singleton instance of the SoundManager.
+     */
     private static SoundManager instance;
 
+    /**
+     * Map of music players for different background music tracks.
+     */
     private final Map<String, MediaPlayer> musicPlayers;
+
+    /**
+     * Map of audio clips for different shooting sounds.
+     */
     private final Map<String, AudioClip> shootSounds;
+
+    /**
+     * Map of audio clips for different damage sounds.
+     */
     private final Map<String, AudioClip> damageSounds;
+
+    /**
+     * Map of audio clips for different game state sounds.
+     */
     private final Map<String, AudioClip> gameStateSounds;
 
     private final static String LEVEL_BACKGROUND_MUSIC_FILE_PATH = "/music/fightmusic.mp3";
@@ -30,10 +47,19 @@ public class SoundManager {
     private final static String GAME_OVER_SOUND_FILE_PATH = "/music/gameover.wav";
     private final static String VICTORY_SOUND_FILE_PATH = "/music/victory.wav";
 
+    /**
+     * Volume for background music (0.0 to 1.0).
+     */
     private double backgroundVolume = 1.0;
+
+    /**
+     * Volume for sound effects (0.0 to 1.0).
+     */
     private double effectsVolume = 1.0;
 
-    // Make constructor private
+    /**
+     * Private constructor to prevent instantiation.
+     */
     private SoundManager() {
         musicPlayers = new HashMap<>();
         shootSounds = new HashMap<>();
@@ -105,6 +131,12 @@ public class SoundManager {
         shootSounds.put(key, audioClip);
     }
 
+    /**
+     * Loads a game state sound from the specified file path and associates it with the given key.
+     *
+     * @param key the key to associate with the game state sound.
+     * @param soundFilePath the file path of the game state sound.
+     */
     private void loadGameStateSound(String key, String soundFilePath) {
         AudioClip audioClip = new AudioClip(getClass().getResource(soundFilePath).toString());
         gameStateSounds.put(key, audioClip);
@@ -170,6 +202,9 @@ public class SoundManager {
         }
     }
 
+    /**
+     * Plays the game over sound.
+     */
     public void playGameOverSound() {
         stopAllBackgroundMusic(); // Stop background music first
         AudioClip gameOverSound = gameStateSounds.get("gameover");
@@ -179,6 +214,9 @@ public class SoundManager {
         }
     }
 
+    /**
+     * Plays the victory sound.
+     */
     public void playVictorySound() {
         stopAllBackgroundMusic(); // Stop background music first
         AudioClip victorySound = gameStateSounds.get("victory");

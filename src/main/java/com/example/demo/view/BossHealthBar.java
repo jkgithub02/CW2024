@@ -8,10 +8,25 @@ import javafx.scene.text.Text;
 /**
  * Represents the health bar for a boss character in the game.
  * Displays the health as a progress bar with a text overlay showing the actual health numbers.
+ *
+ * @see javafx.scene.control.ProgressBar
+ * @see javafx.scene.layout.StackPane
+ * @see javafx.scene.text.Text
  */
 public class BossHealthBar extends StackPane {
+    /**
+     * The progress bar representing the boss's health.
+     */
     private final ProgressBar healthBar;
+
+    /**
+     * The text displaying the actual health numbers.
+     */
     private final Text healthText;
+
+    /**
+     * The maximum health of the boss.
+     */
     private final int maxHealth;
 
     /**

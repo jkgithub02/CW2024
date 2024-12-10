@@ -24,33 +24,130 @@ import java.util.*;
 
 /**
  * Abstract class representing a parent level in the game.
+ *
+ * @see com.example.demo.actors.ActiveActorDestructible
+ * @see com.example.demo.actors.planes.UserPlane
+ * @see com.example.demo.config.GameConfig
+ * @see com.example.demo.config.GameState
+ * @see com.example.demo.managers.EntityManager
+ * @see com.example.demo.managers.CollisionManager
+ * @see com.example.demo.managers.InputManager
+ * @see com.example.demo.managers.PauseManager
+ * @see com.example.demo.managers.GameInitializer
+ * @see com.example.demo.managers.NavigationManager
+ * @see com.example.demo.managers.SoundManager
+ * @see com.example.demo.view.LevelView
  */
 public abstract class LevelParent {
 
+    /**
+     * The height adjustment for the screen.
+     */
     private static final double SCREEN_HEIGHT_ADJUSTMENT = 150;
+
+    /**
+     * The delay in milliseconds for the game loop.
+     */
     private static final int MILLISECOND_DELAY = 50;
+
+    /**
+     * The height of the screen.
+     */
     private final double screenHeight;
+
+    /**
+     * The width of the screen.
+     */
     private final double screenWidth;
+
+    /**
+     * The maximum Y position for enemies.
+     */
     private final double enemyMaximumYPosition;
 
+    /**
+     * The root group for the scene.
+     */
     private final Group root;
+
+    /**
+     * The timeline for the game loop.
+     */
     private final Timeline timeline;
+
+    /**
+     * The user-controlled plane.
+     */
     private final UserPlane user;
+
+    /**
+     * The scene for the level.
+     */
     private final Scene scene;
+
+    /**
+     * The background image for the level.
+     */
     private final ImageView background;
+
+    /**
+     * The entity manager for managing game entities.
+     */
     private final EntityManager entityManager;
 
+    /**
+     * The view for the level.
+     */
     private LevelView levelView;
+
+    /**
+     * The property for the next level.
+     */
     private final StringProperty nextLevelProperty = new SimpleStringProperty();
+
+    /**
+     * The set of pressed keys.
+     */
     private final Set<KeyCode> pressedKeys = new HashSet<>();
+
+    /**
+     * The map of actor hitboxes.
+     */
     private Map<ActiveActorDestructible, Rectangle> actorHitboxes = new HashMap<>();
 
+    /**
+     * The collision manager for handling collisions.
+     */
     private final CollisionManager collisionManager;
+
+    /**
+     * The input manager for handling user input.
+     */
     private final InputManager inputManager;
+
+    /**
+     * The pause manager for handling game pauses.
+     */
     private final PauseManager pauseHandler;
+
+    /**
+     * The game initializer for initializing the game.
+     */
     private final GameInitializer gameInitializer;
+
+    /**
+     * The navigation manager for handling navigation.
+     */
     private final NavigationManager navigationManager;
+
+    /**
+     * The sound manager for handling sounds.
+     */
     private final SoundManager soundManager;
+
+    /**
+     * The global root group.
+     */
     private static Group globalRoot;
 
     /**
@@ -81,8 +178,8 @@ public abstract class LevelParent {
                 root,
                 this::pauseGame,
                 this::resumeGame,
-                this::goToMainMenu,    // Add main menu action
-                this::restartLevel     // Add restart action
+                this::goToMainMenu,
+                this::restartLevel
         );
         this.gameInitializer = new GameInitializer(root, scene, background, user, levelView, pauseHandler);
         this.navigationManager = new NavigationManager(scene);
@@ -118,7 +215,6 @@ public abstract class LevelParent {
      */
     protected abstract LevelView instantiateLevelView();
 
-    /**
     /**
      * Initializes the scene for the level.
      *
@@ -380,10 +476,20 @@ public abstract class LevelParent {
         navigationManager.showGameOverScreen(this.getClass());
     }
 
+    /**
+     * Sets the global root group.
+     *
+     * @param root the root group to set.
+     */
     public static void setGlobalRoot(Group root) {
         globalRoot = root;
     }
 
+    /**
+     * Gets the global root group.
+     *
+     * @return the global root group.
+     */
     public static Group getGlobalRoot() {
         return globalRoot;
     }

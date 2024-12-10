@@ -8,15 +8,30 @@ import java.util.List;
 
 /**
  * Manages collision detection and handling between different game entities.
+ *
+ * @see com.example.demo.actors.ActiveActorDestructible
+ * @see com.example.demo.actors.DestructionType
+ * @see com.example.demo.actors.planes.FighterPlane
  */
 public class CollisionManager {
 
+    /**
+     * The sound manager for handling game sounds.
+     */
     private final SoundManager soundManager;
 
+    /**
+     * Constructs a CollisionManager with the specified sound manager.
+     *
+     * @param soundManager the sound manager to use.
+     */
     public CollisionManager(SoundManager soundManager) {
         this.soundManager = soundManager;
     }
 
+    /**
+     * Constructs a CollisionManager with the default sound manager.
+     */
     public CollisionManager() {
         this(SoundManager.getInstance());
     }

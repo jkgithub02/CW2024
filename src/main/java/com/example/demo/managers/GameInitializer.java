@@ -8,14 +8,43 @@ import javafx.scene.image.ImageView;
 
 /**
  * Handles the initialization of the game.
+ *
+ * @see com.example.demo.actors.planes.UserPlane
+ * @see com.example.demo.view.LevelView
+ * @see javafx.scene.Group
+ * @see javafx.scene.Scene
+ * @see javafx.scene.image.ImageView
  */
 public class GameInitializer {
 
+    /**
+     * The root group of the scene.
+     */
     private final Group root;
+
+    /**
+     * The scene of the game.
+     */
     private final Scene scene;
+
+    /**
+     * The background image view.
+     */
     private final ImageView background;
+
+    /**
+     * The user's plane.
+     */
     private final UserPlane user;
+
+    /**
+     * The view for the level.
+     */
     private final LevelView levelView;
+
+    /**
+     * The handler for pausing the game.
+     */
     private final PauseManager pauseHandler;
 
     /**
@@ -57,5 +86,4 @@ public class GameInitializer {
         background.setFitWidth(scene.getWidth());
         root.getChildren().add(background);
     }
-
 }

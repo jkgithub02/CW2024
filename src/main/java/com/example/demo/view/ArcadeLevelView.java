@@ -5,11 +5,29 @@ import javafx.scene.Group;
 
 /**
  * Represents the view for an arcade level in the game.
+ *
+ * @see com.example.demo.config.GameConfig
+ * @see com.example.demo.view.ArcadeKillCountDisplay
  */
 public class ArcadeLevelView extends LevelView {
+    /**
+     * The x-coordinate position for the kill count display.
+     */
     private static final double KILL_COUNT_X_POSITION = 1100;
+
+    /**
+     * The y-coordinate position for the kill count display.
+     */
     private static final double KILL_COUNT_Y_POSITION = 25;
+
+    /**
+     * The root group of the scene.
+     */
     private final Group root;
+
+    /**
+     * The kill count display for the arcade level.
+     */
     private final ArcadeKillCountDisplay killCountDisplay;
 
     /**

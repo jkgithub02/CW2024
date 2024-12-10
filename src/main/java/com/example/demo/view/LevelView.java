@@ -4,19 +4,61 @@ import javafx.scene.Group;
 
 /**
  * Represents the view for a level in the game, including displays for hearts, kill count, and bullets.
+ *
+ * @see com.example.demo.view.HeartDisplay
+ * @see com.example.demo.view.KillCountDisplay
+ * @see com.example.demo.view.BulletDisplay
  */
 public class LevelView {
 
+	/**
+	 * The x-coordinate position for the heart display.
+	 */
 	private static final double HEART_DISPLAY_X_POSITION = 550;
-	private static final double HEART_DISPLAY_Y_POSITION = 25;
-	private static final double KILL_COUNT_X_POSITION = 1100;
-	private static final double KILL_COUNT_Y_POSITION = 25;
-	private static final double BULLET_DISPLAY_X_POSITION = 35; // New position for bullet display
-	private static final double BULLET_DISPLAY_Y_POSITION = 50; // Align with other displays
 
+	/**
+	 * The y-coordinate position for the heart display.
+	 */
+	private static final double HEART_DISPLAY_Y_POSITION = 25;
+
+	/**
+	 * The x-coordinate position for the kill count display.
+	 */
+	private static final double KILL_COUNT_X_POSITION = 1100;
+
+	/**
+	 * The y-coordinate position for the kill count display.
+	 */
+	private static final double KILL_COUNT_Y_POSITION = 25;
+
+	/**
+	 * The x-coordinate position for the bullet display.
+	 */
+	private static final double BULLET_DISPLAY_X_POSITION = 35;
+
+	/**
+	 * The y-coordinate position for the bullet display.
+	 */
+	private static final double BULLET_DISPLAY_Y_POSITION = 50;
+
+	/**
+	 * The root group of the scene.
+	 */
 	private final Group root;
+
+	/**
+	 * The heart display for the level.
+	 */
 	private final HeartDisplay heartDisplay;
+
+	/**
+	 * The kill count display for the level.
+	 */
 	private final KillCountDisplay killCountDisplay;
+
+	/**
+	 * The bullet display for the level.
+	 */
 	private final BulletDisplay bulletDisplay;
 
 	/**
@@ -57,11 +99,12 @@ public class LevelView {
 		root.getChildren().add(killCountDisplay.getContainer());
 	}
 
+	/**
+	 * Shows the bullet display by adding it to the root group.
+	 */
 	public void showBulletDisplay() {
 		root.getChildren().add(bulletDisplay.getContainer());
 	}
-
-
 
 	/**
 	 * Removes hearts from the display based on the remaining number of hearts.

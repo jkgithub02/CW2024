@@ -2,6 +2,8 @@ package com.example.demo.view;
 
 /**
  * Displays the kill count in the arcade mode.
+ *
+ * @see com.example.demo.view.KillCountDisplay
  */
 public class ArcadeKillCountDisplay extends KillCountDisplay {
 

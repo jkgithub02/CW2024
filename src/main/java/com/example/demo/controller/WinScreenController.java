@@ -9,11 +9,25 @@ import javafx.stage.Stage;
 
 /**
  * Controller class for managing the win screen in the game.
+ *
+ * @see com.example.demo.levels.LevelOne
+ * @see com.example.demo.managers.NavigationManager
  */
 public class WinScreenController {
+    /**
+     * The root pane of the win screen.
+     */
     @FXML
     private StackPane winRoot;
+
+    /**
+     * The primary stage of the application.
+     */
     private Stage stage;
+
+    /**
+     * The base level class to restart.
+     */
     private Class<?> baseLevelClass = LevelOne.class;
 
     /**

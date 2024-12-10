@@ -8,30 +8,120 @@ import java.util.*;
 
 /**
  * Represents a boss enemy in the game, which is a type of FighterPlane.
+ *
+ * @see FighterPlane
+ * @see ActiveActorDestructible
  */
 public class Boss extends FighterPlane {
 
+	/**
+	 * The image name for the boss plane.
+	 */
 	private static final String IMAGE_NAME = "bossplane.png";
+
+	/**
+	 * The initial X position of the boss plane.
+	 */
 	private static final double INITIAL_X_POSITION = 950.0;
+
+	/**
+	 * The initial Y position of the boss plane.
+	 */
 	private static final double INITIAL_Y_POSITION = 400;
+
+	/**
+	 * The Y position offset for the boss plane projectile.
+	 */
 	private static final double PROJECTILE_Y_POSITION_OFFSET = 20.0;
+
+	/**
+	 * The fire rate of the boss plane.
+	 */
 	private static final double BOSS_FIRE_RATE = .05;
+
+	/**
+	 * The probability of the boss plane activating its shield.
+	 */
 	private static final double BOSS_SHIELD_PROBABILITY = .002;
+
+	/**
+	 * The height of the boss plane image.
+	 */
 	private static final int IMAGE_HEIGHT = 60;
+
+	/**
+	 * The vertical velocity of the boss plane.
+	 */
 	private static final int VERTICAL_VELOCITY = 8;
+
+	/**
+	 * The health of the boss plane.
+	 */
 	private static final int HEALTH = 50;
+
+	/**
+	 * The frequency of moves per cycle for the boss plane.
+	 */
 	private static final int MOVE_FREQUENCY_PER_CYCLE = 5;
+
+	/**
+	 * The value representing zero movement.
+	 */
 	private static final int ZERO = 0;
+
+	/**
+	 * The maximum number of frames the boss plane can move in the same direction.
+	 */
 	private static final int MAX_FRAMES_WITH_SAME_MOVE = 10;
+
+	/**
+	 * The upper bound for the Y position of the boss plane.
+	 */
 	private static final int Y_POSITION_UPPER_BOUND = 75;
+
+	/**
+	 * The lower bound for the Y position of the boss plane.
+	 */
 	private static final int Y_POSITION_LOWER_BOUND = 630;
+
+	/**
+	 * The maximum number of frames the boss plane can have its shield activated.
+	 */
 	private static final int MAX_FRAMES_WITH_SHIELD = 500;
+
+	/**
+	 * The move pattern for the boss plane.
+	 */
 	private final List<Integer> movePattern;
+
+	/**
+	 * Indicates whether the boss plane is shielded.
+	 */
 	private boolean isShielded;
+
+	/**
+	 * The number of consecutive moves in the same direction.
+	 */
 	private int consecutiveMovesInSameDirection;
+
+	/**
+	 * The index of the current move in the move pattern.
+	 */
 	private int indexOfCurrentMove;
+
+	/**
+	 * The number of frames with the shield activated.
+	 */
 	private int framesWithShieldActivated;
+
+	/**
+	 * The projectile factory for creating projectiles.
+	 */
 	private final ProjectileFactory projectileFactory;
+
+	/**
+	 * The sound manager for playing sounds.
+	 */
 	private final SoundManager soundManager = SoundManager.getInstance();
 
 	/**

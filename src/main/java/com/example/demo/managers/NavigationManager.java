@@ -20,8 +20,19 @@ import java.net.URL;
  * Manages navigation between different screens and levels in the game.
  */
 public class NavigationManager {
+    /**
+     * The current scene of the game.
+     */
     private final Scene currentScene;
+
+    /**
+     * The width of the game screen.
+     */
     private final double screenWidth = GameConfig.SCREEN_WIDTH;
+
+    /**
+     * The height of the game screen.
+     */
     private final double screenHeight = GameConfig.SCREEN_HEIGHT;
 
     /**

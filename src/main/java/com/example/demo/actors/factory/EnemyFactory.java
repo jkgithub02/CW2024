@@ -6,16 +6,23 @@ import com.example.demo.actors.planes.EnemyPlaneTwo;
 import com.example.demo.actors.planes.Boss;
 
 /**
- * Factory class for creating different types of enemy actors.
+ * Factory class for creating different types of enemy actors in the game.
+ * Implements the Factory pattern to encapsulate enemy creation logic.
+ * 
+ * @see AbstractActorFactory
+ * @see ActiveActorDestructible
  */
 public class EnemyFactory extends AbstractActorFactory {
     /**
      * Enum representing the types of enemies that can be created.
      */
     public enum EnemyType {
-        ENEMYPLANEONE,      // Regular EnemyPlane
-        ENEMYPLANETWO,      // EnemyPlaneTwo
-        BOSS                // Boss
+        /** Regular enemy plane type */
+        ENEMYPLANEONE,
+        /** Advanced enemy plane type */
+        ENEMYPLANETWO,
+        /** Boss enemy type */
+        BOSS
     }
 
     private final EnemyType type;
@@ -23,7 +30,7 @@ public class EnemyFactory extends AbstractActorFactory {
     /**
      * Constructs an EnemyFactory with the specified enemy type.
      *
-     * @param type the type of enemy to create.
+     * @param type the type of enemy to create
      */
     public EnemyFactory(EnemyType type) {
         super(switch(type) {
@@ -35,11 +42,11 @@ public class EnemyFactory extends AbstractActorFactory {
     }
 
     /**
-     * Creates an enemy actor at the specified coordinates.
+     * Creates a new enemy actor at the specified coordinates.
      *
-     * @param x the x-coordinate of the actor.
-     * @param y the y-coordinate of the actor.
-     * @return the created enemy actor.
+     * @param x the x-coordinate of the actor
+     * @param y the y-coordinate of the actor
+     * @return a new enemy instance of the configured type
      */
     @Override
     public ActiveActorDestructible createActor(double x, double y) {
@@ -51,10 +58,10 @@ public class EnemyFactory extends AbstractActorFactory {
     }
 
     /**
-     * Creates a boss actor. This method should only be called if the factory is configured for boss creation.
+     * Creates a new boss actor with predefined positioning.
      *
-     * @return the created boss actor.
-     * @throws IllegalStateException if the factory is not configured for boss creation.
+     * @return a new Boss instance
+     * @throws IllegalStateException if the factory is not configured for boss creation
      */
     public Boss createBoss() {
         if (type != EnemyType.BOSS) {

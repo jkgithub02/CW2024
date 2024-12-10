@@ -7,10 +7,19 @@ import java.util.Objects;
 
 /**
  * Represents an image of a shield in the game.
+ *
+ * @see javafx.scene.image.ImageView
  */
 public class ShieldImage extends ImageView {
 
+	/**
+	 * The path to the shield image.
+	 */
 	private static final String IMAGE_NAME = "/com/example/demo/images/shield.png";
+
+	/**
+	 * The size of the shield image.
+	 */
 	private static final int SHIELD_SIZE = 100;
 
 	/**

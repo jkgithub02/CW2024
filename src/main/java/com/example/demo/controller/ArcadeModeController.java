@@ -5,9 +5,19 @@ import javafx.stage.Stage;
 
 /**
  * Controller class for managing the arcade mode in the game.
+ *
+ * @see com.example.demo.managers.SoundManager
+ * @see javafx.stage.Stage
  */
 public class ArcadeModeController {
+    /**
+     * The primary stage of the application.
+     */
     private final Stage stage;
+
+    /**
+     * The sound manager instance.
+     */
     private final SoundManager soundManager;
 
     /**
@@ -24,6 +34,7 @@ public class ArcadeModeController {
      * Launches the arcade mode by initializing and starting the arcade level.
      *
      * @throws Exception if an error occurs during the launch of the arcade mode.
+     * @see GameController#goToLevel(String, String)
      */
     public void launchArcadeMode() throws Exception {
         // Create and start arcade level using your existing level infrastructure
