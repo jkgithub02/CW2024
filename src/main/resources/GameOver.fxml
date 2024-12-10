@@ -34,7 +34,7 @@
         <Button fx:id="restartButton"
                 onAction="#handleRestart"
                 styleClass="menu-button"
-                text="Restart Game" />
+                text="Restart Level" />
 
         <Button fx:id="mainMenuButton"
                 onAction="#handleMainMenu"
