@@ -125,3 +125,19 @@
     -fx-text-alignment: center;
 }
 
+.key-binding-button {
+    -fx-min-width: 150px;
+    -fx-min-height: 30px;
+    -fx-background-color: #4a4a4a;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.key-binding-button:hover {
+    -fx-background-color: #5a5a5a;
+}
+
+.settings-label {
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+}

@@ -20,6 +20,10 @@ public class InputManager {
     private final Group root;
     private final List<ActiveActorDestructible> userProjectiles;
     private GameState gameState = GameState.ACTIVE;
+    private final KeyBindingsManager keyBindingsManager;
+    private boolean isMovingVertically = false;
+    private boolean isMovingHorizontally = false;
+
 
     /**
      * Constructs an InputManager with the specified parameters.
@@ -36,6 +40,7 @@ public class InputManager {
         this.background = background;
         this.root = root;
         this.userProjectiles = userProjectiles;
+        this.keyBindingsManager = KeyBindingsManager.getInstance();
     }
 
     /**
@@ -45,7 +50,8 @@ public class InputManager {
         background.setOnKeyPressed(e -> {
             if (gameState == GameState.ACTIVE) {
                 pressedKeys.add(e.getCode());
-                if (e.getCode() == KeyCode.SPACE) fireProjectile();
+                KeyCode fireKey = keyBindingsManager.getBinding("FIRE");
+                if (e.getCode() == fireKey) fireProjectile();
             }
         });
         background.setOnKeyReleased(e -> {
@@ -72,14 +78,41 @@ public class InputManager {
     /**
      * Updates the movement of the user's plane based on the pressed keys.
      */
+
     public void updateUserPlaneMovement() {
         if (gameState == GameState.ACTIVE) {
-            if (pressedKeys.contains(KeyCode.UP)) user.moveUp();
-            if (pressedKeys.contains(KeyCode.DOWN)) user.moveDown();
-            if (pressedKeys.contains(KeyCode.LEFT)) user.moveLeft();
-            if (pressedKeys.contains(KeyCode.RIGHT)) user.moveRight();
-            if (!pressedKeys.contains(KeyCode.UP) && !pressedKeys.contains(KeyCode.DOWN)) user.stopVertical();
-            if (!pressedKeys.contains(KeyCode.LEFT) && !pressedKeys.contains(KeyCode.RIGHT)) user.stopHorizontal();
+            KeyCode upKey = keyBindingsManager.getBinding("UP");
+            KeyCode downKey = keyBindingsManager.getBinding("DOWN");
+            KeyCode leftKey = keyBindingsManager.getBinding("LEFT");
+            KeyCode rightKey = keyBindingsManager.getBinding("RIGHT");
+
+            // Handle vertical movement
+            if (pressedKeys.contains(upKey) && !pressedKeys.contains(downKey)) {
+                user.moveUp();
+                isMovingVertically = true;
+            } else if (pressedKeys.contains(downKey) && !pressedKeys.contains(upKey)) {
+                user.moveDown();
+                isMovingVertically = true;
+            } else {
+                if (isMovingVertically) {
+                    user.stopVertical();
+                    isMovingVertically = false;
+                }
+            }
+
+            // Handle horizontal movement
+            if (pressedKeys.contains(leftKey) && !pressedKeys.contains(rightKey)) {
+                user.moveLeft();
+                isMovingHorizontally = true;
+            } else if (pressedKeys.contains(rightKey) && !pressedKeys.contains(leftKey)) {
+                user.moveRight();
+                isMovingHorizontally = true;
+            } else {
+                if (isMovingHorizontally) {
+                    user.stopHorizontal();
+                    isMovingHorizontally = false;
+                }
+            }
         } else {
             stopAllMovement();
         }
@@ -92,8 +125,9 @@ public class InputManager {
         pressedKeys.clear();
         user.stopVertical();
         user.stopHorizontal();
+        isMovingVertically = false;
+        isMovingHorizontally = false;
     }
-
     /**
      * Sets the game state.
      *

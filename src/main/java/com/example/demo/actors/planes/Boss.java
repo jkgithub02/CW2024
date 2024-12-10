@@ -12,7 +12,7 @@ import java.util.*;
 public class Boss extends FighterPlane {
 
 	private static final String IMAGE_NAME = "bossplane.png";
-	private static final double INITIAL_X_POSITION = 1000.0;
+	private static final double INITIAL_X_POSITION = 950.0;
 	private static final double INITIAL_Y_POSITION = 400;
 	private static final double PROJECTILE_Y_POSITION_OFFSET = 20.0;
 	private static final double BOSS_FIRE_RATE = .05;
@@ -24,7 +24,7 @@ public class Boss extends FighterPlane {
 	private static final int ZERO = 0;
 	private static final int MAX_FRAMES_WITH_SAME_MOVE = 10;
 	private static final int Y_POSITION_UPPER_BOUND = 75;
-	private static final int Y_POSITION_LOWER_BOUND = 680;
+	private static final int Y_POSITION_LOWER_BOUND = 630;
 	private static final int MAX_FRAMES_WITH_SHIELD = 500;
 	private final List<Integer> movePattern;
 	private boolean isShielded;
@@ -88,7 +88,9 @@ public class Boss extends FighterPlane {
 	 */
 	@Override
 	public void takeDamage() {
-		if (!isShielded) {
+		if (isShielded) {
+			soundManager.playDamagedSound("shield");  // Play shield block sound
+		} else {
 			super.takeDamage();
 			soundManager.playDamagedSound("enemy");
 		}
