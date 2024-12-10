@@ -20,7 +20,7 @@ public class UserProjectile extends Projectile {
 	/**
 	 * The horizontal velocity of the user projectile.
 	 */
-	private static final int HORIZONTAL_VELOCITY = 15;
+	private static final int HORIZONTAL_VELOCITY = 20;
 
 	/**
 	 * Constructs a UserProjectile with the specified initial position.
