@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.config.GameConfig;
+import com.example.demo.controller.gameControllers.ArcadeModeController;
+import com.example.demo.controller.gameControllers.GameController;
 import com.example.demo.managers.SoundManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

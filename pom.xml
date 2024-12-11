@@ -126,9 +126,14 @@
                         --add-opens com.example.demo/com.example.demo.actors.factory=ALL-UNNAMED
                         --add-opens com.example.demo/com.example.demo.config=ALL-UNNAMED
                         --add-opens com.example.demo/com.example.demo.controller=ALL-UNNAMED
+                        --add-opens com.example.demo/com.example.demo.controller.gameControllers=ALL-UNNAMED
                         --add-opens com.example.demo/com.example.demo.levels=ALL-UNNAMED
                         --add-opens com.example.demo/com.example.demo.managers=ALL-UNNAMED
+                        --add-opens com.example.demo/com.example.demo.managers.gameManagers=ALL-UNNAMED
                         --add-opens com.example.demo/com.example.demo.view=ALL-UNNAMED
+                        --add-opens com.example.demo/com.example.demo.view.arcade=ALL-UNNAMED
+                        --add-opens com.example.demo/com.example.demo.view.bosslevel=ALL-UNNAMED
+                        --add-opens com.example.demo/com.example.demo.view.effects=ALL-UNNAMED
                         --add-opens javafx.graphics/javafx.scene=ALL-UNNAMED
                         --add-exports=javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
                         --add-exports=javafx.graphics/com.sun.javafx.tk=ALL-UNNAMED

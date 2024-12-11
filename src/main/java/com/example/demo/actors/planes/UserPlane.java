@@ -2,7 +2,7 @@ package com.example.demo.actors.planes;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.factory.ProjectileFactory;
-import com.example.demo.managers.BulletManager;
+import com.example.demo.managers.gameManagers.BulletManager;
 import com.example.demo.managers.SoundManager;
 import javafx.animation.AnimationTimer;
 

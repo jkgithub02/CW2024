@@ -7,6 +7,7 @@ import com.example.demo.actors.planes.UserPlane;
 import com.example.demo.config.GameConfig;
 import com.example.demo.config.GameState;
 import com.example.demo.managers.*;
+import com.example.demo.managers.gameManagers.*;
 import com.example.demo.view.LevelView;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -29,11 +30,11 @@ import java.util.*;
  * @see com.example.demo.actors.planes.UserPlane
  * @see com.example.demo.config.GameConfig
  * @see com.example.demo.config.GameState
- * @see com.example.demo.managers.EntityManager
- * @see com.example.demo.managers.CollisionManager
- * @see com.example.demo.managers.InputManager
- * @see com.example.demo.managers.PauseManager
- * @see com.example.demo.managers.GameInitializer
+ * @see EntityManager
+ * @see CollisionManager
+ * @see InputManager
+ * @see PauseManager
+ * @see GameInitializer
  * @see com.example.demo.managers.NavigationManager
  * @see com.example.demo.managers.SoundManager
  * @see com.example.demo.view.LevelView

@@ -3,19 +3,19 @@ package com.example.demo.levels;
 import com.example.demo.actors.planes.Boss;
 import com.example.demo.config.GameConfig;
 import com.example.demo.actors.factory.EnemyFactory;
-import com.example.demo.view.BossHealthBar;
-import com.example.demo.view.LevelBossView;
+import com.example.demo.view.bosslevel.BossHealthBar;
+import com.example.demo.view.bosslevel.LevelBossView;
 import com.example.demo.view.LevelView;
-import com.example.demo.view.ShieldImage;
+import com.example.demo.view.bosslevel.ShieldImage;
 
 /**
  * Represents the boss level in the game.
  *
  * @see com.example.demo.actors.planes.Boss
  * @see com.example.demo.actors.factory.EnemyFactory
- * @see com.example.demo.view.BossHealthBar
- * @see com.example.demo.view.LevelBossView
- * @see com.example.demo.view.ShieldImage
+ * @see BossHealthBar
+ * @see LevelBossView
+ * @see ShieldImage
  */
 public class LevelBoss extends LevelParent {
 

@@ -1,7 +1,7 @@
 package com.example.demo.actors.planes;
 
 import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.view.DestructionSprite;
+import com.example.demo.view.effects.DestructionSprite;
 import com.example.demo.levels.LevelParent;
 import javafx.scene.Group;
 

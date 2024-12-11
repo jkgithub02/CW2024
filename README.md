@@ -213,36 +213,37 @@
 
 ###
 #### <ins>4.1.6 Levels</ins>
-| Class Name    | Description                                                                                                                                                                                                                                  |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ArcadeLevel` | Implements an endless arcade mode featuring wave-based progression with dynamic difficulty scaling. Includes increasing spawn rates (0.25 to 0.75), enemy count scaling (5 to 8 maximum), and leaderboard integration for score tracking.    |
-| `LevelTwo`    | Second level of the story mode requiring 10 kills to advance, featuring enhanced enemy types. Implements a 20% spawn probability system with a maximum of 7 concurrent enemies. |
+| Class Name    | Description                                                                                                                                                                                                                               |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ArcadeLevel` | Implements an endless arcade mode featuring wave-based progression with dynamic difficulty scaling. Includes increasing spawn rates (0.25 to 0.75), enemy count scaling (5 to 8 maximum), and leaderboard integration for score tracking. |
+| `LevelTwo`    | Second level of the story mode requiring 10 kills to advance, featuring enhanced enemy types. Implements a 20% spawn probability system with a maximum of 7 concurrent enemies.                                                           |
 
 ###
 #### <ins>4.1.7 Managers</ins>
-| Class Name           | Description                                                                                                                                                                                                   |
-|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `BulletManager`      | Manages ammunition system with configurable magazine size and reload mechanics. Features automatic reload timers, reload sound effects, and bullet pause/resume functionality for game state handling.        |
-| `CollisionManager`   | Handles collision detection between game entities (planes, projectiles) with specialized handling for different collision types. Integrates with SoundManager for impact audio feedback.                      |
-| `EntityManager`      | Singleton class managing game entity lifecycles including friendly/enemy units and projectiles. Provides centralized entity tracking, updates, and destruction handling with observer pattern for enemy defeats. |
-| `GameInitializer`    | Coordinates game initialization process, setting up background, UI elements, pause functionality, and core game components. Manages scene setup and initial game state configuration.                         |
-| `InputManager`       | Processes user input for player movement and actions, managing key press states and projectile firing. Implements game state-aware control system with pause functionality.                                   |
-| `LeaderboardManager` | Manages arcade mode high scores with persistent storage, maintaining top scores in descending order. Provides score loading, saving, and retrieval functionality.                                             |
-| `NavigationManager`  | Controls navigation between game screens (menus, levels, win/lose screens) with error handling and scene management. Manages level transitions and screen controller initialization.                          |
-| `PauseManager`       | Implements game pause functionality with UI overlay, handling pause/resume states and menu options. Manages ESCAPE key detection and pause menu display.                                                      |
-| `SoundManager`       | Singleton class managing audio systems including background music and sound effects. Features volume control, sound caching, and multiple audio channel management for different game events.                 |
+| Class Name           | Description                                                                                                                                                                                                                 |
+|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `BulletManager`      | Manages ammunition system with configurable magazine size and reload mechanics. Features automatic reload timers, reload sound effects, and bullet pause/resume functionality for game state handling.                      |
+| `CollisionManager`   | Handles collision detection between game entities (planes, projectiles) with specialized handling for different collision types. Integrates with SoundManager for impact audio feedback.                                    |
+| `EntityManager`      | Singleton class managing game entity lifecycles including friendly/enemy units and projectiles. Provides centralized entity tracking, updates, and destruction handling with observer pattern for enemy defeats.            |
+| `GameInitializer`    | Coordinates game initialization process, setting up background, UI elements, pause functionality, and core game components. Manages scene setup and initial game state configuration.                                       |
+| `InputManager`       | Processes user input for player movement and actions, managing key press states and projectile firing. Implements game state-aware control system with pause functionality.                                                 |
+| `KeyBindingsManager` | Singleton class managing keyboard control bindings with persistent storage. Features default bindings setup, key remapping functionality, duplicate binding prevention, and preferences storage using Java Preferences API. |
+| `LeaderboardManager` | Manages arcade mode high scores with persistent storage, maintaining top scores in descending order. Provides score loading, saving, and retrieval functionality.                                                           |
+| `NavigationManager`  | Controls navigation between game screens (menus, levels, win/lose screens) with error handling and scene management. Manages level transitions and screen controller initialization.                                        |
+| `PauseManager`       | Implements game pause functionality with UI overlay, handling pause/resume states and menu options. Manages ESCAPE key detection and pause menu display.                                                                    |
+| `SoundManager`       | Singleton class managing audio systems including background music and sound effects. Features volume control, sound caching, and multiple audio channel management for different game events.                               |
 
 ###
 #### <ins>4.1.8 View</ins>
-| Class Name               | Description                                                                                                                                                                                           |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ArcadeKillCountDisplay` | Specialized display component for arcade mode score tracking, extending KillCountDisplay with custom "Score: X" formatting instead of the standard kill counter.                                      |
-| `ArcadeLevelView`        | Extended view class for arcade mode UI, managing score display positioning and custom kill count visualization.                                              |
-| `BossHealthBar`          | Visual component displaying boss health status using a styled progress bar with color-coded health representation and numerical overlay. Features dynamic health percentage calculation. |
-| `BulletDisplay`          | UI component showing ammunition status with bullet count and reload progress bar. Implements dynamic reload animation and status text using styled JavaFX elements.                                   |
-| `DestructionSprite`      | Handles explosion animation effects using sprite sheets, featuring 9-frame animation sequence with configurable sprite size (150px) and refresh rate (100ms).                                         |
-| `KillCountDisplay`       | Base class for kill count visualization with configurable positioning and formatting. Uses styled labels for consistent text display.                                              |
-| `LevelTransitionScreen`  | Manages level transition effects with fade animations (2-second duration), displaying styled level names against black background.                                                 |
+| Class Name               | Description                                                                                                                                                                                                                 |
+|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ArcadeKillCountDisplay` | Specialized display component for arcade mode score tracking, extending KillCountDisplay with custom "Score: X" formatting instead of the standard kill counter.                                                            |
+| `ArcadeLevelView`        | Extended view class for arcade mode UI, managing score display positioning and custom kill count visualization.                                                                                                             |
+| `BossHealthBar`          | Visual component displaying boss health status using a styled progress bar with color-coded health representation and numerical overlay. Features dynamic health percentage calculation.                                    |
+| `BulletDisplay`          | UI component showing ammunition status with bullet count and reload progress bar. Implements dynamic reload animation and status text using styled JavaFX elements.                                                         |
+| `DestructionSprite`      | Handles explosion animation effects using sprite sheets, featuring 9-frame animation sequence with configurable sprite size (150px) and refresh rate (100ms).                                                               |
+| `KillCountDisplay`       | Base class for kill count visualization with configurable positioning and formatting. Uses styled labels for consistent text display.                                                                                       |
+| `LevelTransitionScreen`  | Manages level transition effects with fade animations (2-second duration), displaying styled level names against black background.                                                                                          |
 
 ## <ins>4.2 Modified Java Classes</ins>
 1. `ActiveActorDestructible.java`:
@@ -377,12 +378,12 @@
 
 ###
 14. `GameOverImage.java`:
-   - Replaced with fmxl file `GameOverScreen.fxml` and controller class `GameOverController.java`
+   - Replaced with FXML file `GameOverScreen.fxml` and controller class `GameOverController.java`
    - Followed the architecture and practice of Model View Controller (MVC) pattern
 
 ###
 15. `WinImage.java`:
-   - Replaced with fmxl file `WinScreen.fxml` and controller class `WinController.java`
+   - Replaced with FXML file `WinScreen.fxml` and controller class `WinController.java`
    - Followed the architecture and practice of Model View Controller (MVC) pattern
 
 ## <ins>4.3 Summary and Additional notes of Refactoring Process</ins>

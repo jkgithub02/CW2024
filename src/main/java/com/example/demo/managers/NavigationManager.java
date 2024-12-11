@@ -1,10 +1,10 @@
 package com.example.demo.managers;
 
 import com.example.demo.config.GameConfig;
-import com.example.demo.controller.GameController;
-import com.example.demo.controller.GameOverController;
+import com.example.demo.controller.gameControllers.GameController;
+import com.example.demo.controller.gameControllers.GameOverController;
 import com.example.demo.controller.MainMenuController;
-import com.example.demo.controller.WinScreenController;
+import com.example.demo.controller.gameControllers.WinScreenController;
 import com.example.demo.levels.LevelParent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -2,7 +2,7 @@ package com.example.demo.levels;
 
 import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.actors.factory.EnemyFactory;
-import com.example.demo.view.ArcadeLevelView;
+import com.example.demo.view.arcade.ArcadeLevelView;
 import com.example.demo.view.LevelView;
 import com.example.demo.config.GameConfig;
 import com.example.demo.managers.LeaderboardManager;
@@ -12,7 +12,7 @@ import com.example.demo.managers.LeaderboardManager;
  *
  * @see com.example.demo.actors.ActiveActorDestructible
  * @see com.example.demo.actors.factory.EnemyFactory
- * @see com.example.demo.view.ArcadeLevelView
+ * @see ArcadeLevelView
  * @see com.example.demo.managers.LeaderboardManager
  */
 public class ArcadeLevel extends LevelParent {
