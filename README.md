@@ -577,7 +577,7 @@ For a detailed commit history, please refer to the [commit log](https://github.c
   - Reinitiated merge into main branch from test branch with careful review
 3. Github Suspicious Activity
 
-   ![img.png](img.png)
+   ![GithubRepoTraffic.png](ReadmeImages/GithubRepoTraffic.png)
 - Detected unusual repository traffic through GitHub Insights
 - Multiple clone attempts from unknown sources
 - Potential plagiarism concerns raised by traffic patterns
