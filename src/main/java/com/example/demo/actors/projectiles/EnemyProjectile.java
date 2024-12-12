@@ -2,11 +2,24 @@ package com.example.demo.actors.projectiles;
 
 /**
  * Represents a projectile fired by an enemy in the game.
+ *
+ * @see Projectile
  */
 public class EnemyProjectile extends Projectile {
 
+	/**
+	 * The image name for the enemy projectile.
+	 */
 	private static final String IMAGE_NAME = "enemyFire.png";
+
+	/**
+	 * The height of the enemy projectile image.
+	 */
 	private static final int IMAGE_HEIGHT = 50;
+
+	/**
+	 * The horizontal velocity of the enemy projectile.
+	 */
 	private static final int HORIZONTAL_VELOCITY = -10;
 
 	/**

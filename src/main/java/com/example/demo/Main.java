@@ -1,8 +1,5 @@
 package com.example.demo;
 
-import java.lang.reflect.InvocationTargetException;
-import java.net.URL;
-
 import com.example.demo.config.GameConfig;
 import com.example.demo.controller.MainMenuController;
 import javafx.application.Application;
@@ -11,8 +8,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
+
 /**
- * Main class that serves as the entry point for the JavaFX application.
+ * The main entry point for all JavaFX applications.
+ *
+ * @see javafx.application.Application
+ * @see javafx.stage.Stage
  */
 public class Main extends Application {
 
@@ -34,7 +37,6 @@ public class Main extends Application {
 			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		try {
 			URL fxmlLocation = getClass().getClassLoader().getResource("MenuScreen.fxml");
-//			System.out.println("FXML Location: " + fxmlLocation);
 			FXMLLoader loader = new FXMLLoader(fxmlLocation);
 			Parent root = loader.load();
 			MainMenuController controller = loader.getController();

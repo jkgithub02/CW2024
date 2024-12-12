@@ -1,15 +1,23 @@
 package com.example.demo.actors;
 
-import javafx.geometry.Bounds;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+
 
 /**
  * Abstract class representing an active actor that can be destroyed.
+ *
+ * @see com.example.demo.actors.ActiveActor
+ * @see com.example.demo.actors.Destructible
  */
 public abstract class ActiveActorDestructible extends ActiveActor implements Destructible {
 
+	/**
+	 * Indicates whether the actor is destroyed.
+	 */
 	private boolean isDestroyed;
+
+	/**
+	 * The type of destruction.
+	 */
 	private DestructionType destructionType;
 
 	/**
@@ -86,17 +94,4 @@ public abstract class ActiveActorDestructible extends ActiveActor implements Des
 	public boolean isDestroyed() {
 		return isDestroyed;
 	}
-
-//	/**
-//	 * Returns the hitbox rectangle of the actor.
-//	 *
-//	 * @return the hitbox rectangle.
-//	 */
-//	public Rectangle getHitboxRectangle() {
-//		Bounds bounds = this.getBoundsInParent();
-//		Rectangle hitbox = new Rectangle(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight());
-//		hitbox.setStroke(Color.RED);
-//		hitbox.setFill(Color.TRANSPARENT);
-//		return hitbox;
-//	}
 }

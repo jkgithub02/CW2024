@@ -3,26 +3,75 @@ package com.example.demo.levels;
 import com.example.demo.actors.planes.Boss;
 import com.example.demo.config.GameConfig;
 import com.example.demo.actors.factory.EnemyFactory;
-import com.example.demo.view.BossHealthBar;
-import com.example.demo.view.LevelBossView;
+import com.example.demo.view.bosslevel.BossHealthBar;
+import com.example.demo.view.bosslevel.LevelBossView;
 import com.example.demo.view.LevelView;
-import com.example.demo.view.ShieldImage;
+import com.example.demo.view.bosslevel.ShieldImage;
 
 /**
  * Represents the boss level in the game.
+ *
+ * @see com.example.demo.actors.planes.Boss
+ * @see com.example.demo.actors.factory.EnemyFactory
+ * @see BossHealthBar
+ * @see LevelBossView
+ * @see ShieldImage
  */
 public class LevelBoss extends LevelParent {
 
+	/**
+	 * The background image name for the boss level.
+	 */
 	private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background3.jpg";
+
+	/**
+	 * The number of kills required to advance to the next level.
+	 */
 	private static final int KILLS_TO_ADVANCE = 1;
+
+	/**
+	 * The boss character of the level.
+	 */
 	private final Boss boss;
+
+	/**
+	 * The view for the boss level.
+	 */
 	private LevelBossView levelView;
+
+	/**
+	 * The shield image for the boss.
+	 */
 	private final ShieldImage shieldImage;
-	private static final int SHIELD_X_POSITION = 850; // X-coordinate position of the shield
-	private static final int SHIELD_Y_POSITION = 0; // Y-coordinate position of the shield
+
+	/**
+	 * The X-coordinate position of the shield.
+	 */
+	private static final int SHIELD_X_POSITION = 850;
+
+	/**
+	 * The Y-coordinate position of the shield.
+	 */
+	private static final int SHIELD_Y_POSITION = 0;
+
+	/**
+	 * The X-coordinate position of the boss health bar.
+	 */
 	private static final int HEALTH_BAR_X_POSITION = SHIELD_X_POSITION + 100;
+
+	/**
+	 * The Y-coordinate position of the boss health bar.
+	 */
 	private static final int HEALTH_BAR_Y_POSITION = 30;
+
+	/**
+	 * The factory to create enemy units.
+	 */
 	private final EnemyFactory enemyFactory;
+
+	/**
+	 * The boss health bar.
+	 */
 	private BossHealthBar bossHealthBar;
 
 	/**

@@ -1,10 +1,10 @@
 package com.example.demo.managers;
 
 import com.example.demo.config.GameConfig;
-import com.example.demo.controller.GameController;
-import com.example.demo.controller.GameOverController;
+import com.example.demo.controller.gameControllers.GameController;
+import com.example.demo.controller.gameControllers.GameOverController;
 import com.example.demo.controller.MainMenuController;
-import com.example.demo.controller.WinScreenController;
+import com.example.demo.controller.gameControllers.WinScreenController;
 import com.example.demo.levels.LevelParent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,8 +20,19 @@ import java.net.URL;
  * Manages navigation between different screens and levels in the game.
  */
 public class NavigationManager {
+    /**
+     * The current scene of the game.
+     */
     private final Scene currentScene;
+
+    /**
+     * The width of the game screen.
+     */
     private final double screenWidth = GameConfig.SCREEN_WIDTH;
+
+    /**
+     * The height of the game screen.
+     */
     private final double screenHeight = GameConfig.SCREEN_HEIGHT;
 
     /**

@@ -19,21 +19,43 @@ import java.util.List;
 
 /**
  * Controller class for managing the leaderboard screen.
+ *
+ * @see com.example.demo.managers.LeaderboardManager
+ * @see com.example.demo.managers.SoundManager
  */
 public class LeaderboardController {
+    /**
+     * The primary stage of the application.
+     */
     private Stage stage;
 
+    /**
+     * The background image of the leaderboard screen.
+     */
     @FXML
     private ImageView backgroundImage;
 
+    /**
+     * The background pane for the scores.
+     */
     @FXML
     private Pane scoreBackground;
 
+    /**
+     * The container for the scores.
+     */
     @FXML
     private VBox scoresContainer;
 
+    /**
+     * The VBox that lists the scores.
+     */
     @FXML
     private VBox scoresList;
+
+    /**
+     * The sound manager instance.
+     */
     private SoundManager soundManager;
 
     /**

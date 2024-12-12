@@ -1,6 +1,8 @@
 package com.example.demo.actors;
 
-import javafx.scene.image.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.util.Objects;
 
 /**
@@ -8,6 +10,9 @@ import java.util.Objects;
  */
 public abstract class ActiveActor extends ImageView {
 
+	/**
+	 * The location of the image resources.
+	 */
 	private static final String IMAGE_LOCATION = "/com/example/demo/images/";
 
 	/**

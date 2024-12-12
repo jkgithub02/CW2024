@@ -5,12 +5,33 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.prefs.Preferences;
 
+/**
+ * Manages key bindings for user actions in the game.
+ */
 public class KeyBindingsManager {
+    /**
+     * The singleton instance of KeyBindingsManager.
+     */
     private static KeyBindingsManager instance;
+
+    /**
+     * A map associating actions with their respective key codes.
+     */
     private final Map<String, KeyCode> keyBindings;
-    private final Map<KeyCode, String> reverseBindings; // For checking duplicate bindings
+
+    /**
+     * A map for reverse look-up of key codes to actions, used for checking duplicate bindings.
+     */
+    private final Map<KeyCode, String> reverseBindings;
+
+    /**
+     * User preferences for storing key bindings.
+     */
     private final Preferences preferences;
 
+    /**
+     * Private constructor to initialize key bindings and preferences.
+     */
     private KeyBindingsManager() {
         keyBindings = new HashMap<>();
         reverseBindings = new HashMap<>();
@@ -18,6 +39,11 @@ public class KeyBindingsManager {
         ensureDefaultBindings();
     }
 
+    /**
+     * Returns the singleton instance of KeyBindingsManager.
+     *
+     * @return the singleton instance.
+     */
     public static KeyBindingsManager getInstance() {
         if (instance == null) {
             instance = new KeyBindingsManager();
@@ -25,8 +51,10 @@ public class KeyBindingsManager {
         return instance;
     }
 
+    /**
+     * Ensures that default key bindings are set if no bindings exist.
+     */
     public void ensureDefaultBindings() {
-        // Only set defaults if no bindings exist
         if (!keyBindings.containsKey("UP")) {
             setBinding("UP", KeyCode.valueOf(preferences.get("UP", KeyCode.UP.name())));
         }
@@ -44,10 +72,14 @@ public class KeyBindingsManager {
         }
     }
 
-
+    /**
+     * Gets the key code associated with a specified action.
+     *
+     * @param action the action to get the key code for.
+     * @return the key code associated with the action.
+     */
     public KeyCode getBinding(String action) {
         KeyCode keyCode = keyBindings.get(action);
-        // Return default binding if none exists
         if (keyCode == null) {
             switch (action) {
                 case "UP": return KeyCode.UP;
@@ -60,31 +92,38 @@ public class KeyBindingsManager {
         }
         return keyCode;
     }
+
+    /**
+     * Sets the key code for a specified action.
+     *
+     * @param action the action to set the key code for.
+     * @param keyCode the key code to set for the action.
+     * @return true if the binding was set successfully, false otherwise.
+     */
     public boolean setBinding(String action, KeyCode keyCode) {
-        // Don't allow null or ESCAPE key bindings
         if (keyCode == null || keyCode == KeyCode.ESCAPE) {
             return false;
         }
 
-        // Check if key is already bound to a different action
         String boundAction = reverseBindings.get(keyCode);
         if (boundAction != null && !boundAction.equals(action)) {
-            return false; // Key is already bound to another action
+            return false;
         }
 
-        // Remove old binding if it exists
         KeyCode oldKey = keyBindings.get(action);
         if (oldKey != null) {
             reverseBindings.remove(oldKey);
         }
 
-        // Set new binding
         keyBindings.put(action, keyCode);
         reverseBindings.put(keyCode, action);
         preferences.put(action, keyCode.name());
         return true;
     }
 
+    /**
+     * Resets all key bindings to their default values.
+     */
     public void resetToDefaults() {
         keyBindings.clear();
         reverseBindings.clear();
@@ -95,6 +134,12 @@ public class KeyBindingsManager {
         setBinding("FIRE", KeyCode.SPACE);
     }
 
+    /**
+     * Checks if a key code is already bound to an action.
+     *
+     * @param keyCode the key code to check.
+     * @return true if the key code is bound, false otherwise.
+     */
     public boolean isKeyBound(KeyCode keyCode) {
         return reverseBindings.containsKey(keyCode);
     }

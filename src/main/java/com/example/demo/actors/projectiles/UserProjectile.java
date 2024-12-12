@@ -2,12 +2,25 @@ package com.example.demo.actors.projectiles;
 
 /**
  * Represents a projectile fired by the user in the game.
+ *
+ * @see Projectile
  */
 public class UserProjectile extends Projectile {
 
+	/**
+	 * The image name for the user projectile.
+	 */
 	private static final String IMAGE_NAME = "userfire.png";
+
+	/**
+	 * The height of the user projectile image.
+	 */
 	private static final int IMAGE_HEIGHT = 10;
-	private static final int HORIZONTAL_VELOCITY = 15;
+
+	/**
+	 * The horizontal velocity of the user projectile.
+	 */
+	private static final int HORIZONTAL_VELOCITY = 20;
 
 	/**
 	 * Constructs a UserProjectile with the specified initial position.

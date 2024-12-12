@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.config.GameConfig;
+import com.example.demo.controller.gameControllers.ArcadeModeController;
+import com.example.demo.controller.gameControllers.GameController;
 import com.example.demo.managers.SoundManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,15 +15,31 @@ import javafx.stage.Stage;
 
 /**
  * Controller class for the main menu of the application.
+ *
+ * @see com.example.demo.managers.SoundManager
+ * @see com.example.demo.config.GameConfig
  */
 public class MainMenuController {
 
+    /**
+     * The primary stage for this application.
+     */
     private Stage stage;
+
+    /**
+     * The sound manager for managing game sounds.
+     */
     private SoundManager soundManager;
 
+    /**
+     * The background image view in the main menu.
+     */
     @FXML
     private ImageView backgroundImage;
 
+    /**
+     * The container for buttons in the main menu.
+     */
     @FXML
     private VBox buttonContainer;
 
@@ -58,6 +76,8 @@ public class MainMenuController {
 
     /**
      * Starts the story mode game by creating a new GameController and launching the game.
+     *
+     * @see GameController
      */
     @FXML
     private void startGame() {
@@ -72,6 +92,8 @@ public class MainMenuController {
 
     /**
      * Starts the arcade mode game.
+     *
+     * @see ArcadeModeController
      */
     @FXML
     private void startArcadeMode() {
@@ -86,6 +108,8 @@ public class MainMenuController {
 
     /**
      * Shows the leaderboard screen.
+     *
+     * @see LeaderboardController
      */
     @FXML
     private void showLeaderboard() {
@@ -102,6 +126,8 @@ public class MainMenuController {
 
     /**
      * Shows the settings screen.
+     *
+     * @see SettingsController
      */
     @FXML
     private void showSettings() {

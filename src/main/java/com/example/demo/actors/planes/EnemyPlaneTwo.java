@@ -5,16 +5,50 @@ import com.example.demo.actors.factory.ProjectileFactory;
 
 /**
  * Represents an enemy plane in level Two of the game, which is a type of FighterPlane.
+ *
+ * @see FighterPlane
+ * @see ActiveActorDestructible
  */
 public class EnemyPlaneTwo extends FighterPlane {
 
+    /**
+     * The image name for the enemy plane.
+     */
     private static final String IMAGE_NAME = "enemyplane2.png";
+
+    /**
+     * The height of the enemy plane image.
+     */
     private static final int IMAGE_HEIGHT = 60;
+
+    /**
+     * The horizontal velocity of the enemy plane.
+     */
     private static final int HORIZONTAL_VELOCITY = -8;
+
+    /**
+     * The X position offset for the enemy plane projectile.
+     */
     private static final double PROJECTILE_X_POSITION_OFFSET = -100.0;
+
+    /**
+     * The Y position offset for the enemy plane projectile.
+     */
     private static final double PROJECTILE_Y_POSITION_OFFSET = 20.0;
+
+    /**
+     * The initial health of the enemy plane.
+     */
     private static final int INITIAL_HEALTH = 2;
+
+    /**
+     * The fire rate of the enemy plane.
+     */
     private static final double FIRE_RATE = .03;
+
+    /**
+     * The projectile factory for creating projectiles.
+     */
     private final ProjectileFactory projectileFactory;
 
     /**

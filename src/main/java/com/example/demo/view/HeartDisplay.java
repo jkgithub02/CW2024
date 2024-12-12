@@ -9,16 +9,51 @@ import java.util.Objects;
 
 /**
  * Represents a display of hearts indicating the player's health.
+ *
+ * @see com.example.demo.managers.SoundManager
+ * @see javafx.scene.image.ImageView
+ * @see javafx.scene.layout.HBox
  */
 public class HeartDisplay {
 
-	private static final String HEART_IMAGE_NAME = "/com/example/demo/images/heart2.png";
+	/**
+	 * The path to the heart image.
+	 */
+	private static final String HEART_IMAGE_NAME = "/com/example/demo/images/heart.png";
+
+	/**
+	 * The height of each heart image.
+	 */
 	private static final int HEART_HEIGHT = 40;
+
+	/**
+	 * The index of the first item in the container.
+	 */
 	private static final int INDEX_OF_FIRST_ITEM = 0;
+
+	/**
+	 * The container for the heart images.
+	 */
 	private HBox container;
+
+	/**
+	 * The x-coordinate position of the container.
+	 */
 	private double containerXPosition;
+
+	/**
+	 * The y-coordinate position of the container.
+	 */
 	private double containerYPosition;
+
+	/**
+	 * The number of hearts to display.
+	 */
 	private int numberOfHeartsToDisplay;
+
+	/**
+	 * The SoundManager instance to play sounds.
+	 */
 	private final SoundManager soundManager = SoundManager.getInstance();
 
 	/**

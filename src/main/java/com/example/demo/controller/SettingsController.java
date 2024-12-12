@@ -21,41 +21,112 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
+/**
+ * Controller class for managing the settings screen.
+ *
+ * @see com.example.demo.managers.KeyBindingsManager
+ * @see com.example.demo.managers.SoundManager
+ */
 public class SettingsController {
+    /**
+     * The primary stage of the application.
+     */
     private Stage stage;
+
+    /**
+     * The sound manager instance.
+     */
     private SoundManager soundManager;
+
+    /**
+     * The key bindings manager instance.
+     */
     private final KeyBindingsManager keyBindingsManager;
+
+    /**
+     * The button currently being bound.
+     */
     private Button currentlyBinding;
 
+    /**
+     * The background image of the settings screen.
+     */
     @FXML
     private ImageView backgroundImage;
+
+    /**
+     * The background pane for the settings.
+     */
     @FXML
     private Pane settingsBackground;
+
+    /**
+     * The container for the settings.
+     */
     @FXML
     private VBox settingsContainer;
+
+    /**
+     * The slider for adjusting the background volume.
+     */
     @FXML
     private Slider backgroundVolumeSlider;
+
+    /**
+     * The slider for adjusting the effects volume.
+     */
     @FXML
     private Slider effectsVolumeSlider;
+
+    /**
+     * The button for binding the up key.
+     */
     @FXML
     private Button upKeyButton;
+
+    /**
+     * The button for binding the down key.
+     */
     @FXML
     private Button downKeyButton;
+
+    /**
+     * The button for binding the left key.
+     */
     @FXML
     private Button leftKeyButton;
+
+    /**
+     * The button for binding the right key.
+     */
     @FXML
     private Button rightKeyButton;
+
+    /**
+     * The button for binding the fire key.
+     */
     @FXML
     private Button fireKeyButton;
 
+    /**
+     * Constructs a SettingsController.
+     */
     public SettingsController() {
         this.keyBindingsManager = KeyBindingsManager.getInstance();
     }
 
+    /**
+     * Sets the stage for this controller.
+     *
+     * @param stage the primary stage of the application.
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     * Initializes the settings screen by setting up the UI components and loading the key bindings.
+     */
     @FXML
     private void initialize() {
         soundManager = SoundManager.getInstance();
@@ -64,6 +135,9 @@ public class SettingsController {
         initializeKeyBindingButtons();
     }
 
+    /**
+     * Initializes the UI components and sets up the volume sliders.
+     */
     private void initializeUI() {
         // Initialize volume sliders
         backgroundVolumeSlider.setValue(soundManager.getBackgroundVolume() * 100);
@@ -96,6 +170,9 @@ public class SettingsController {
                 soundManager.setEffectsVolume(newValue.doubleValue() / 100));
     }
 
+    /**
+     * Initializes the key binding buttons.
+     */
     private void initializeKeyBindingButtons() {
         updateKeyBindingButton(upKeyButton, "UP");
         updateKeyBindingButton(downKeyButton, "DOWN");
@@ -104,6 +181,12 @@ public class SettingsController {
         updateKeyBindingButton(fireKeyButton, "FIRE");
     }
 
+    /**
+     * Updates the text of the key binding button with the current key binding.
+     *
+     * @param button the button to update.
+     * @param action the action associated with the key binding.
+     */
     private void updateKeyBindingButton(Button button, String action) {
         if (button == null || action == null) return;
 
@@ -111,31 +194,52 @@ public class SettingsController {
         button.setText(action + ": " + (keyCode != null ? keyCode.getName() : "Not Set"));
     }
 
+    /**
+     * Handles the binding of the up key.
+     */
     @FXML
     private void handleUpKeyBinding() {
         startBinding(upKeyButton, "UP");
     }
 
+    /**
+     * Handles the binding of the down key.
+     */
     @FXML
     private void handleDownKeyBinding() {
         startBinding(downKeyButton, "DOWN");
     }
 
+    /**
+     * Handles the binding of the left key.
+     */
     @FXML
     private void handleLeftKeyBinding() {
         startBinding(leftKeyButton, "LEFT");
     }
 
+    /**
+     * Handles the binding of the right key.
+     */
     @FXML
     private void handleRightKeyBinding() {
         startBinding(rightKeyButton, "RIGHT");
     }
 
+    /**
+     * Handles the binding of the fire key.
+     */
     @FXML
-    private void handleFireKeyBinding() {  // Add this method
+    private void handleFireKeyBinding() {
         startBinding(fireKeyButton, "FIRE");
     }
 
+    /**
+     * Starts the key binding process for the specified button and action.
+     *
+     * @param button the button to bind.
+     * @param action the action associated with the key binding.
+     */
     private void startBinding(Button button, String action) {
         if (currentlyBinding != null) {
             currentlyBinding.setStyle("");
@@ -175,6 +279,9 @@ public class SettingsController {
         button.requestFocus();
     }
 
+    /**
+     * Updates all key binding buttons with the current key bindings.
+     */
     private void updateAllKeyBindingButtons() {
         updateKeyBindingButton(upKeyButton, "UP");
         updateKeyBindingButton(downKeyButton, "DOWN");
@@ -183,12 +290,18 @@ public class SettingsController {
         updateKeyBindingButton(fireKeyButton, "FIRE");
     }
 
+    /**
+     * Handles resetting the key bindings to their default values.
+     */
     @FXML
     private void handleResetBindings() {
         keyBindingsManager.resetToDefaults();
         updateAllKeyBindingButtons();
     }
 
+    /**
+     * Handles navigating back to the main menu.
+     */
     @FXML
     private void backToMenu() {
         try {
