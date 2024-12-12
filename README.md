@@ -1,28 +1,44 @@
 # COMP2042 Developing Maintainable Software
-
 ---
-## <ins>1.0 My Github</ins>
+## Table of Contents
+1. [My Github](#10-my-github)
+2. [Setup and Compilation Instructions](#20-setup-and-compilation-instructions)
+    - [Prerequisites](#21-prerequisites)
+    - [Project Setup](#22-project-setup)
+    - [Common Build Commands](#23-common-build-commands)
+3. [Features](#30-features)
+    - [Implemented and Working Properly](#31-implemented-and-working-properly)
+    - [Implemented but Not Working Properly](#32-implemented-but-not-working-properly)
+    - [Not Implemented](#33-not-implemented)
+4. [Refactoring Process](#40-refactoring-process)
+    - [New Java Classes](#41-new-java-classes)
+    - [Modified Java Classes](#42-modified-java-classes)
+    - [Summary and Additional Notes](#43-summary-and-additional-notes-of-refactoring-process)
+5. [Unexpected Problems](#50-unexpected-problems)
+6. [In-Game Screenshots](#in-game-screenshots)
+---
+## 1.0 My Github
 **Name:** Jason Kong <br>
 **Student ID:** 20615244 <br>
 **Link:** https://github.com/jkgithub02/CW2024
 
 ---
 
-## <ins>2.0 Setup and Compilation Instructions</ins>
-### <ins>2.1 Prerequisites
+## 2.0 Setup and Compilation Instructions
+### 2.1 Prerequisites
 
 - Java Development Kit (JDK) 21 or later
 - Apache Maven 3.9.0 or later
 - JavaFX SDK 21 or later
 - Git (for cloning the repository)
 
-#### <ins>Recommended IDEs
+#### Recommended IDEs
 - IntelliJ IDEA 2023.3+
 - IntelliJ IDEA Community Edition 2023.3+
 - Eclipse 2023-12+
 - VS Code with Java Extension Pack
 
-#### <ins>Environment Setup
+#### Environment Setup
 1. **Install Java Development Kit (JDK)**
     - Download and install JDK 21 from [Oracle](https://www.oracle.com/java/technologies/downloads/) or use OpenJDK
     - Follow this tutorial link: https://www.makeuseof.com/java-home-variable-windows-11/
@@ -73,7 +89,7 @@
       mvn --version
       ```
 
-### <ins>2.2 Project Setup
+### 2.2 Project Setup
 
 1. **Clone the Repository**
    ```bash
@@ -115,7 +131,7 @@
       java -jar target/CW2024-1.0-SNAPSHOT.jar
       ```
 ###
-### <ins>2.3 Common Build Commands</ins>
+### 2.3 Common Build Commands
 ```bash
     # Clean build files
     mvn clean
@@ -137,8 +153,8 @@
    ```
 ---
 
-## <ins>3.0 Features</ins>
-### <ins>3.1 Implemented and Working Properly</ins>
+## 3.0 Features
+### 3.1 Implemented and Working Properly
 #### 1. Added left-right movement for the user plane.
 - Implemented in `InputManager` and `UserPlane` classes with horizontal velocity multiplier (±2)
 - Includes bounds checking via `X_LOWER_BOUND` and `X_UPPER_BOUND` constants
@@ -211,7 +227,7 @@
 - Improved visual appeal and consistency
 - Consistent theme across FXML files
 
-### <ins>3.2 Implemented but Not Working Properly</ins>
+### 3.2 Implemented but Not Working Properly
 #### 1. GameOver, Win Screens and reload audio clips may overlap
 - Issue: Audio clips may overlap when transitioning between screens
 - Does not affect functionality, and can be managed with proper audio queue management
@@ -219,7 +235,7 @@
 - `KeyBindingsManager` allows simultaneous key registration
 - However, the current partial solution is no keys will be registered if both buttons are pressed simultaneously
 
-### <ins>3.3 Not Implemented</ins>
+### 3.3 Not Implemented
 #### 1. Mini health bar for enemies.
 Reason: 
 - Would require significant modifications to FighterPlane class
@@ -238,11 +254,11 @@ Reason:
 
 ---
 
-## <ins>4.0 Refactoring Process</ins>
-### <ins>4.1 New Java Classes</ins>
+## 4.0 Refactoring Process
+### 4.1 New Java Classes
 #### <ins>4.1.1 Actors</ins>
-| Class Name | Description |
-|------------|-------------|
+| Class Name        | Description                                                                                                              |
+|-------------------|--------------------------------------------------------------------------------------------------------------------------|
 | `DestructionType` | Enum class defining different types of destruction events in the game (collision, projectile kill, defense penetration). |
 ###
 #### <ins>4.1.2 Actors/Factory</ins>
@@ -341,7 +357,7 @@ Reason:
 | `LevelTransitionScreen`  | Manages level transition effects with fade animations (2-second duration), displaying styled level names against black background.                                                                                          |
 
 
-## <ins>4.2 Modified Java Classes</ins>
+## 4.2 Modified Java Classes
 1. `ActiveActorDestructible.java`:
    - Added `DestructionType` functionality:
       - Introduced the `destructionType` field to handle different types of destruction
@@ -482,7 +498,7 @@ Reason:
    - Replaced with FXML file `WinScreen.fxml` and controller class `WinController.java`
    - Followed the architecture and practice of Model View Controller (MVC) pattern
 
-## <ins>4.3 Summary and Additional notes of Refactoring Process</ins>
+## 4.3 Summary and Additional Notes of Refactoring Process
 #### 1. Fixed NullPointerException from wrong shieldImage name.
 - Issue: The shield image was not showing due to an incorrect file extension.
 - Solution: Renamed the shield image file from `.jpg` to `.png` to match the actual file extension.
@@ -552,12 +568,13 @@ C:.
 #### 15. Tested and verified the refactored codebase for functionality and performance.
 - Issue: Refactored code could introduce new bugs or performance issues.
 - Solution: Conducted thorough unit-testing and integration testing to ensure the refactored codebase works as intended, following the test-driven development (TDD) approach.
+- (Check Unit Tests under Test folder or run `mvn test`)
 
 ### 
 For a detailed commit history, please refer to the [commit log](https://github.com/jkgithub02/CW2024/commits "View full commit history").
 ---
 
-## <ins>5.0 Unexpected Problems</ins>
+## 5.0 Unexpected Problems
 1. **Time Management**
 - Concurrent deadlines with other module assignments and assessments created scheduling pressure
 - Extracurricular activities and commitments required careful planning
