@@ -169,7 +169,7 @@
 - Increased fire rate (3% per frame)
 #### 8. Added arcade mode and leaderboard mechanics.
 - `ArcadeLevel` class implements endless mode with wave-based progression and increasing difficulty
-- `LeaderboardManager` tracks and displays top scores
+- `LeaderboardManager` tracks and displays top 5 scores
 #### 9. Added game over and win screens using FXML and controllers.
 - `GameOverController` and `WinScreenController` manage game over and win screens
 - Includes restart level (GameOverController), restart game (WinScreenController) and return to main menu options
@@ -179,8 +179,8 @@
 - State preservation during restarts
 #### 11. Added a leaderboard that sorts and shows the highest scores.
 - Sorts scores in descending order
-- Limited to top 10 scores
-- Persistent storage in arcade_scores.txt
+- Sorts scores, then stores the top 10 scores in the `.txt` file
+- Persistent storage in `arcade_scores.txt`
 #### 12. Added sound effects for taking damage and firing projectiles.
 - Different sounds for shooting, damage, victory and game over
 - Volume control through settings
@@ -309,7 +309,7 @@ Reason:
 | Class Name           | Description                                                                                                                                                                                                                 |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `KeyBindingsManager` | Singleton class managing keyboard control bindings with persistent storage. Features default bindings setup, key remapping functionality, duplicate binding prevention, and preferences storage using Java Preferences API. |
-| `LeaderboardManager` | Manages arcade mode high scores with persistent storage, maintaining top scores in descending order. Provides score loading, saving, and retrieval functionality.                                                           |
+| `LeaderboardManager` | Manages arcade mode high scores with persistent storage, maintaining top 10 scores in `arcade_scores.txt` in descending order. Provides score loading, saving, and retrieval functionality.                                 |
 | `NavigationManager`  | Controls navigation between game screens (menus, levels, win/lose screens) with error handling and scene management. Manages level transitions and screen controller initialization.                                        |
 | `SoundManager`       | Singleton class managing audio systems including background music and sound effects. Features volume control, sound caching, and multiple audio channel management for different game events.                               |
 
@@ -586,7 +586,20 @@ For a detailed commit history, please refer to the [commit log](https://github.c
   - Included screenshots of traffic patterns and repository access logs
 
 4. FXML Directory Issue 
-- Main Menu FXML file was not being detected by the application
-- Cause is unknown despite multiple attempts at debugging and verifying file paths
+- FXML files was not being detected by the application if organized under a folder under `resources`
+- Throws IllegalStateException: Location is not set
+- Cause is unknown despite multiple attempts at debugging and verifying file paths 
 - Resolution:
-  - Placed Main Menu FXML file in the base resources directory for the application
+  - Placed all FXML files in the base `resources` directory for the application
+
+---
+
+### In-Game Screenshots:
+![MainMenu.png](ReadmeImages/MainMenu.png)
+![LevelExample.png](ReadmeImages/LevelExample.png)
+![PauseMenu.png](ReadmeImages/PauseMenu.png)
+![GameOver.png](ReadmeImages/GameOver.png)
+![Victory.png](ReadmeImages/Victory.png)
+![ArcadeLevel.png](ReadmeImages/ArcadeLevel.png)
+![Leaderboard.png](ReadmeImages/Leaderboard.png)
+![Settings.png](ReadmeImages/Settings.png)

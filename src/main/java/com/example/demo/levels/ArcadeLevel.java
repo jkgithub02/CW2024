@@ -20,7 +20,7 @@ public class ArcadeLevel extends LevelParent {
     /**
      * The background image name for the arcade level.
      */
-    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/backgroundarcade2.jpg";
+    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/backgroundarcade.jpg";
 
     /**
      * The initial number of enemies.

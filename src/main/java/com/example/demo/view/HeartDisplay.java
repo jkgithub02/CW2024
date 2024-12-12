@@ -19,7 +19,7 @@ public class HeartDisplay {
 	/**
 	 * The path to the heart image.
 	 */
-	private static final String HEART_IMAGE_NAME = "/com/example/demo/images/heart2.png";
+	private static final String HEART_IMAGE_NAME = "/com/example/demo/images/heart.png";
 
 	/**
 	 * The height of each heart image.
