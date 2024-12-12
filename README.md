@@ -567,7 +567,7 @@ C:.
 
 #### 15. Tested and verified the refactored codebase for functionality and performance.
 - Issue: Refactored code could introduce new bugs or performance issues.
-- Solution: Conducted thorough unit-testing and integration testing to ensure the refactored codebase works as intended, following the test-driven development (TDD) approach.
+- Solution: Conducted thorough unit-testing (149 successful tests) and integration testing to ensure the refactored codebase works as intended, following the test-driven development (TDD) approach.
 - (Check Unit Tests under Test folder or run `mvn test`)
 
 ### 
