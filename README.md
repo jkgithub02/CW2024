@@ -558,21 +558,21 @@ For a detailed commit history, please refer to the [commit log](https://github.c
 ---
 
 ## <ins>5.0 Unexpected Problems</ins>
-1. Time Management
+1. **Time Management**
 - Concurrent deadlines with other module assignments and assessments created scheduling pressure
 - Extracurricular activities and commitments required careful planning
 - Resolution:
    - Implemented strict development schedule with clear goals
    - Prioritized core gameplay features before additional enhancements
    - Fully utilized weekends for focused development and refactoring
-2. Git Merge Conflicts
+2. **Git Merge Conflicts**
 - Encountered significant merge conflicts between test and main branches
 - Nearly lost codebase during merge conflict resolution due to incorrect code comparison acceptance
 - Resolution:
   - Aborted problematic merge using git merge --abort
   - Created backup branch before attempting subsequent merges
   - Reinitiated merge into main branch from test branch with careful review
-3. Github Suspicious Activity
+3. **Github Suspicious Activity**
 
    ![GithubRepoTraffic.png](ReadmeImages/GithubRepoTraffic.png)
 - Detected unusual repository traffic through GitHub Insights
@@ -580,9 +580,8 @@ For a detailed commit history, please refer to the [commit log](https://github.c
 - Potential plagiarism concerns raised by traffic patterns
 - Resolution:
   - Informed module coordinator of suspicious activity
-  - Included screenshots of traffic patterns and repository access logs
-
-4. FXML Directory Issue 
+  - Included screenshot of traffic patterns
+4. **FXML Directory Issue**
 - FXML files was not being detected by the application if organized under a folder under `resources`
 - Throws IllegalStateException: Location is not set
 - Cause is unknown despite multiple attempts at debugging and verifying file paths 
