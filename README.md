@@ -72,9 +72,6 @@
       ```bash
       mvn --version
       ```
-###
-**NOTE:** <br>
-<i>While JavaFX SDK installation is listed, it's not strictly required for this project as Maven will handle the JavaFX dependencies automatically through the pom.xml configuration. However, having it installed locally can be useful for development and troubleshooting. </i>
 
 ### <ins>2.2 Project Setup
 
